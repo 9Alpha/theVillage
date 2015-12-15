@@ -1,0 +1,31 @@
+{
+  "name": "the_village",
+  "version": "0.2.0",
+  "description": "It's a village",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/9Alpha/theVillage.git"
+  },
+  "keywords": [
+    "Village"
+  ],
+  "author": "Max Mitchell, Conor Yuen, Tony Jippov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/9Alpha/theVillage/issues"
+  },
+  "homepage": "https://github.com/9Alpha/theVillage#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "fs": "0.0.2",
+    "node": "0.0.0",
+    "path": "^0.12.7"
+  }
+}
