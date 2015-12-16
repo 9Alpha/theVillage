@@ -1,0 +1,51 @@
+creatures
+	- people
+		- position (x,y)
+		- age
+		- activity
+			- playing
+			- working
+			- relaxing
+		- job 
+			- hobo
+			- priest
+			- hospital worker
+			- schoolteacher	
+		- health
+			- hunger/energy
+			- happiness	
+		- name	
+	- animals
+		- position
+		- name
+		- age
+		- types
+			- cats
+		- health
+			- hunger/energy
+			- happiness	
+		- activity	
+			- sleeping
+			- sitting
+			- being a cat	
+buildings
+	- size
+	- position (x,y)
+	- types
+		- houses
+		- professional buildings
+			- hospital
+			- school
+			- church
+terrain
+	- weather
+		- rain
+		- snow
+		- hail
+		- sun
+	- temperature
+		- value	
+		- range
+	- terrain type
+		- hills
+		- plains	
