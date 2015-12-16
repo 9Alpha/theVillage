@@ -1,0 +1,101 @@
+{
+	"name": "Vil",
+	"date_created": 28,
+	"creatures": {
+		"people": [{
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"age": 0,
+			"activity": 0,
+			"job": 0,
+			"health": {
+				"hunger": 0.84,
+				"happiness": 0.94
+			},
+			"name": "Mark"
+		}, {
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"age": 0,
+			"activity": 0,
+			"job": 0,
+			"health": {
+				"hunger": 0.84,
+				"happiness": 0.94
+			},
+			"name": "Glenn"
+		}],
+		"animals": [{
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"name": "Jack",
+			"age": 0,
+			"type": 0,
+			"health": {
+				"hunger": 0.84,
+				"happiness": 0.94
+			},
+			"activity": 0
+		}, {
+			"position": {
+				"x": 0,
+				"y": 0
+			},
+			"name": "Max",
+			"age": 0,
+			"type": "cat",
+			"health": {
+				"hunger": 0.84,
+				"happiness": 0.94
+			},
+			"activity": 0
+		}]
+	},
+	"buildings": 
+	[{
+		"position": {
+				"x": 0,
+				"y": 0
+			},
+		"name": "Church",
+		"age": 0,
+		"type": 2,
+	},
+	{
+		"position": {
+				"x": 0,
+				"y": 0
+			},
+		"name": "School",
+		"age": 0,
+		"type": 1,
+	}],
+	"terrain": {
+		"weather": {
+			"options": {
+				"rain_chance": 0.3,
+				"sun_chance": 0.5
+			},
+			"current": {
+				"type": 2
+			}
+		},
+		"temperature": {
+			"value": 38,
+			"range": {
+				"hi": 90,
+				"lo": 0
+			}
+		},
+		"terrain_type": {
+			"wind": 35,
+			"hills": 4
+		}
+	}
+}

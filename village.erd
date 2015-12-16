@@ -11,6 +11,7 @@ creatures
 			- priest
 			- hospital worker
 			- schoolteacher	
+			//playing, working, relaxing, all assigned to a different number -- job same as activity, with number values
 		- health
 			- hunger/energy
 			- happiness	
@@ -21,13 +22,15 @@ creatures
 		- age
 		- types
 			- cats
+			//numerical value for type
 		- health
 			- hunger/energy
 			- happiness	
 		- activity	
 			- sleeping
 			- sitting
-			- being a cat	
+			- being a cat
+			//same as above activities, sleeping, eating, catting, etc	
 buildings
 	- size
 	- position (x,y)
@@ -37,6 +40,7 @@ buildings
 			- hospital
 			- school
 			- church
+			//numerical value for type
 terrain
 	- weather
 		- rain
