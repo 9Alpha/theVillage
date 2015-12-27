@@ -4,8 +4,8 @@
 	"creatures": {
 		"people": [{
 			"position": {
-				"x": 0,
-				"y": 0
+				"x": 203,
+				"y": 205
 			},
 			"age": 0,
 			"activity": 0,
@@ -17,8 +17,8 @@
 			"name": "Mark"
 		}, {
 			"position": {
-				"x": 0,
-				"y": 0
+				"x": 401,
+				"y": 83
 			},
 			"age": 0,
 			"activity": 0,
@@ -31,8 +31,8 @@
 		}],
 		"animals": [{
 			"position": {
-				"x": 0,
-				"y": 0
+				"x": 203,
+				"y": 502
 			},
 			"name": "Jack",
 			"age": 0,
@@ -44,8 +44,8 @@
 			"activity": 0
 		}, {
 			"position": {
-				"x": 0,
-				"y": 0
+				"x": 91,
+				"y": 200
 			},
 			"name": "Max",
 			"age": 0,
@@ -60,21 +60,21 @@
 	"buildings": 
 	[{
 		"position": {
-				"x": 0,
-				"y": 0
+				"x": 74,
+				"y": 41
 			},
 		"name": "Church",
 		"age": 0,
-		"type": 2,
+		"type": 2
 	},
 	{
 		"position": {
-				"x": 0,
-				"y": 0
+				"x": 42,
+				"y": 94
 			},
 		"name": "School",
 		"age": 0,
-		"type": 1,
+		"type": 1
 	}],
 	"terrain": {
 		"weather": {

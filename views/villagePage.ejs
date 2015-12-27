@@ -1,7 +1,38 @@
 <HEAD>
 	<title>The Village</title>
+	<link rel="stylesheet" type="text/css" href="public/css/village.css">
 </HEAD>
 
 <body>
-	<h1>It's the stuff</h1>
+	<div id="sidebar">
+		<div id="sideGeneral">
+			<h3>General Information</h3>
+			<div id="sideGeneralInfo">
+				<ul id="sideGeneralInfoList">
+					<li>Weather</li>
+					<ul>
+						<li>Sun</li>
+						<li>43 F</li>
+					</ul>
+					<li>Population</li>
+				</ul>
+			</div>
+		</div>
+		<div id="line"></div>
+		<div id="sideTarget">
+			<h3 id="targetTitle">Target</h3>
+			<div id="sideTargetInfo">
+				<ul id="sideTargetInfoList">
+					<li>Name</li>
+					<li>Occupation</li>
+					<li>Etc...</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="drawHere">
+	</div>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="public/p5-release/p5.min.js"></script>
+	<script src="public/js/village.js"></script>
 </body>

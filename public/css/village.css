@@ -1,0 +1,41 @@
+html, body {
+}
+
+#line {
+	height: 2px;
+	background: #000000;
+}
+
+#sidebar {
+	position: absolute;
+	width: 220px;
+	height: 90%;
+	background: #331a00;
+	color: #e6e6e6;
+	margin-right: 3%;
+}
+
+#sideGeneral {
+	width: 220px;
+	margin: 5px 5px 5px 5px;
+}
+
+#sideGeneralInfo {
+	margin: 5px 5px 5px 5px;
+}
+
+#sideTarget {
+	width: 220px;
+	margin: 5px 5px 5px 5px;
+}
+
+#sideTargetInfo {
+	margin: 5px 5px 5px 5px;
+}
+
+#drawHere {
+	margin-left: 230px;
+	background: #912321;
+	height: 100%;
+
+}

@@ -2,7 +2,7 @@ var  express =  require('express');
 var  path =  require('path');
 var  app =  express();
 var ejs = require('ejs');
-
+var verver = require('./verver');
 var bodyParser = require('body-parser');  
 
 app.use(bodyParser.json());  
@@ -15,7 +15,7 @@ var fs = require("fs");
 app.use("/public", express.static(path.join(__dirname,'public')));
 
 app.get('/', function(req, res){
-	res.redirect("/options");
+	res.redirect("/village");
 });
 
 app.get('/options', function(req, res){
@@ -28,10 +28,15 @@ app.put('/options', function(req, res){
 });
 
 app.get('/village', function(req, res){
-	res.send("village page");
+	res.render("villagePage.ejs");
 });
 
-app.put('/village', function(req, res){
+app.get('/vilData', function(req, res){
+	verver.update();
+	res.send(verver.sendData());
+});
+
+app.put('/vilData', function(req, res){
 	gotten = req.body;
 	res.send(gotten);
 });
