@@ -37,8 +37,9 @@ app.get('/vilData', function(req, res){
 });
 
 app.put('/vilData', function(req, res){
-	gotten = req.body;
-	res.send(gotten);
+	console.log("did stuff");
+	verver.writeToFile();
+	res.send("sent");
 });
 
 

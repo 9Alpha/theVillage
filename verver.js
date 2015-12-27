@@ -22,5 +22,8 @@ module.exports = {
 				villageData.creatures.animals[i].position.x+=randomInt(-1, 1);
 				villageData.creatures.animals[i].position.y+=randomInt(-1, 1);
 			}
+	},
+	writeToFile: function () {
+		fs.writeFileSync('./village.json', JSON.stringify(villageData));
 	}
 }

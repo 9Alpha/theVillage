@@ -12,6 +12,8 @@ function draw() {
 	.done(function(data){
 		villageData = data;
 
+		background(145, 35, 33);
+
 		for (var i = 0; i < villageData.creatures.people.length; i++) {
 			fill(255);
 			ellipse(villageData.creatures.people[i].position.x, villageData.creatures.people[i].position.y, 10, 10);
@@ -30,3 +32,21 @@ function draw() {
 
 
 }
+
+window.onbeforeunload = function() {
+    return 'Hold up';
+}
+
+
+$(window).on('unload', function() {
+	$.ajax ({
+		type: "PUT",
+		url: "/vilData",
+		complete: function () {
+			window.onbeforeunload = function() {
+    			return 'Hold up';
+			}		
+		}
+	});
+	console.log("unloaded");
+});
