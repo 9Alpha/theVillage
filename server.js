@@ -15,7 +15,25 @@ var fs = require("fs");
 app.use("/public", express.static(path.join(__dirname,'public')));
 
 app.get('/', function(req, res){
-	res.redirect("/village");
+	res.render("login.ejs");
+});
+
+app.post('/checkLogin', function(req, res){
+	var temp = req.body;
+	console.log(temp);
+	var usr = temp.info[0];
+	var pss = temp.info[1];
+	for (var i = 0; i < verver.sendData().users.length; i++) {
+		console.log(verver.sendData().users[i].userName+"    "+verver.sendData().users[i].password+"    real--> "+usr+"  "+pss);
+		if (usr === verver.sendData().users[i].userName && pss === verver.sendData().users[i].password) {
+			res.send(true);
+		}
+	}
+	res.send(false);
+});
+
+app.put('/makeLogin', function(req, res){
+	res.send("yee");
 });
 
 app.get('/options', function(req, res){
@@ -23,7 +41,7 @@ app.get('/options', function(req, res){
 });
 
 app.put('/options', function(req, res){
-	gotten = req.body;
+	var gotten = req.body;
 	res.send(gotten);
 });
 
