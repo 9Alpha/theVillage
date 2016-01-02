@@ -9,21 +9,21 @@ function randomInt(min, max) {
 }
 
 module.exports = {
-	sendData: function () {
-		return villageData;
+	sendData: function (ID) {
+		return villageData.users[0].village;
 	},
-	update: function () {
-		for (var i = 0; i < villageData.creatures.people.length; i++) {
-				villageData.creatures.people[i].position.x+=randomInt(-1, 1);
-				villageData.creatures.people[i].position.y+=randomInt(-1, 1);
+	update: function (ID) {
+		for (var i = 0; i < villageData.users[0].village.creatures.people.length; i++) {
+				villageData.users[0].village.creatures.people[i].position.x+=randomInt(-1, 1);
+				villageData.users[0].village.creatures.people[i].position.y+=randomInt(-1, 1);
 			}
 
-		for (var i = 0; i < villageData.creatures.animals.length; i++) {
-				villageData.creatures.animals[i].position.x+=randomInt(-1, 1);
-				villageData.creatures.animals[i].position.y+=randomInt(-1, 1);
+		for (var i = 0; i < villageData.users[0].village.creatures.animals.length; i++) {
+				villageData.users[0].village.creatures.animals[i].position.x+=randomInt(-1, 1);
+				villageData.users[0].village.creatures.animals[i].position.y+=randomInt(-1, 1);
 			}
 	},
-	writeToFile: function () {
+	writeToFile: function (ID) {
 		fs.writeFileSync('./village.json', JSON.stringify(villageData));
 	}
 }

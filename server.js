@@ -49,14 +49,14 @@ app.get('/village', function(req, res){
 	res.render("villagePage.ejs");
 });
 
-app.get('/vilData', function(req, res){
-	verver.update();
-	res.send(verver.sendData());
+app.get('/vilData/:id', function(req, res){
+	verver.update(req.params.id);
+	res.send(verver.sendData(req.params.id));
 });
 
-app.put('/vilData', function(req, res){
+app.put('/vilData/:id', function(req, res){
 	console.log("did stuff");
-	verver.writeToFile();
+	verver.writeToFile(req.params.id);
 	res.send("sent");
 });
 
