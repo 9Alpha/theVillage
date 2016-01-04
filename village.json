@@ -1,1 +1,117 @@
-{"users":[{"userName":"MaryQoS","password":"password","userID":0,"village":{"name":"Vil","date_created":28,"creatures":{"people":[{"position":{"x":160,"y":91},"age":0,"activity":0,"job":0,"health":{"hunger":0.84,"happiness":0.94},"name":"Mark"},{"position":{"x":497,"y":62},"age":0,"activity":0,"job":0,"health":{"hunger":0.84,"happiness":0.94},"name":"Glenn"}],"animals":[{"position":{"x":206,"y":432},"name":"Jack","age":0,"type":0,"health":{"hunger":0.84,"happiness":0.94},"activity":0},{"position":{"x":110,"y":162},"name":"Max","age":0,"type":1,"health":{"hunger":0.84,"happiness":0.94},"activity":0}]},"buildings":[{"position":{"x":74,"y":41},"name":"Church","age":0,"type":2},{"position":{"x":42,"y":94},"name":"School","age":0,"type":1}],"terrain":{"weather":{"options":{"rain_chance":0.3,"sun_chance":0.5},"current":{"type":2}},"temperature":{"value":38,"range":{"hi":90,"lo":0}},"terrain_type":{"wind":35,"hills":4}}}}]}
+{
+    "users": [
+        {
+            "userName": "MaryQoS",
+            "password": "password",
+            "userID": 0,
+            "village": {
+                "name": "Vil",
+                "date_created": 28,
+                "creatures": {
+                    "people": [
+                        {
+                            "position": {
+                                "x": 280,
+                                "y": 143
+                            },
+                            "age": 0,
+                            "activity": 0,
+                            "job": 0,
+                            "health": {
+                                "hunger": 0.84,
+                                "happiness": 0.94
+                            },
+                            "name": "Mark"
+                        },
+                        {
+                            "position": {
+                                "x": 539,
+                                "y": 31
+                            },
+                            "age": 0,
+                            "activity": 0,
+                            "job": 0,
+                            "health": {
+                                "hunger": 0.84,
+                                "happiness": 0.94
+                            },
+                            "name": "Glenn"
+                        }
+                    ],
+                    "animals": [
+                        {
+                            "position": {
+                                "x": 289,
+                                "y": 367
+                            },
+                            "name": "Jack",
+                            "age": 0,
+                            "type": 0,
+                            "health": {
+                                "hunger": 0.84,
+                                "happiness": 0.94
+                            },
+                            "activity": 0
+                        },
+                        {
+                            "position": {
+                                "x": 60,
+                                "y": 258
+                            },
+                            "name": "Max",
+                            "age": 0,
+                            "type": 1,
+                            "health": {
+                                "hunger": 0.84,
+                                "happiness": 0.94
+                            },
+                            "activity": 0
+                        }
+                    ]
+                },
+                "buildings": [
+                    {
+                        "position": {
+                            "x": 74,
+                            "y": 41
+                        },
+                        "name": "Church",
+                        "age": 0,
+                        "type": 2
+                    },
+                    {
+                        "position": {
+                            "x": 42,
+                            "y": 94
+                        },
+                        "name": "School",
+                        "age": 0,
+                        "type": 1
+                    }
+                ],
+                "terrain": {
+                    "weather": {
+                        "options": {
+                            "rain_chance": 0.3,
+                            "sun_chance": 0.5
+                        },
+                        "current": {
+                            "type": 2
+                        }
+                    },
+                    "temperature": {
+                        "value": 38,
+                        "range": {
+                            "hi": 90,
+                            "lo": 0
+                        }
+                    },
+                    "terrain_type": {
+                        "wind": 35,
+                        "hills": 4
+                    }
+                }
+            }
+        }
+    ]
+}

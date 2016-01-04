@@ -51,7 +51,7 @@ app.get('/village', function(req, res){
 
 app.get('/vilData/:id', function(req, res){
 	verver.update(req.params.id);
-	res.send(verver.sendData(req.params.id));
+	res.send(verver.sendUser(req.params.id));
 });
 
 app.put('/vilData/:id', function(req, res){

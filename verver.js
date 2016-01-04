@@ -9,7 +9,10 @@ function randomInt(min, max) {
 }
 
 module.exports = {
-	sendData: function (ID) {
+	sendData: function() {
+		return villageData;
+	},
+	sendUser: function (ID) {
 		return villageData.users[0].village;
 	},
 	update: function (ID) {
@@ -24,6 +27,6 @@ module.exports = {
 			}
 	},
 	writeToFile: function (ID) {
-		fs.writeFileSync('./village.json', JSON.stringify(villageData));
+		fs.writeFileSync('./village.json', JSON.stringify(villageData, null, 4));
 	}
 }

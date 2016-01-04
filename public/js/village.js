@@ -41,7 +41,7 @@ window.onbeforeunload = function() {
 $(window).on('unload', function() {
 	$.ajax ({
 		type: "PUT",
-		url: "/vilData",
+		url: "/vilData/"+0,
 		complete: function () {
 			window.onbeforeunload = function() {
     			return 'Hold up';
