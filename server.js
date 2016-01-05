@@ -3,6 +3,7 @@ var  path =  require('path');
 var  app =  express();
 var ejs = require('ejs');
 var bodyParser = require('body-parser');  
+var querystring = require('querystring');
 var http = require('http');
 app.use(bodyParser.json());  
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,7 +27,15 @@ app.get('/', function(req, res){
 
 app.post('/checkLogin', function(req, res){
 	setRoute('localhost', '/checkLogin', 'POST');
-	http.request(options, function(response) {
+	var logInfo = JSON.parse(JSON.stringify(req.body));
+	var data = querystring.stringify({
+      info: [
+      	logInfo.info[0],
+      	logInfo.info[1]
+      ]
+    });
+	console.log(logInfo+"     "+data);
+	var toGo = http.request(options, function(response) {
 		var temp = '';
 		response.on('data', function(chunk) {
 			temp+=chunk;
@@ -34,7 +43,9 @@ app.post('/checkLogin', function(req, res){
 		response.on('end', function() {
 		res.send(temp);
 		});
-	}).write(JSON.parse(req.body)).end();
+	});
+	toGo.write(data);
+	toGo.end();
 });
 
 app.put('/makeLogin', function(req, res){

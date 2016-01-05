@@ -11,7 +11,7 @@ $('#login').on('submit', function(e) {
 	$.ajax({
 		url: '/checkLogin',
 		type: 'POST',
-		data: JSON.stringify(temp),
+		data: temp,
 		contentType: "application/json",
 		complete: function(data) {
 			console.log(data.responseText);
