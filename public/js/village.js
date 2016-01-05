@@ -1,10 +1,16 @@
 $drawSect = $('#drawHere');
 var villageData;
 
+var Width;
+var Height;
+
 
 function setup() {
-  var myCanvas = createCanvas($drawSect.width(), $drawSect.height());
+  var myCanvas = createCanvas($drawSect.width()-($drawSect.width()%20), $drawSect.height()-($drawSect.height()%20));
   myCanvas.parent('drawHere');
+
+  Width = width;
+  Height = height;
 }
 
 function draw() {
@@ -13,6 +19,8 @@ function draw() {
 		villageData = data;
 
 		background(145, 35, 33);
+
+
 
 		for (var i = 0; i < villageData.creatures.people.length; i++) {
 			fill(255);
@@ -32,6 +40,8 @@ function draw() {
 
 
 }
+
+
 
 window.onbeforeunload = function() {
     return 'Hold up';

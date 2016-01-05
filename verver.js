@@ -30,3 +30,13 @@ module.exports = {
 		fs.writeFileSync('./village.json', JSON.stringify(villageData, null, 4));
 	}
 }
+
+
+meander = function (x, y, stX, stY) {
+
+}
+
+checkGrid = function (x, y) {
+	
+}
+
