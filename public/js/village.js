@@ -6,8 +6,9 @@ var Height;
 
 
 function setup() {
-  var myCanvas = createCanvas($drawSect.width()-($drawSect.width()%20), $drawSect.height()-($drawSect.height()%20));
+  var myCanvas = createCanvas(1000, 1000);
   myCanvas.parent('drawHere');
+
 
   Width = width;
   Height = height;
@@ -18,23 +19,40 @@ function draw() {
 	.done(function(data){
 		villageData = data;
 
-		background(145, 35, 33);
+		//background(145, 35, 33);
 
-
+ for (var i = 0; i < width; i+=20) {
+  	for (var j = 0; j < height; j+=20){
+  		if (villageData.theGrid[(j/20)*(width/20)+(i/20)]) fill(255, 50);
+  		else fill(0, 50);
+  		rect(i, j, 20, 20);
+  	}
+  }
 
 		for (var i = 0; i < villageData.creatures.people.length; i++) {
 			fill(255);
-			ellipse(villageData.creatures.people[i].position.x, villageData.creatures.people[i].position.y, 10, 10);
+			var pX, pY;
+			pX = (villageData.creatures.people[i].position % (width/20)) * 20;
+			pY = (int)(villageData.creatures.people[i].position / (width/20)) * 20;
+			ellipse(pX+10, pY+10, 15, 15);
 		}
 
 		for (var i = 0; i < villageData.creatures.animals.length; i++) {
 			fill(100);
-			ellipse(villageData.creatures.animals[i].position.x, villageData.creatures.animals[i].position.y, 10, 10);
+			var aX, aY;
+			aX = (villageData.creatures.animals[i].position % (width/20)) * 20;
+			aY = (int)(villageData.creatures.animals[i].position / (width/20)) * 20;
+			ellipse(aX+10, aY+10, 15, 15);
 		}
 
 		for (var i = 0; i < villageData.buildings.length; i++) {
-			fill(50);
-			rect(villageData.buildings[i].position.x, villageData.buildings[i].position.y, 40, 40);
+			fill(50, 10);
+			var bX, bY, bHid, bWit;
+			bX = (villageData.buildings[i].position % (width/20)) * 20;
+			bY = (int)(villageData.buildings[i].position / (width/20)) * 20;
+			bWid = villageData.buildings[i].LnW[0] * 20;
+			bHit = villageData.buildings[i].LnW[1] * 20;
+			rect(bX, bY, bWid, bHit, 5);
 		}
 	});
 

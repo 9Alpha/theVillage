@@ -80,8 +80,16 @@ app.get('/vilData/:id', function(req, res){
 
 app.put('/vilData/:id', function(req, res){
 	console.log("did stuff");
-	//verver.writeToFile(req.params.id);
-	res.send("sent");
+	setRoute('localhost', '/vilData/'+req.params.id, 'PUT');
+	http.request(options, function(response) {
+		var temp = '';
+		response.on('data', function(chunk) {
+			temp+=chunk;
+		});
+		response.on('end', function() {
+		res.send("sent");
+		});
+	}).end();
 });
 
 
