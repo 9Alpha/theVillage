@@ -27,14 +27,9 @@ app.get('/', function(req, res){
 
 app.post('/checkLogin', function(req, res){
 	setRoute('localhost', '/checkLogin', 'POST');
-	var logInfo = JSON.parse(JSON.stringify(req.body));
-	var data = querystring.stringify({
-      info: [
-      	logInfo.info[0],
-      	logInfo.info[1]
-      ]
-    });
-	console.log(logInfo+"     "+data);
+	console.log(options);
+	console.log("body-->"+JSON.stringify(req.body));
+	var logInfo = JSON.stringify(req.body);
 	var toGo = http.request(options, function(response) {
 		var temp = '';
 		response.on('data', function(chunk) {
@@ -44,7 +39,8 @@ app.post('/checkLogin', function(req, res){
 		res.send(temp);
 		});
 	});
-	toGo.write(data);
+	console.log("body2Send-->"+logInfo);
+	toGo.write(logInfo);
 	toGo.end();
 });
 
