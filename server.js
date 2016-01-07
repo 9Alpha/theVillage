@@ -49,12 +49,12 @@ app.put('/makeLogin', function(req, res){
 });
 
 app.get('/options', function(req, res){
-	res.send("options page");
+	res.render("optionsPage.ejs");
 });
 
 app.put('/options', function(req, res){
 	var gotten = req.body;
-	res.send(gotten);
+	res.render("optionsPage.ejs");
 });
 
 app.get('/village', function(req, res){
