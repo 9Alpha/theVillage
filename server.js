@@ -46,7 +46,12 @@ app.post('/checkLogin', function(req, res){
 
 	var temp = req.body;
 	console.log(temp);
-	request.post('localhost:4000/checkLogin', JSON.parse(temp));
+
+	request.post('http://localhost:4000/checkLogin', {form:{key:'value'}}, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+    		console.log(body); // Show the HTML for the Google homepage. 
+		}
+	});
 });
 
 app.put('/makeLogin', function(req, res){
@@ -74,7 +79,7 @@ app.get('/vilData/:id', function(req, res){
 			temp+=chunk;
 		});
 		response.on('end', function() {
-		res.send(temp);
+			res.send(temp);
 		});
 	}).end();
 });
@@ -88,7 +93,7 @@ app.put('/vilData/:id', function(req, res){
 			temp+=chunk;
 		});
 		response.on('end', function() {
-		res.send("sent");
+			res.send("sent");
 		});
 	}).end();
 });

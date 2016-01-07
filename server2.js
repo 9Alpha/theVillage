@@ -32,7 +32,7 @@ app.put('/vilData/:id', function(req, res){
 
 app.post('/checkLogin', function(req, res){
 	console.log(req.body);
-	var temp = JSON.parse(JSON.stringify(req.body));
+	var temp = req.body;
 	var usr = temp.info[0];
 	var pss = temp.info[1];
 	for (var i = 0; i < verver.sendData().users.length; i++) {
