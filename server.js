@@ -5,6 +5,7 @@ var ejs = require('ejs');
 var bodyParser = require('body-parser');  
 var querystring = require('querystring');
 var http = require('http');
+var request = require('request');
 app.use(bodyParser.json());  
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -26,22 +27,26 @@ app.get('/', function(req, res){
 });
 
 app.post('/checkLogin', function(req, res){
-	setRoute('localhost', '/checkLogin', 'POST');
-	console.log(options);
-	console.log("body-->"+JSON.stringify(req.body));
-	var logInfo = JSON.stringify(req.body);
-	var toGo = http.request(options, function(response) {
-		var temp = '';
-		response.on('data', function(chunk) {
-			temp+=chunk;
-		});
-		response.on('end', function() {
-		res.send(temp);
-		});
-	});
-	console.log("body2Send-->"+logInfo);
-	toGo.write(logInfo);
-	toGo.end();
+	// setRoute('localhost', '/checkLogin', 'POST');
+	// console.log(options);
+	// console.log("body-->"+JSON.stringify(req.body));
+	// var logInfo = JSON.stringify(req.body);
+	// var toGo = http.request(options, function(response) {
+	// 	var temp = '';
+	// 	response.on('data', function(chunk) {
+	// 		temp+=chunk;
+	// 	});
+	// 	response.on('end', function() {
+	// 	res.send(temp);
+	// 	});
+	// });
+	// console.log("body2Send-->"+logInfo);
+	// toGo.write(logInfo);
+	// toGo.end();
+
+	var temp = req.body;
+	console.log(temp);
+	request.post('localhost:4000/checkLogin', JSON.parse(temp));
 });
 
 app.put('/makeLogin', function(req, res){
