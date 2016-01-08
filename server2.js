@@ -31,10 +31,10 @@ app.put('/vilData/:id', function(req, res){
 
 
 app.post('/checkLogin', function(req, res){
-	console.log(req.body);
 	var temp = req.body;
-	var usr = temp.info[0];
-	var pss = temp.info[1];
+	console.log(temp);
+	var usr = temp.usr;
+	var pss = temp.pss;
 	for (var i = 0; i < verver.sendData().users.length; i++) {
 		console.log(verver.sendData().users[i].userName+"    "+verver.sendData().users[i].password+"    real--> "+usr+"  "+pss);
 		if (usr === verver.sendData().users[i].userName && pss === verver.sendData().users[i].password) {

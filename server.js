@@ -44,12 +44,15 @@ app.post('/checkLogin', function(req, res){
 	// toGo.write(logInfo);
 	// toGo.end();
 
-	var temp = req.body;
-	console.log(temp);
+	var temp = JSON.parse(JSON.stringify(req.body));
+	var usr = temp.info[0];
+	var pss = temp.info[1];
+	console.log(JSON.stringify(temp));
 
-	request.post('http://localhost:4000/checkLogin', {form:{key:'value'}}, function (error, response, body) {
+	request.post('http://localhost:4000/checkLogin', {form:{usr:usr, pss:pss}}, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-    		console.log(body); // Show the HTML for the Google homepage. 
+    		console.log(body); 
+    		res.send(body);
 		}
 	});
 });
