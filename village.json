@@ -2611,6 +2611,28 @@
                     "terrain_type": {
                         "wind": 35,
                         "hills": 4
+                    },  
+                    "objects": {
+                         "rocks": {
+                              "name": "rock1",
+                              "age" : 0,
+                              "LnW" : [
+                                   2,
+                                   2
+                              ],
+                              "type" : 0,
+                              "position": 798
+                         },
+                         "trees": {
+                              "name": "tree1",
+                              "age": 0,
+                              "LnW" : [
+                                   4,
+                                   4          
+                              ],
+                              "type": 1,
+                              "position": 1024
+                         }     
                     }
                 }
             }

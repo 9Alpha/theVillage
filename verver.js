@@ -10,6 +10,8 @@ var timeDif = 0;
 
 var HValueArr= [];
 
+var doIt = true;
+
 function randomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -20,7 +22,7 @@ function calcHValue(toSpot, ID) {
 		if (toSpot%50 >= i%50) {
 			temp+=((toSpot%50)-(i%50));
 		} else {
-			temp+=((50-(toSpot%50))-(i%50));
+			temp+=((50-(toSpot%50))-(50-(i%50)));
 		}
 		temp+=Math.abs(parseInt(toSpot/50)-parseInt(i/50));
 
@@ -29,7 +31,7 @@ function calcHValue(toSpot, ID) {
 	}
 }
 
-calcHValue(1279, 0);
+calcHValue(1329, 0);
 
 function findIndex(arr, data) {
     var index;
@@ -179,14 +181,102 @@ module.exports = {
 		timeDif = timeB - timeA;
 
 		timeDif = 0;
+
+
+		var from = 1331;
+		if (doIt) {
+			var openList = new AStarTree(0, 0, from);
+			var closedList = new AStarTree(0, 0, -1);
+			closedList.add(0, 0, from, -1, closedList.traverseDF);
+			//path(from, 1329, openList, closedList, ID);
+			doIt = false;
+		}
+
 	},
 	writeToFile: function (ID) {
 		fs.writeFileSync('./village.json', JSON.stringify(villageData, null, 4));
 	}
 }
 
-path = function (x, y, stX, stY) {
+path = function (start, target, open, closed, ID) {
+	lookAround(start, open, closed, ID);
+	var lowest = 50000000000000;
+	var lowestID = -1;
+	var next = true;
+	open.traverseDF(function(node) {
+		if (node.data.F < lowest) {
+			lowest = node.data.F;
+			lowestID = node.data.id;
+		}
+	});
 
+	//console.log(lowestID);
+
+	open.contains(function(node) {
+		if (node.data.id === lowestID) {
+			if (node.data.H === 1) {
+				console.log("finished path");
+				next = false;
+			}
+		}
+	}, open.traverseDF);
+
+	if (next) {
+		path(lowestID, target, open, closed, ID);
+	}
+
+	return true;
+}
+
+lookAround = function (start, open, closed, ID) {
+	var cs = [true, true, true, true, true, true, true, true];
+	var move = [10, 14, 10, 14, 10, 14, 10, 14];
+	var spots = [start-50, start-50+1, start+1, start+50+1, start+50, start+50-1, start-1, start-50-1];
+	var parentMove = 0;
+
+	open.contains(function(node) {
+		if (node.data.id === start) {
+			parentMove = node.data.G;
+		}
+	}, open.traverseDF);
+
+	closed.contains(function(node) {
+		if (node.data.id === spots[0]) {
+			cs[0] = false;
+		}
+		else if (node.data.id === spots[1]) {
+			cs[1] = false;
+		}
+		else if (node.data.id === spots[2]) {
+			cs[2] = false;
+		}
+		else if (node.data.id === spots[3]) {
+			cs[3] = false;
+		}
+		else if (node.data.id === spots[4]) {
+			cs[4] = false;
+		}
+		else if (node.data.id === spots[5]) {
+			cs[5] = false;
+		}
+		else if (node.data.id === spots[6]) {
+			cs[6] = false;
+		}
+		else if (node.data.id === spots[7]) {
+			cs[7] = false;
+		}
+	}, closed.traverseDF);
+
+	for (var i = 0; i < 8; i++) {
+		if (villageData.users[ID].village.theGrid[spots[i]] === false) {
+			cs[i] = false;
+		}
+		if (cs[i]) {
+			open.add(HValueArr[spots[i]], move[i]+parentMove, spots[i], start, open.traverseDF);
+		}
+	}
+
+	//console.log(cs);
 }
 
 updateGrid = function (ID) {
