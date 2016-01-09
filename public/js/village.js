@@ -2,16 +2,17 @@ $drawSect = $('#drawHere');
 var villageData;
 
 var Width;
+var count = 0;
 var Height;
 
 
 function setup() {
-  var myCanvas = createCanvas(1000, 1000);
-  myCanvas.parent('drawHere');
+	var myCanvas = createCanvas(1000, 1000);
+	myCanvas.parent('drawHere');
 
 
-  Width = width;
-  Height = height;
+	Width = width;
+	Height = height;
 }
 
 function draw() {
@@ -20,14 +21,15 @@ function draw() {
 		villageData = data;
 
 		//background(145, 35, 33);
-
- for (var i = 0; i < width; i+=20) {
-  	for (var j = 0; j < height; j+=20){
-  		if (villageData.theGrid[(j/20)*(width/20)+(i/20)]) fill(255, 50);
-  		else fill(0, 50);
-  		rect(i, j, 20, 20);
-  	}
-  }
+		if (count % 30 === 0) {
+			for (var i = 0; i < width; i+=20) {
+				for (var j = 0; j < height; j+=20){
+					if (villageData.theGrid[(j/20)*(width/20)+(i/20)]) fill(255);
+					else fill(0);
+					rect(i, j, 20, 20);
+				}
+			}
+		}
 
 		for (var i = 0; i < villageData.creatures.people.length; i++) {
 			fill(255);
@@ -46,23 +48,26 @@ function draw() {
 		}
 
 		for (var i = 0; i < villageData.buildings.length; i++) {
-			fill(50, 10);
+			//fill(50);
+			noFill();
+			stroke(0, 255, 0);
 			var bX, bY, bHid, bWit;
 			bX = (villageData.buildings[i].position % (width/20)) * 20;
 			bY = (int)(villageData.buildings[i].position / (width/20)) * 20;
 			bWid = villageData.buildings[i].LnW[0] * 20;
 			bHit = villageData.buildings[i].LnW[1] * 20;
-			rect(bX, bY, bWid, bHit, 5);
+			rect(bX, bY, bWid, bHit, 20);
+			stroke(0);
 		}
 	});
 
-
+count++;
 }
 
 
 
 window.onbeforeunload = function() {
-    return 'Hold up';
+	return 'Hold up';
 }
 
 
@@ -72,7 +77,7 @@ $(window).on('unload', function() {
 		url: "/vilData/"+0,
 		complete: function () {
 			window.onbeforeunload = function() {
-    			return 'Hold up';
+				return 'Hold up';
 			}		
 		}
 	});
