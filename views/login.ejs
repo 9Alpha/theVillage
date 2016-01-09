@@ -3,17 +3,20 @@
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<title> Welcome! Type in your username and password to login, or continue to create an account!</title>
+	<title> Login Page </title>
+
 
 
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 </head>
 <body>
+	<div id = "loginPage">
 	<form id="login">
+		<h2> Welcome to the Login Page! Type in your account details, or create a new account! </h2>
 		<input type="text" id="username" placeholder="Username..." required>
 		<input type="password" id="pass" placeholder="Password..." required>
-		<input type="submit" id="logg" value="Login">
+		<input class="btn btn-primary" type="submit" id="logg" value="Login">
 	</form>
 	</br>
 	<p>
@@ -21,11 +24,12 @@
 	</p>
 	</br>
 
-	<button class="btn btn-primary createQuiz">
+	<button class="btn btn-primary makeAccount">
 		Make an Acount!
 	</button>
 
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="public/js/login.js"></script>
+</div>
 </body>
 </html>
