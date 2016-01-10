@@ -8,13 +8,13 @@ var timeA = 0;
 var timeB = 0;
 var timeDif = 0;
 
-var HValueArr= [];
-
-var doIt = true;
+var HValueArr = [];
 
 var lastNode = 0;
 
 var arrForParents = [];
+
+var count = 0;
 
 function randomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -148,28 +148,67 @@ AStarTree.prototype.remove = function(id, fromData, traversal) {
 	return childToRemove;
 };
 
-var tree = new AStarTree(HValueArr[1279], 10, 1279, true);
-tree.add(HValueArr[195], 10, 195, false, 1279, tree.traverseDF);
-tree.add(HValueArr[86], 10, 86, false, 1279, tree.traverseDF);
-tree.remove(195, 1279, tree.traverseDF);
-tree.traverseDF(function(node) {
-	if (node.parent !== null) 
-		console.log("id: "+node.data.id+" H: "+node.data.H+" G: "+node.data.G+" F: "+node.data.F+"--->"+node.parent.data.id);
-	else 
-		console.log("id: "+node.data.id+" H: "+node.data.H+" G: "+node.data.G+" F: "+node.data.F+"--->ROOT");
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = {
 	sendData: function() {
 		return villageData;
 	},
 	sendUser: function (ID) {
+		count++;
 		return villageData.users[ID].village;
 	},
 	update: function (ID) {
-		for (var i = 0; i < villageData.users[ID].village.creatures.people.length; i++) {
-			villageData.users[ID].village.creatures.people[i].position.x+=randomInt(-1, 1);
-			villageData.users[ID].village.creatures.people[i].position.y+=randomInt(-1, 1);
+		for (var i = 0; i < 1; i++) { //villageData.users[ID].village.creatures.people.length; i++) {
+			if (villageData.users[ID].village.creatures.people[i].makePath) {
+				var from = villageData.users[ID].village.creatures.people[i].position;
+				var to = 0;
+				var goodTarget = false;
+				while(goodTarget === false) {
+					to = randomInt(0, 2500);
+					if (villageData.users[ID].village.theGrid[to]) {
+						goodTarget = true;
+					}
+				}
+				var openList = new AStarTree(0, 0, from, 'true');
+				var closedList = new AStarTree(0, 0, 2501, 'true');
+				closedList.add(0, 0, from, 'true', 2501, closedList.traverseDF);
+				HValueArr = [];
+				calcHValue(to, 0);
+				console.log("path is "+path(from, openList, closedList, ID));
+				// openList.traverseDF(function(node) {
+				// 	if (node.parent !== null) 
+				// 		console.log("id: "+node.data.id+" H: "+node.data.H+" G: "+node.data.G+" F: "+node.data.F+"--->"+node.parent.data.id);
+				// 	else 
+				// 		console.log("id: "+node.data.id+" H: "+node.data.H+" G: "+node.data.G+" F: "+node.data.F+"--->ROOT");
+				// });
+				arrForParents = [];
+				villageData.users[ID].village.creatures.people[i].pathArr = traceParents(openList, lastNode).reverse();
+				villageData.users[ID].village.creatures.people[i].makePath = false;
+			}
+
+			if (count%3 === 0) {
+				if (villageData.users[ID].village.creatures.people[i].pathSpot < villageData.users[ID].village.creatures.people[i].pathArr.length) {
+					villageData.users[ID].village.theGrid[villageData.users[ID].village.creatures.people[i].position] = true;
+					villageData.users[ID].village.creatures.people[i].position = villageData.users[ID].village.creatures.people[i].pathArr[villageData.users[ID].village.creatures.people[i].pathSpot];
+					villageData.users[ID].village.creatures.people[i].pathSpot++;
+				} else {
+					villageData.users[ID].village.creatures.people[i].makePath = true;
+					villageData.users[ID].village.creatures.people[i].pathSpot = 0;
+				}
+			}
 		}
 
 		for (var i = 0; i < villageData.users[ID].village.creatures.animals.length; i++) {
@@ -188,30 +227,30 @@ module.exports = {
 		timeDif = 0;
 
 
-		var from = 1337;
-		var to = 1329;
-		if (doIt) {
-			var openList = new AStarTree(0, 0, from, 'true');
-			var closedList = new AStarTree(0, 0, 2501, 'true');
-			closedList.add(0, 0, from, 'true', 2501, closedList.traverseDF);
-			calcHValue(to, 0);
-			console.log("path is "+path(from, to, openList, closedList, ID));
-			openList.traverseDF(function(node) {
-				if (node.parent !== null) 
-					console.log("id: "+node.data.id+" H: "+node.data.H+" G: "+node.data.G+" F: "+node.data.F+"--->"+node.parent.data.id);
-				else 
-					console.log("id: "+node.data.id+" H: "+node.data.H+" G: "+node.data.G+" F: "+node.data.F+"--->ROOT");
-			});
-			arrForParents = [];
-			console.log(traceParents(openList, lastNode));
-			doIt = false;
-		}
+		
 
 	},
 	writeToFile: function (ID) {
 		fs.writeFileSync('./village.json', JSON.stringify(villageData, null, 4));
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 traceParents = function (list, start) {
 	next = true;
@@ -233,7 +272,7 @@ traceParents = function (list, start) {
 	return arrForParents;
 }
 
-path = function (start, target, open, closed, ID) {
+path = function (start, open, closed, ID) {
 	lookAround(start, open, closed, ID);
 	var lowest = 50000000000000;
 	var lowestID = -1;
@@ -249,7 +288,7 @@ path = function (start, target, open, closed, ID) {
 	if (lowestID === -1) {
 		next = false;
 	}
-	console.log(lowestID);
+	//console.log(lowestID);
 	lastNode = lowestID;
 	open.contains(function(node) {
 		if (node.data.id === lowestID) {
@@ -264,9 +303,9 @@ path = function (start, target, open, closed, ID) {
 	}, open.traverseDF);
 
 	if (next) {
-		console.log("--------------------");
+		//console.log("--------------------");
 		closed.add(0, 0, lowestID, 'true', 2501, closed.traverseDF);
-		path(lowestID, target, open, closed, ID);
+		path(lowestID, open, closed, ID);
 	}
 
 	return lowestID;
@@ -313,6 +352,9 @@ lookAround = function (start, open, closed, ID) {
 
 	for (var i = 0; i < 8; i++) {
 		if (villageData.users[ID].village.theGrid[spots[i]] === false) {
+			cs[i] = false;
+		}
+		if (spots[i] < 0 || spots[i] >= 2500) {
 			cs[i] = false;
 		}
 		if (cs[i]) {

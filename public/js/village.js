@@ -20,7 +20,8 @@ function draw() {
 	.done(function(data){
 		villageData = data;
 
-	//background(145, 35, 33);
+	background(145, 35, 33);
+	/*
 	if (count % 30 === 0) {
 		for (var i = 0; i < width; i+=20) {
 			for (var j = 0; j < height; j+=20){
@@ -30,16 +31,25 @@ function draw() {
 			}
 		}
 	}
-
+	*/
 	for (var i = 0; i < villageData.creatures.people.length; i++) { //displaying people
+		var pX, pY, pathX, pathY;
+		fill(0, 50*i, 255);
+		for (var j = 0; j < villageData.creatures.people[i].pathArr.length; j++) {
+			pathX = (villageData.creatures.people[i].pathArr[j] % (width/20)) * 20;
+			pathY = (int)(villageData.creatures.people[i].pathArr[j] / (width/20)) * 20;
+			if (j === villageData.creatures.people[i].pathArr.length-1) {
+				fill(200, 200, 10);
+			}
+			rect(pathX+10, pathY+10, 10, 10);
+		}
 		fill(255);
-		var pX, pY;
 		pX = (villageData.creatures.people[i].position % (width/20)) * 20;
 		pY = (int)(villageData.creatures.people[i].position / (width/20)) * 20;
 		ellipseMode(CENTER);
 		rectMode(CENTER);
-		rect(pX, pY, 40, 10);
-		ellipse(pX, pY, 15, 15);
+		rect(pX+10, pY+10, 40, 10);
+		ellipse(pX+10, pY+10, 15, 15);
 	}
 
 	for (var i = 0; i < villageData.creatures.animals.length; i++) { //displaying animals
@@ -49,7 +59,7 @@ function draw() {
 		aY = (int)(villageData.creatures.animals[i].position / (width/20)) * 20;
 		ellipseMode(CENTER);
 		rectMode(CENTER);
-		rect(pX-10, pY-10, 10, 30);
+		rect(aX+10, aY+10, 10, 30);
 		ellipse(aX+10, aY+10, 15, 15);
 	}
 
