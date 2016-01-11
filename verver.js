@@ -199,7 +199,7 @@ villageData.users[ID].village.creatures.people[i].pathArr = traceParents(openLis
 villageData.users[ID].village.creatures.people[i].makePath = false;
 }
 
-if (count%3 === 0) {
+if (count%10 === 0) {
 	if (villageData.users[ID].village.creatures.people[i].pathSpot < villageData.users[ID].village.creatures.people[i].pathArr.length) {
 		villageData.users[ID].village.theGrid[villageData.users[ID].village.creatures.people[i].position] = true;
 		villageData.users[ID].village.creatures.people[i].position = villageData.users[ID].village.creatures.people[i].pathArr[villageData.users[ID].village.creatures.people[i].pathSpot];
