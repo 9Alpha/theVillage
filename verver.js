@@ -171,7 +171,7 @@ module.exports = {
 		return villageData.users[ID].village;
 	},
 	update: function (ID) {
-		for (var i = 0; i < 1; i++) { //villageData.users[ID].village.creatures.people.length; i++) {
+		for (var i = 0; i < villageData.users[ID].village.creatures.people.length; i++) {
 	if (villageData.users[ID].village.creatures.people[i].makePath) {
 		var from = villageData.users[ID].village.creatures.people[i].position;
 		var to = 0;
@@ -348,22 +348,27 @@ lookAround = function (start, open, closed, ID) {
 		}
 	}
 
-	open.contains(function(node) {
-		for (var i = 0; i < 8; i++) {
-			if (cs[i]) {
-				if (notOpen[i] === false) {
-					if (node.data.G > move[i]+parentMove) {
-						node.parent = parent;
-						console.log("a");
+	
+	console.log("here");
+	for (var i = 0; i < 8; i++) {
+		if (cs[i]) {
+			if (notOpen[i] === false) {
+				open.contains(function(node) {
+					if (node.data.id === spots[i]) {
+						if (node.data.G > move[i]+parentMove) {
+							node.parent = parent;
+							console.log("a");
+						}
 					}
-				}
-				else {
-					console.log("b");
-					open.add(HValueArr[spots[i]], move[i]+parentMove, spots[i], 'false', start, open.traverseDF);
-				}
+				}, open.traverseDF);
+			}
+			else {
+				console.log("b");
+				open.add(HValueArr[spots[i]], move[i]+parentMove, spots[i], 'false', start, open.traverseDF);
 			}
 		}
-	}, open.traverseDF);
+	}
+	
 }
 
 updateGrid = function (ID) {
