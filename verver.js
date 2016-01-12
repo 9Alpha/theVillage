@@ -362,7 +362,7 @@ findSuccessors = function (start, target, open, closed, ID) {
 	return cs;
 }
 
-jump = function (start, target, dir, parentMove, open, closed, ID) {
+jump = function (start, target, dir, parentMove, ID) {
 	
 	var move = [10, 14, 10, 14, 10, 14, 10, 14];
 	var spots = [start-50, start-50+1, start+1, start+50+1, start+50, start+50-1, start-1, start-50-1];
@@ -423,11 +423,27 @@ jump = function (start, target, dir, parentMove, open, closed, ID) {
 			}
 		}
 
-		if (dir === )
-        if (jump(nextX, nextY, dX, 0, start, end) != null || jump(nextX, nextY, 0, dY, start, end) != null) {
-        	return {"id": spots[dir], "cost": parentMove};
-        }
-    } else {
+		if (dir === 1) {}
+			if (jump(spots[2], target, 2, parentMove+move[2], ID) != null || jump(spots[0], target, 0, parentMove+move[0], ID) != null) {
+				return {"id": spots[dir], "cost": parentMove};
+			}
+		}
+		else if (dir === 3) {}
+			if (jump(spots[2], target, 2, parentMove+move[2], ID) != null || jump(spots[4], target, 4, parentMove+move[4], ID) != null) {
+				return {"id": spots[dir], "cost": parentMove};
+			}
+		}
+		else if (dir === 5) {}
+			if (jump(spots[6], target, 6, parentMove+move[6], ID) != null || jump(spots[4], target, 4, parentMove+move[4], ID) != null) {
+				return {"id": spots[dir], "cost": parentMove};
+			}
+		}
+		else if (dir === 7) {}
+			if (jump(spots[6], target, 6, parentMove+move[6], ID) != null || jump(spots[0], target, 0, parentMove+move[0], ID) != null) {
+				return {"id": spots[dir], "cost": parentMove};
+			}
+		}
+	} else {
     	if (dir === 0) {//up
     		if (!villageData.users[ID].village.theGrid[spots[6]]) {
     			if (villageData.users[ID].village.theGrid[spots[7]]) {
@@ -474,6 +490,8 @@ jump = function (start, target, dir, parentMove, open, closed, ID) {
     		}
     	}
     }
+
+    return jump(spots[dir], target, dir, parentMove+move[dir], ID)
 }
 
 
