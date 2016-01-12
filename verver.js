@@ -369,126 +369,107 @@ jump = function (start, target, dir, parentMove, open, closed, ID) {
 
 
 	if (!villageData.users[ID].village.theGrid[start]) {
-		return false;
+		return null;
 	}
 
-	if (next === target) {
-		open.add(HValueArr[spots[dir]], move[dir]+parentMove, spots[dir], 'false', start, open.traverseDF);
+	if (spots[dir] === target) {
+		return {"id": spots[dir], "cost": parentMove};
 	}
 
 	else if (dir === 1 || dir === 3 || dir === 5 || dir === 7) {
 		if (dir === 1) {
 			if (!villageData.users[ID].village.theGrid[spots[6]]) {
 				if (villageData.users[ID].village.theGrid[spots[0]]) {
-					open.add(HValueArr[spots[0]], move[0]+parentMove, spots[0], 'false', start, open.traverseDF);
-					return true;
+					return {"id": spots[0], "cost": parentMove};
 				}
 			}
 			if (!villageData.users[ID].village.theGrid[spots[4]]) {
 				if (villageData.users[ID].village.theGrid[spots[2]]) {
-					open.add(HValueArr[spots[2]], move[2]+parentMove, spots[2], 'false', start, open.traverseDF);
-					return true;
+					return {"id": spots[2], "cost": parentMove};
 				}
 			}
 		} else if (dir === 3) {
 			if (!villageData.users[ID].village.theGrid[spots[0]]) {
 				if (villageData.users[ID].village.theGrid[spots[2]]) {
-					open.add(HValueArr[spots[2]], move[2]+parentMove, spots[2], 'false', start, open.traverseDF);
-					return true;
+					return {"id": spots[2], "cost": parentMove};
 				}
 			}
 			if (!villageData.users[ID].village.theGrid[spots[6]]) {
 				if (villageData.users[ID].village.theGrid[spots[4]]) {
-					open.add(HValueArr[spots[4]], move[4]+parentMove, spots[4], 'false', start, open.traverseDF);
-					return true;
+					return {"id": spots[4], "cost": parentMove};
 				}
 			}
 		} else if (dir === 5) {
 			if (!villageData.users[ID].village.theGrid[spots[2]]) {
 				if (villageData.users[ID].village.theGrid[spots[4]]) {
-					open.add(HValueArr[spots[4]], move[4]+parentMove, spots[4], 'false', start, open.traverseDF);
-					return true;
+					return {"id": spots[4], "cost": parentMove};
 				}
 			}
 			if (!villageData.users[ID].village.theGrid[spots[0]]) {
 				if (villageData.users[ID].village.theGrid[spots[6]]) {
-					open.add(HValueArr[spots[6]], move[6]+parentMove, spots[6], 'false', start, open.traverseDF);
-					return true;
+					return {"id": spots[6], "cost": parentMove};
 				}
 			}
 		} else if (dir === 7) {
 			if (!villageData.users[ID].village.theGrid[spots[4]]) {
 				if (villageData.users[ID].village.theGrid[spots[6]]) {
-					open.add(HValueArr[spots[6]], move[6]+parentMove, spots[6], 'false', start, open.traverseDF);
-					return true;
+					return {"id": spots[6], "cost": parentMove};
 				}
 			}
 			if (!villageData.users[ID].village.theGrid[spots[2]]) {
 				if (villageData.users[ID].village.theGrid[spots[0]]) {
-					open.add(HValueArr[spots[0]], move[0]+parentMove, spots[0], 'false', start, open.traverseDF);
-					return true;
+					return {"id": spots[0], "cost": parentMove};
 				}
 			}
 		}
 
-        // Check in horizontal and vertical directions for forced neighbors
-        // This is a special case for diagonal direction
-        if (jump(nextX, nextY, dX, 0, start, end) != null ||
-        	jump(nextX, nextY, 0, dY, start, end) != null)
-        {
-        	return Node.pooledNode(nextX, nextY);
+		if (dir === )
+        if (jump(nextX, nextY, dX, 0, start, end) != null || jump(nextX, nextY, 0, dY, start, end) != null) {
+        	return {"id": spots[dir], "cost": parentMove};
         }
     } else {
     	if (dir === 0) {//up
     		if (!villageData.users[ID].village.theGrid[spots[6]]) {
     			if (villageData.users[ID].village.theGrid[spots[7]]) {
-    				open.add(HValueArr[spots[7]], move[7]+parentMove, spots[7], 'false', start, open.traverseDF);
-    				return true;
+    				return {"id": spots[7], "cost": parentMove};
     			}
     		}
     		if (!villageData.users[ID].village.theGrid[spots[2]]) {
     			if (villageData.users[ID].village.theGrid[spots[1]]) {
-    				open.add(HValueArr[spots[1]], move[1]+parentMove, spots[1], 'false', start, open.traverseDF);
-    				return true;
+    				return {"id": spots[1], "cost": parentMove};
     			}
     		}
     	} else if (dir === 4) {//down
     		if (!villageData.users[ID].village.theGrid[spots[6]]) {
     			if (villageData.users[ID].village.theGrid[spots[5]]) {
-    				open.add(HValueArr[spots[5]], move[5]+parentMove, spots[5], 'false', start, open.traverseDF);
-    				return true;
+    				return {"id": spots[5], "cost": parentMove};
     			}
     		}
     		if (!villageData.users[ID].village.theGrid[spots[2]]) {
     			if (villageData.users[ID].village.theGrid[spots[3]]) {
-    				open.add(HValueArr[spots[3]], move[3]+parentMove, spots[3], 'false', start, open.traverseDF);
-    				return true;
+    				return {"id": spots[3], "cost": parentMove};
     			}
     		}
     	} else if (dir === 2) {//right
     		if (!villageData.users[ID].village.theGrid[spots[0]]) {
     			if (villageData.users[ID].village.theGrid[spots[1]]) {
-    				open.add(HValueArr[spots[1]], move[1]+parentMove, spots[1], 'false', start, open.traverseDF);
-    				return true;
+    				return {"id": spots[1], "cost": parentMove};
     			}
     		}
     		if (!villageData.users[ID].village.theGrid[spots[4]]) {
     			if (villageData.users[ID].village.theGrid[spots[3]]) {
-    				open.add(HValueArr[spots[3]], move[3]+parentMove, spots[3], 'false', start, open.traverseDF);
-    				return true;
+    				return {"id": spots[3], "cost": parentMove};
     			}
     		}
     	} else if (dir === 6) {//left
     		if (!villageData.users[ID].village.theGrid[spots[0]]) {
     			if (villageData.users[ID].village.theGrid[spots[7]]) {
-    				open.add(HValueArr[spots[7]], move[7]+parentMove, spots[7], 'false', start, open.traverseDF);
-    				return true;
+    				return {"id": spots[7], "cost": parentMove};
     			}
     		}
     		if (!villageData.users[ID].village.theGrid[spots[4]]) {
     			if (villageData.users[ID].village.theGrid[spots[5]]) {
-    				open.add(HValueArr[spots[5]], move[5]+parentMove, spots[5], 'false', start, open.traverseDF);
-    				return true;
+    				return {"id": spots[5], "cost": parentMove};
     			}
     		}
     	}

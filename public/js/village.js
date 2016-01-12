@@ -20,7 +20,7 @@ function draw() {
 	.done(function(data){
 		villageData = data;
 
-	background(145, 35, 33);
+		background(145, 35, 33);
 	/*
 	if (count % 30 === 0) {
 		for (var i = 0; i < width; i+=20) {
@@ -80,22 +80,23 @@ function draw() {
 	for (var i = 0; i < villageData.terrain.objects.rocks.length; i++){ //displaying rocks
 		fill(100);
 		var rX, rY, rWid, rHit;
-		rX = (villageData.terrain.objects[i].position % (width/20)) * 20; 
-		rY = (int)(villageData.terrain.objects[i].position / width(20)) * 20;
-		rWid = villageData.terrain.objects[i].LnW[0] * 20;
-		rHit = villageData.terrain.objects[i].LnW[1] * 20;
+		rX = (villageData.terrain.objects.rocks[i].position % (width/20)) * 20; 
+		rY = (int)(villageData.terrain.objects.rocks[i].position / width(20)) * 20;
+		rWid = villageData.terrain.objects.rocks[i].LnW[0] * 20;
+		rHit = villageData.terrain.objects.rocks[i].LnW[1] * 20;
 		rect(rX, rY, rWid, rHit, 20); 
 		stroke(0);
 	}
 
-	for (var i = 0; i < villageData.terrain.objects.rocks.length; i++){ //displaying rocks
-		fill(100);
+	for (var i = 0; i < villageData.terrain.objects.trees.length; i++){ //displaying trees
 		var tX, tY, tWid, tHit;
-		tX = (villageData.terrain.objects[i].position % (width/20)) * 20; 
-		tY = (int)(villageData.terrain.objects[i].position / width(20)) * 20;
-		tWid = villageData.terrain.objects[i].LnW[0] * 20;
-		tHit = villageData.terrain.objects[i].LnW[1] * 20;
+		tX = (villageData.terrain.objects.trees[i].position % (width/20)) * 20; 
+		tY = (int)(villageData.terrain.objects.trees[i].position / width(20)) * 20;
+		tWid = villageData.terrain.objects.trees[i].LnW[0] * 20;
+		tHit = villageData.terrain.objects.trees[i].LnW[1] * 20;
+		fill(210, 180, 140);
 		rect(tX, tY, tWid, tHit/2, 20); 
+		fill(34, 139, 34);
 		ellipse(tX, tY, tWid, tHit/2, 20);
 		stroke(0);
 	}

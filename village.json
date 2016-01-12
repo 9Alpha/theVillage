@@ -2513,6 +2513,7 @@
                     "people": [
                         {
                             "position": 7,
+                            "direction": 45, 
                             "makePath": false,
                             "moveType": 0,
                             "pathArr": [
@@ -2569,6 +2570,7 @@
                         },
                         {
                             "position": 81,
+                            "direction": 180, 
                             "makePath": false,
                             "moveType": 0,
                             "pathArr": [
@@ -2606,6 +2608,7 @@
                     "animals": [
                         {
                             "position": 103,
+                            "direction": 270, 
                             "makePath": true,
                             "moveType": 0,
                             "pathArr": [],
@@ -2621,6 +2624,7 @@
                         },
                         {
                             "position": 295,
+                            "direction": 0, 
                             "makePath": true,
                             "moveType": 0,
                             "pathArr": [],
@@ -2690,26 +2694,26 @@
                         "hills": 4
                     },
                     "objects": {
-                        "rocks": {
-                            "name": "rock1",
-                            "age": 0,
-                            "LnW": [
-                                2,
-                                2
-                            ],
-                            "type": 0,
-                            "position": 798
-                        },
-                        "trees": {
-                            "name": "tree1",
-                            "age": 0,
-                            "LnW": [
-                                4,
-                                4
-                            ],
-                            "type": 1,
-                            "position": 1024
-                        }
+                         "rocks": {
+                              "name": "rock1",
+                              "age" : 0,
+                              "LnW" : [
+                                   2,
+                                   2
+                              ],
+                              "type" : 0,
+                              "position": 798
+                         },
+                         "trees": {
+                              "name": "tree1",
+                              "age": 0,
+                              "LnW" : [
+                                   4,
+                                   4          
+                              ],
+                              "type": 1,
+                              "position": 1024
+                         }     
                     }
                 }
             }
