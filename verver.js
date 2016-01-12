@@ -172,67 +172,61 @@ module.exports = {
 	},
 	update: function (ID) {
 		for (var i = 0; i < villageData.users[ID].village.creatures.people.length; i++) {
-	if (villageData.users[ID].village.creatures.people[i].makePath) {
-		var from = villageData.users[ID].village.creatures.people[i].position;
-		var to = 0;
-		var goodTarget = false;
-		while(goodTarget === false) {
-			to = randomInt(0, 2500);
-			if (villageData.users[ID].village.theGrid[to]) {
-				goodTarget = true;
+			if (villageData.users[ID].village.creatures.people[i].makePath) {
+				var from = villageData.users[ID].village.creatures.people[i].position;
+				var to = 0;
+				var goodTarget = false;
+				while(goodTarget === false) {
+					to = randomInt(0, 2500);
+					if (villageData.users[ID].village.theGrid[to]) {
+						goodTarget = true;
+					}
+				}
+				var openList = new AStarTree(0, 0, from, 'true');
+				var closedList = new AStarTree(0, 0, 2501, 'true');
+				closedList.add(0, 0, from, 'true', 2501, closedList.traverseDF);
+				HValueArr = [];
+				calcHValue(to, 0);
+				console.log("path is "+path(from, to, openList, closedList, ID));
+				arrForParents = [];
+				villageData.users[ID].village.creatures.people[i].pathArr = traceParents(openList, lastNode).reverse();
+				villageData.users[ID].village.creatures.people[i].makePath = false;
+			}
+
+			if (count%10 === 0) {
+				if (villageData.users[ID].village.creatures.people[i].pathSpot < villageData.users[ID].village.creatures.people[i].pathArr.length) {
+					villageData.users[ID].village.theGrid[villageData.users[ID].village.creatures.people[i].position] = true;
+					villageData.users[ID].village.creatures.people[i].position = villageData.users[ID].village.creatures.people[i].pathArr[villageData.users[ID].village.creatures.people[i].pathSpot];
+					villageData.users[ID].village.creatures.people[i].pathSpot++;
+				} else {
+					villageData.users[ID].village.creatures.people[i].makePath = true;
+					villageData.users[ID].village.creatures.people[i].pathSpot = 0;
+				}
 			}
 		}
-		var openList = new AStarTree(0, 0, from, 'true');
-		var closedList = new AStarTree(0, 0, 2501, 'true');
-		closedList.add(0, 0, from, 'true', 2501, closedList.traverseDF);
-		HValueArr = [];
-		calcHValue(to, 0);
-		console.log("path is "+path(from, openList, closedList, ID));
-				// openList.traverseDF(function(node) {
-				// 	if (node.parent !== null) 
-				// 		console.log("id: "+node.data.id+" H: "+node.data.H+" G: "+node.data.G+" F: "+node.data.F+"--->"+node.parent.data.id);
-				// 	else 
-				// 		console.log("id: "+node.data.id+" H: "+node.data.H+" G: "+node.data.G+" F: "+node.data.F+"--->ROOT");
-				// });
-arrForParents = [];
-villageData.users[ID].village.creatures.people[i].pathArr = traceParents(openList, lastNode).reverse();
-villageData.users[ID].village.creatures.people[i].makePath = false;
-}
 
-if (count%10 === 0) {
-	if (villageData.users[ID].village.creatures.people[i].pathSpot < villageData.users[ID].village.creatures.people[i].pathArr.length) {
-		villageData.users[ID].village.theGrid[villageData.users[ID].village.creatures.people[i].position] = true;
-		villageData.users[ID].village.creatures.people[i].position = villageData.users[ID].village.creatures.people[i].pathArr[villageData.users[ID].village.creatures.people[i].pathSpot];
-		villageData.users[ID].village.creatures.people[i].pathSpot++;
-	} else {
-		villageData.users[ID].village.creatures.people[i].makePath = true;
-		villageData.users[ID].village.creatures.people[i].pathSpot = 0;
+		for (var i = 0; i < villageData.users[ID].village.creatures.animals.length; i++) {
+			villageData.users[ID].village.creatures.animals[i].position.x+=randomInt(-1, 1);
+			villageData.users[ID].village.creatures.animals[i].position.y+=randomInt(-1, 1);
+		}
+
+		var date1 = new Date();
+		timeA = date1.getMilliseconds();
+		updateGrid(ID);
+		var date2 = new Date();
+		timeB = date2.getMilliseconds();
+
+		timeDif = timeB - timeA;
+
+		timeDif = 0;
+
+
+
+
+	},
+	writeToFile: function (ID) {
+		fs.writeFileSync('./village.json', JSON.stringify(villageData, null, 4));
 	}
-}
-}
-
-for (var i = 0; i < villageData.users[ID].village.creatures.animals.length; i++) {
-	villageData.users[ID].village.creatures.animals[i].position.x+=randomInt(-1, 1);
-	villageData.users[ID].village.creatures.animals[i].position.y+=randomInt(-1, 1);
-}
-
-var date1 = new Date();
-timeA = date1.getMilliseconds();
-updateGrid(ID);
-var date2 = new Date();
-timeB = date2.getMilliseconds();
-
-timeDif = timeB - timeA;
-
-timeDif = 0;
-
-
-
-
-},
-writeToFile: function (ID) {
-	fs.writeFileSync('./village.json', JSON.stringify(villageData, null, 4));
-}
 }
 
 
@@ -272,49 +266,10 @@ traceParents = function (list, start) {
 	return arrForParents;
 }
 
-path = function (start, open, closed, ID) {
-	lookAround(start, open, closed, ID);
-	var lowest = 50000000000000;
-	var lowestID = -1;
-	var next = true;
-	open.traverseDF(function(node) {
-		//console.log("id: "+node.data.id+" check: "+node.data.check);
-		if (node.data.F < lowest && node.data.check === 'false') {
-			lowest = node.data.F;
-			lowestID = node.data.id;
-		}
-	});
-
-	if (lowestID === -1) {
-		next = false;
-	}
-	console.log(lowestID);
-	lastNode = lowestID;
-	open.contains(function(node) {
-		if (node.data.id === lowestID) {
-			if (node.data.H === 1) {
-				console.log("finished path");
-				next = false;
-			}
-			else {
-				node.data.check = 'true';
-			}
-		}
-	}, open.traverseDF);
-
-	if (next) {
-		console.log("--------------------");
-		closed.add(0, 0, lowestID, 'true', 2501, closed.traverseDF);
-		path(lowestID, open, closed, ID);
-	}
-
-	return lowestID;
-}
-
-lookAround = function (start, open, closed, ID) {
-	var cs = [true, true, true, true, true, true, true, true];
-	var notOpen = [true, true, true, true, true, true, true, true];
+path = function (start, target, open, closed, ID) {
+	var cs = findSuccessors(start, target, open, closed, ID);
 	var move = [10, 14, 10, 14, 10, 14, 10, 14];
+	var notOpen = [true, true, true, true, true, true, true, true];
 	var spots = [start-50, start-50+1, start+1, start+50+1, start+50, start+50-1, start-1, start-50-1];
 	var parentMove = 0;
 	var parent;
@@ -330,6 +285,221 @@ lookAround = function (start, open, closed, ID) {
 			}
 		}
 	}, open.traverseDF);
+
+	for (var i = 0; i < 8; i++) {
+		if (cs[i]) {
+			if (notOpen[i] === false) {
+				open.contains(function(node) {
+					if (node.data.id === spots[i]) {
+						if (node.data.G > move[i]+parentMove) {
+							node.parent = parent;
+						}
+					}
+				}, open.traverseDF);
+			}
+			else {
+				open.add(HValueArr[spots[i]], move[i]+parentMove, spots[i], 'false', start, open.traverseDF);
+			}
+		}
+	}
+	
+
+	var lowest = 50000000000000;
+	var lowestID = -1;
+	var next = true;
+	open.traverseDF(function(node) {
+		//console.log("id: "+node.data.id+" check: "+node.data.check);
+		if (node.data.F < lowest && node.data.check === 'false') {
+			lowest = node.data.F;
+			lowestID = node.data.id;
+		}
+	});
+
+	if (lowestID === -1) {
+		next = false;
+	}
+	//console.log(lowestID);
+	lastNode = lowestID;
+	open.contains(function(node) {
+		if (node.data.id === lowestID) {
+			if (node.data.id === target) {
+				console.log("finished path");
+				next = false;
+			}
+			else {
+				node.data.check = 'true';
+			}
+		}
+	}, open.traverseDF);
+
+	if (next) {
+		//console.log("--------------------");
+		closed.add(0, 0, lowestID, 'true', 2501, closed.traverseDF);
+		path(lowestID, open, closed, ID);
+	}
+
+	return lowestID;
+}
+
+findSuccessors = function (start, target, open, closed, ID) {
+	var cs = lookAround(start, open, closed, ID);
+	
+	var parentMove = 0;
+
+	open.contains(function(node) {
+		if (node.data.id === start) {
+			parentMove = node.data.G;
+			parent = node;
+		}
+	}, open.traverseDF);
+
+	for (var i = 0; i < 8; i++) {
+		if (cs[i]) {
+			jump(start, target, i, parentMove, open, closed, ID);
+		}
+	}
+
+	return cs;
+}
+
+jump = function (start, target, dir, parentMove, open, closed, ID) {
+	
+	var move = [10, 14, 10, 14, 10, 14, 10, 14];
+	var spots = [start-50, start-50+1, start+1, start+50+1, start+50, start+50-1, start-1, start-50-1];
+
+
+	if (!villageData.users[ID].village.theGrid[start]) {
+		return false;
+	}
+
+	if (next === target) {
+		open.add(HValueArr[spots[dir]], move[dir]+parentMove, spots[dir], 'false', start, open.traverseDF);
+	}
+
+	else if (dir === 1 || dir === 3 || dir === 5 || dir === 7) {
+		if (dir === 1) {
+			if (!villageData.users[ID].village.theGrid[spots[6]]) {
+				if (villageData.users[ID].village.theGrid[spots[0]]) {
+					open.add(HValueArr[spots[0]], move[0]+parentMove, spots[0], 'false', start, open.traverseDF);
+					return true;
+				}
+			}
+			if (!villageData.users[ID].village.theGrid[spots[4]]) {
+				if (villageData.users[ID].village.theGrid[spots[2]]) {
+					open.add(HValueArr[spots[2]], move[2]+parentMove, spots[2], 'false', start, open.traverseDF);
+					return true;
+				}
+			}
+		} else if (dir === 3) {
+			if (!villageData.users[ID].village.theGrid[spots[0]]) {
+				if (villageData.users[ID].village.theGrid[spots[2]]) {
+					open.add(HValueArr[spots[2]], move[2]+parentMove, spots[2], 'false', start, open.traverseDF);
+					return true;
+				}
+			}
+			if (!villageData.users[ID].village.theGrid[spots[6]]) {
+				if (villageData.users[ID].village.theGrid[spots[4]]) {
+					open.add(HValueArr[spots[4]], move[4]+parentMove, spots[4], 'false', start, open.traverseDF);
+					return true;
+				}
+			}
+		} else if (dir === 5) {
+			if (!villageData.users[ID].village.theGrid[spots[2]]) {
+				if (villageData.users[ID].village.theGrid[spots[4]]) {
+					open.add(HValueArr[spots[4]], move[4]+parentMove, spots[4], 'false', start, open.traverseDF);
+					return true;
+				}
+			}
+			if (!villageData.users[ID].village.theGrid[spots[0]]) {
+				if (villageData.users[ID].village.theGrid[spots[6]]) {
+					open.add(HValueArr[spots[6]], move[6]+parentMove, spots[6], 'false', start, open.traverseDF);
+					return true;
+				}
+			}
+		} else if (dir === 7) {
+			if (!villageData.users[ID].village.theGrid[spots[4]]) {
+				if (villageData.users[ID].village.theGrid[spots[6]]) {
+					open.add(HValueArr[spots[6]], move[6]+parentMove, spots[6], 'false', start, open.traverseDF);
+					return true;
+				}
+			}
+			if (!villageData.users[ID].village.theGrid[spots[2]]) {
+				if (villageData.users[ID].village.theGrid[spots[0]]) {
+					open.add(HValueArr[spots[0]], move[0]+parentMove, spots[0], 'false', start, open.traverseDF);
+					return true;
+				}
+			}
+		}
+
+        // Check in horizontal and vertical directions for forced neighbors
+        // This is a special case for diagonal direction
+        if (jump(nextX, nextY, dX, 0, start, end) != null ||
+        	jump(nextX, nextY, 0, dY, start, end) != null)
+        {
+        	return Node.pooledNode(nextX, nextY);
+        }
+    } else {
+    	if (dir === 0) {//up
+    		if (!villageData.users[ID].village.theGrid[spots[6]]) {
+    			if (villageData.users[ID].village.theGrid[spots[7]]) {
+    				open.add(HValueArr[spots[7]], move[7]+parentMove, spots[7], 'false', start, open.traverseDF);
+    				return true;
+    			}
+    		}
+    		if (!villageData.users[ID].village.theGrid[spots[2]]) {
+    			if (villageData.users[ID].village.theGrid[spots[1]]) {
+    				open.add(HValueArr[spots[1]], move[1]+parentMove, spots[1], 'false', start, open.traverseDF);
+    				return true;
+    			}
+    		}
+    	} else if (dir === 4) {//down
+    		if (!villageData.users[ID].village.theGrid[spots[6]]) {
+    			if (villageData.users[ID].village.theGrid[spots[5]]) {
+    				open.add(HValueArr[spots[5]], move[5]+parentMove, spots[5], 'false', start, open.traverseDF);
+    				return true;
+    			}
+    		}
+    		if (!villageData.users[ID].village.theGrid[spots[2]]) {
+    			if (villageData.users[ID].village.theGrid[spots[3]]) {
+    				open.add(HValueArr[spots[3]], move[3]+parentMove, spots[3], 'false', start, open.traverseDF);
+    				return true;
+    			}
+    		}
+    	} else if (dir === 2) {//right
+    		if (!villageData.users[ID].village.theGrid[spots[0]]) {
+    			if (villageData.users[ID].village.theGrid[spots[1]]) {
+    				open.add(HValueArr[spots[1]], move[1]+parentMove, spots[1], 'false', start, open.traverseDF);
+    				return true;
+    			}
+    		}
+    		if (!villageData.users[ID].village.theGrid[spots[4]]) {
+    			if (villageData.users[ID].village.theGrid[spots[3]]) {
+    				open.add(HValueArr[spots[3]], move[3]+parentMove, spots[3], 'false', start, open.traverseDF);
+    				return true;
+    			}
+    		}
+    	} else if (dir === 6) {//left
+    		if (!villageData.users[ID].village.theGrid[spots[0]]) {
+    			if (villageData.users[ID].village.theGrid[spots[7]]) {
+    				open.add(HValueArr[spots[7]], move[7]+parentMove, spots[7], 'false', start, open.traverseDF);
+    				return true;
+    			}
+    		}
+    		if (!villageData.users[ID].village.theGrid[spots[4]]) {
+    			if (villageData.users[ID].village.theGrid[spots[5]]) {
+    				open.add(HValueArr[spots[5]], move[5]+parentMove, spots[5], 'false', start, open.traverseDF);
+    				return true;
+    			}
+    		}
+    	}
+    }
+}
+
+
+lookAround = function (start, open, closed, ID) {
+	var cs = [true, true, true, true, true, true, true, true];
+	var move = [10, 14, 10, 14, 10, 14, 10, 14];
+	var spots = [start-50, start-50+1, start+1, start+50+1, start+50, start+50-1, start-1, start-50-1];
 
 	closed.contains(function(node) {
 		for (var i = 0; i < 8; i++) {
@@ -348,27 +518,7 @@ lookAround = function (start, open, closed, ID) {
 		}
 	}
 
-	
-	console.log("here");
-	for (var i = 0; i < 8; i++) {
-		if (cs[i]) {
-			if (notOpen[i] === false) {
-				open.contains(function(node) {
-					if (node.data.id === spots[i]) {
-						if (node.data.G > move[i]+parentMove) {
-							node.parent = parent;
-							console.log("a");
-						}
-					}
-				}, open.traverseDF);
-			}
-			else {
-				console.log("b");
-				open.add(HValueArr[spots[i]], move[i]+parentMove, spots[i], 'false', start, open.traverseDF);
-			}
-		}
-	}
-	
+	return cs;
 }
 
 updateGrid = function (ID) {
