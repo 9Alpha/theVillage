@@ -423,7 +423,7 @@ jump = function (start, target, dir, parentMove, open, closed, ID) {
 			}
 		}
 
-		if (dir === )
+		//if (dir === )
         if (jump(nextX, nextY, dX, 0, start, end) != null || jump(nextX, nextY, 0, dY, start, end) != null) {
         	return {"id": spots[dir], "cost": parentMove};
         }

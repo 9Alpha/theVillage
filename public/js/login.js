@@ -24,18 +24,35 @@ $(document).ready(function(){
 	});
 
 	$(".makeAccount").click(function(){
+		var holder = "";
+		holder += "<form id = \"checkFields\">";
+		holder += "<h2> Create an Account! </h2>"
+		holder += "</br>";
+		holder += "Make a Username!" + " <input type=\"text\" id=\"usernameAcc\" required>";
+		holder += "</br>";
+		holder += "</br>";
+		holder += "Make a Password!" + " <input type=\"text\" id=\"passwordAcc\" required>";
+		holder += "</br>";
+		holder += "</br>";
+		holder += "<input class=\"btn btn-primary\" type=\"submit\" id=\"createAccount\" value=\"Submit!\">";
+		holder += "</form>";
 		$("#loginPage").empty();
+		$("#loginPage").append(holder);
+		/*
+		$("#loginPage").append("<form id = \"checkFields\">");
 		$("#loginPage").append("<h2> Create an Account! </h2>");
 		$("#loginPage").append("</br>");
-		$("#loginPage").append("Make a Username!" + " <input type=\"text\" id=\"usernameAcc\">");
+		$("#loginPage").append("Make a Username!" + " <input type=\"text\" id=\"usernameAcc\" required>");
 		$("#loginPage").append("</br>");
 		$("#loginPage").append("</br>");
-		$("#loginPage").append("Make a Password!" + " <input type=\"text\" id=\"passwordAcc\">");
+		$("#loginPage").append("Make a Password!" + " <input type=\"text\" id=\"passwordAcc\" required>");
 		$("#loginPage").append("</br>");
 		$("#loginPage").append("</br>");
-		$("#loginPage").append("<button class=\"btn btn-primary returntoLogin\"> Submit! </button>");
+		$("#loginPage").append("<input class=\"btn btn-primary\" type=\"submit\" id=\"createAccount\" value=\"Submit!\">");
+		$("#loginPage").append("</form>");*/
 
-		$(".returntoLogin").click(function(){
+		$("#checkFields").on('submit', function(e) {
+			e.preventDefault();
 			$("#loginPage").empty();
 			window.location.replace("/options");
 		});
