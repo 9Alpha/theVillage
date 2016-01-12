@@ -423,7 +423,6 @@ jump = function (start, target, dir, parentMove, ID) {
 			}
 		}
 
-<<<<<<< HEAD
 		if (dir === 1) {}
 			if (jump(spots[2], target, 2, parentMove+move[2], ID) != null || jump(spots[0], target, 0, parentMove+move[0], ID) != null) {
 				return {"id": spots[dir], "cost": parentMove};
@@ -445,13 +444,6 @@ jump = function (start, target, dir, parentMove, ID) {
 			}
 		}
 	} else {
-=======
-		//if (dir === )
-        if (jump(nextX, nextY, dX, 0, start, end) != null || jump(nextX, nextY, 0, dY, start, end) != null) {
-        	return {"id": spots[dir], "cost": parentMove};
-        }
-    } else {
->>>>>>> e8ad05406f7105277bbc13bf6ffd084b6acc7688
     	if (dir === 0) {//up
     		if (!villageData.users[ID].village.theGrid[spots[6]]) {
     			if (villageData.users[ID].village.theGrid[spots[7]]) {
