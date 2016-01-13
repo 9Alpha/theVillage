@@ -277,33 +277,8 @@ path = function (start, target, open, closed, ID) {
 	
 	
 
-	var lowest = 50000000000000;
-	var lowestID = -1;
-	var next = true;
-	open.traverseDF(function(node) {
-		//console.log("id: "+node.data.id+" check: "+node.data.check);
-		if (node.data.F < lowest && node.data.check === 'false') {
-			lowest = node.data.F;
-			lowestID = node.data.id;
-		}
-	});
-
-	if (lowestID === -1) {
-		next = false;
-	}
-	//console.log(lowestID);
-	lastNode = lowestID;
-	open.contains(function(node) {
-		if (node.data.id === lowestID) {
-			if (node.data.id === target) {
-				console.log("finished path");
-				next = false;
-			}
-			else {
-				node.data.check = 'true';
-			}
-		}
-	}, open.traverseDF);
+	
+	
 
 	if (next) {
 		//console.log("--------------------");
@@ -328,6 +303,35 @@ findSuccessors = function (start, target, open, closed, ID) {
 	}, open.traverseDF);
 
 	var cs = lookAround(start, parentMove, open, closed, ID);
+
+	var lowest = 50000000000000;
+	var lowestID = -1;
+	var next = true;
+	open.traverseDF(function(node) {
+		//console.log("id: "+node.data.id+" check: "+node.data.check);
+		if (node.data.F < lowest && node.data.check === 'false') {
+			lowest = node.data.F;
+			lowestID = node.data.id;
+		}
+	});
+
+	if (lowestID === -1) {
+		next = false;
+	}
+
+	//console.log(lowestID);
+	lastNode = lowestID;
+	open.contains(function(node) {
+		if (node.data.id === lowestID) {
+			if (node.data.id === target) {
+				console.log("finished path");
+				next = false;
+			}
+			else {
+				node.data.check = 'true';
+			}
+		}
+	}, open.traverseDF);
 
 	for (var i = 0; i < 8; i++) {
 		if (cs[i]) {
