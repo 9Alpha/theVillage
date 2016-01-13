@@ -31,7 +31,7 @@ $(document).ready(function(){
 		holder += "Make a Username!" + " <input type=\"text\" id=\"usernameAcc\" required>";
 		holder += "</br>";
 		holder += "</br>";
-		holder += "Make a Password!" + " <input type=\"text\" id=\"passwordAcc\" required>";
+		holder += "Make a Password!" + " <input type=\"password\" id=\"passwordAcc\" required>";
 		holder += "</br>";
 		holder += "</br>";
 		holder += "<input class=\"btn btn-primary\" type=\"submit\" id=\"createAccount\" value=\"Submit!\">";
