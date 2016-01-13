@@ -16,7 +16,7 @@ function setup() {
 }
 
 function draw() {
-	$.getJSON('/vilData/'+0)
+	$.getJSON('/vilData/0')
 	.done(function(data){
 		villageData = data;
 

@@ -187,6 +187,7 @@ module.exports = {
 				closedList.add(0, 0, from, 'true', 2501, closedList.traverseDF);
 				HValueArr = [];
 				calcHValue(to, 0);
+				//console.log(ID);
 				console.log("path is "+path(from, to, openList, closedList, ID));
 				arrForParents = [];
 				villageData.users[ID].village.creatures.people[i].pathArr = traceParents(openList, lastNode).reverse();
@@ -267,41 +268,13 @@ traceParents = function (list, start) {
 }
 
 path = function (start, target, open, closed, ID) {
+	//console.log(ID+"    in path");
 	var cs = findSuccessors(start, target, open, closed, ID);
 	var move = [10, 14, 10, 14, 10, 14, 10, 14];
 	var notOpen = [true, true, true, true, true, true, true, true];
 	var spots = [start-50, start-50+1, start+1, start+50+1, start+50, start+50-1, start-1, start-50-1];
 	var parentMove = 0;
-	var parent;
-
-	open.contains(function(node) {
-		if (node.data.id === start) {
-			parentMove = node.data.G;
-			parent = node;
-		}
-		for (var i = 0; i < 8; i++) {
-			if (node.data.id === spots[i]) {
-				notOpen[i] = false;
-			}
-		}
-	}, open.traverseDF);
-
-	for (var i = 0; i < 8; i++) {
-		if (cs[i]) {
-			if (notOpen[i] === false) {
-				open.contains(function(node) {
-					if (node.data.id === spots[i]) {
-						if (node.data.G > move[i]+parentMove) {
-							node.parent = parent;
-						}
-					}
-				}, open.traverseDF);
-			}
-			else {
-				open.add(HValueArr[spots[i]], move[i]+parentMove, spots[i], 'false', start, open.traverseDF);
-			}
-		}
-	}
+	
 	
 
 	var lowest = 50000000000000;
@@ -335,16 +308,17 @@ path = function (start, target, open, closed, ID) {
 	if (next) {
 		//console.log("--------------------");
 		closed.add(0, 0, lowestID, 'true', 2501, closed.traverseDF);
-		path(lowestID, open, closed, ID);
+		path(lowestID, target, open, closed, ID);
 	}
 
 	return lowestID;
 }
 
 findSuccessors = function (start, target, open, closed, ID) {
-	var cs = lookAround(start, open, closed, ID);
-	
+	//console.log(ID+"   in succ");
+	var move = [10, 14, 10, 14, 10, 14, 10, 14];
 	var parentMove = 0;
+	var temp  = null;
 
 	open.contains(function(node) {
 		if (node.data.id === start) {
@@ -353,13 +327,17 @@ findSuccessors = function (start, target, open, closed, ID) {
 		}
 	}, open.traverseDF);
 
+	var cs = lookAround(start, parentMove, open, closed, ID);
+
 	for (var i = 0; i < 8; i++) {
 		if (cs[i]) {
-			jump(start, target, i, parentMove, open, closed, ID);
+			temp = jump(start, target, i, parentMove+move[i], ID);
 		}
 	}
 
-	return cs;
+	if (temp) {
+		open.add(HValueArr[temp.id], temp.parentMove, temp.id, 'false', start, open.traverseDF);
+	}
 }
 
 jump = function (start, target, dir, parentMove, ID) {
@@ -367,7 +345,7 @@ jump = function (start, target, dir, parentMove, ID) {
 	var move = [10, 14, 10, 14, 10, 14, 10, 14];
 	var spots = [start-50, start-50+1, start+1, start+50+1, start+50, start+50-1, start-1, start-50-1];
 
-
+	//console.log(ID+"   in jump");
 	if (!villageData.users[ID].village.theGrid[start]) {
 		return null;
 	}
@@ -423,22 +401,22 @@ jump = function (start, target, dir, parentMove, ID) {
 			}
 		}
 
-		if (dir === 1) {}
+		if (dir === 1) {
 			if (jump(spots[2], target, 2, parentMove+move[2], ID) != null || jump(spots[0], target, 0, parentMove+move[0], ID) != null) {
 				return {"id": spots[dir], "cost": parentMove};
 			}
 		}
-		else if (dir === 3) {}
+		else if (dir === 3) {
 			if (jump(spots[2], target, 2, parentMove+move[2], ID) != null || jump(spots[4], target, 4, parentMove+move[4], ID) != null) {
 				return {"id": spots[dir], "cost": parentMove};
 			}
 		}
-		else if (dir === 5) {}
+		else if (dir === 5) {
 			if (jump(spots[6], target, 6, parentMove+move[6], ID) != null || jump(spots[4], target, 4, parentMove+move[4], ID) != null) {
 				return {"id": spots[dir], "cost": parentMove};
 			}
 		}
-		else if (dir === 7) {}
+		else if (dir === 7) {
 			if (jump(spots[6], target, 6, parentMove+move[6], ID) != null || jump(spots[0], target, 0, parentMove+move[0], ID) != null) {
 				return {"id": spots[dir], "cost": parentMove};
 			}
@@ -495,10 +473,12 @@ jump = function (start, target, dir, parentMove, ID) {
 }
 
 
-lookAround = function (start, open, closed, ID) {
+lookAround = function (start, parentMove, open, closed, ID) {
 	var cs = [true, true, true, true, true, true, true, true];
 	var move = [10, 14, 10, 14, 10, 14, 10, 14];
+	var notOpen = [true, true, true, true, true, true, true, true];
 	var spots = [start-50, start-50+1, start+1, start+50+1, start+50, start+50-1, start-1, start-50-1];
+	var parent;
 
 	closed.contains(function(node) {
 		for (var i = 0; i < 8; i++) {
@@ -514,6 +494,35 @@ lookAround = function (start, open, closed, ID) {
 		}
 		if (spots[i] < 0 || spots[i] >= 2500) {
 			cs[i] = false;
+		}
+	}
+
+
+	open.contains(function(node) {
+		if (node.data.id === start) {
+			parent = node;
+		}
+		for (var i = 0; i < 8; i++) {
+			if (node.data.id === spots[i]) {
+				notOpen[i] = false;
+			}
+		}
+	}, open.traverseDF);
+
+	for (var i = 0; i < 8; i++) {
+		if (cs[i]) {
+			if (notOpen[i] === false) {
+				open.contains(function(node) {
+					if (node.data.id === spots[i]) {
+						if (node.data.G > move[i]+parentMove) {
+							node.parent = parent;
+						}
+					}
+				}, open.traverseDF);
+			}
+			else {
+				open.add(HValueArr[spots[i]], move[i]+parentMove, spots[i], 'false', start, open.traverseDF);
+			}
 		}
 	}
 

@@ -59,6 +59,7 @@ app.get('/village', function(req, res){
 });
 
 app.get('/vilData/:id', function(req, res){
+	console.log(req.params.id);
 	setRoute('localhost', '/vilData/'+req.params.id, 'GET');
 	http.request(options, function(response) {
 		var temp = '';
