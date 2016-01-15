@@ -49,14 +49,14 @@ function findIndex(arr, data) {
 	return index;
 }
 
-function Node(A, B, id, check) {
+function Node(A, B, id, dir, check) {
 	var C = A + B;
-	this.data = {"id": id, "H": A, "G": B, "F": C, "check": check};
+	this.data = {"id": id, "H": A, "G": B, "F": C, "dir":dir, "check": check};
 	this.parent = null;
 	this.children = [];
 }
 
-function AStarTree(A, B, id, check) {
+function AStarTree(A, B, id, dir, check) {
 	var node = new Node(A, B, id, check);
 	this._root = node;
 }
@@ -100,8 +100,8 @@ AStarTree.prototype.contains = function(callback, traversal) {
 	traversal.call(this, callback);
 };
 
-AStarTree.prototype.add = function(A, B, id, check, toData, traversal) {
-	var child = new Node(A, B, id, check),
+AStarTree.prototype.add = function(A, B, id, dir, check, toData, traversal) {
+	var child = new Node(A, B, id, dir, check),
 	parent = null,
 	callback = function(node) {
 		if (node.data.id === toData) {
@@ -182,9 +182,9 @@ module.exports = {
 						goodTarget = true;
 					}
 				}
-				var openList = new AStarTree(0, 0, from, 'true');
-				var closedList = new AStarTree(0, 0, 2501, 'true');
-				closedList.add(0, 0, from, 'true', 2501, closedList.traverseDF);
+				var openList = new AStarTree(0, 0, from, 8, 'true');
+				var closedList = new AStarTree(0, 0, 2501, 8, 'true');
+				closedList.add(0, 0, from, 8, 'true', 2501, closedList.traverseDF);
 				HValueArr = [];
 				calcHValue(to, 0);
 				//console.log(ID);
@@ -269,24 +269,30 @@ traceParents = function (list, start) {
 
 path = function (start, target, open, closed, ID) {
 	//console.log(ID+"    in path");
-	var cs = findSuccessors(start, target, open, closed, ID);
+	var temp = findSuccessors(start, target, open, closed, ID);
 	var move = [10, 14, 10, 14, 10, 14, 10, 14];
 	var notOpen = [true, true, true, true, true, true, true, true];
 	var spots = [start-50, start-50+1, start+1, start+50+1, start+50, start+50-1, start-1, start-50-1];
 	var parentMove = 0;
 	
-	
 
-	
-	
-
-	if (next) {
-		//console.log("--------------------");
-		closed.add(0, 0, lowestID, 'true', 2501, closed.traverseDF);
-		path(lowestID, target, open, closed, ID);
+	if (temp === 0) {
+		return true;
 	}
 
-	return lowestID;
+	else if (temp === null) {
+		path(temp.id, target, open, closed, ID);
+	}
+
+	else if (typeof temp === 'object') {
+		closed.add(0, 0, temp.id, 8, 'true', 2501, closed.traverseDF);
+		open.add(HValueArr[temp.id], temp.parentMove, temp.id, temp.dir, 'false', start, open.traverseDF);
+		path(temp.id, target, open, closed, ID);
+	}
+	
+	
+	
+
 }
 
 findSuccessors = function (start, target, open, closed, ID) {
@@ -294,6 +300,7 @@ findSuccessors = function (start, target, open, closed, ID) {
 	var move = [10, 14, 10, 14, 10, 14, 10, 14];
 	var parentMove = 0;
 	var temp  = null;
+	var dirNext;
 
 	open.contains(function(node) {
 		if (node.data.id === start) {
@@ -312,6 +319,7 @@ findSuccessors = function (start, target, open, closed, ID) {
 		if (node.data.F < lowest && node.data.check === 'false') {
 			lowest = node.data.F;
 			lowestID = node.data.id;
+			dirNext = node.data.dir;
 		}
 	});
 
@@ -319,29 +327,30 @@ findSuccessors = function (start, target, open, closed, ID) {
 		next = false;
 	}
 
-	//console.log(lowestID);
-	lastNode = lowestID;
-	open.contains(function(node) {
-		if (node.data.id === lowestID) {
-			if (node.data.id === target) {
-				console.log("finished path");
-				next = false;
-			}
-			else {
-				node.data.check = 'true';
-			}
-		}
-	}, open.traverseDF);
+	console.log(lowestID);
 
-	for (var i = 0; i < 8; i++) {
-		if (cs[i]) {
-			temp = jump(start, target, i, parentMove+move[i], ID);
-		}
+	if (next) {
+		open.contains(function(node) {
+			if (node.data.id === lowestID) {
+				if (node.data.H === 1) {
+					console.log("finished path");
+					return 0;
+				}
+				else {
+					node.data.check = 'true';
+				}
+			}
+		}, open.traverseDF);
+
+
+		//console.log("--------------------");
+		temp = jump(lowestID, target, dirNext, parentMove+move[dirNext], ID);
+
+		if (temp)
+		return temp;
 	}
 
-	if (temp) {
-		open.add(HValueArr[temp.id], temp.parentMove, temp.id, 'false', start, open.traverseDF);
-	}
+	return findSuccessors(lowestID, target, open, closed, ID);
 }
 
 jump = function (start, target, dir, parentMove, ID) {
@@ -355,119 +364,119 @@ jump = function (start, target, dir, parentMove, ID) {
 	}
 
 	if (spots[dir] === target) {
-		return {"id": spots[dir], "cost": parentMove};
+		return {"id": spots[dir], "dir": dir, "cost": parentMove};
 	}
 
 	else if (dir === 1 || dir === 3 || dir === 5 || dir === 7) {
 		if (dir === 1) {
 			if (!villageData.users[ID].village.theGrid[spots[6]]) {
 				if (villageData.users[ID].village.theGrid[spots[0]]) {
-					return {"id": spots[0], "cost": parentMove};
+					return {"id": spots[0], "dir": dir, "cost": parentMove};
 				}
 			}
 			if (!villageData.users[ID].village.theGrid[spots[4]]) {
 				if (villageData.users[ID].village.theGrid[spots[2]]) {
-					return {"id": spots[2], "cost": parentMove};
+					return {"id": spots[2], "dir": dir, "cost": parentMove};
 				}
 			}
 		} else if (dir === 3) {
 			if (!villageData.users[ID].village.theGrid[spots[0]]) {
 				if (villageData.users[ID].village.theGrid[spots[2]]) {
-					return {"id": spots[2], "cost": parentMove};
+					return {"id": spots[2], "dir": dir, "cost": parentMove};
 				}
 			}
 			if (!villageData.users[ID].village.theGrid[spots[6]]) {
 				if (villageData.users[ID].village.theGrid[spots[4]]) {
-					return {"id": spots[4], "cost": parentMove};
+					return {"id": spots[4], "dir": dir, "cost": parentMove};
 				}
 			}
 		} else if (dir === 5) {
 			if (!villageData.users[ID].village.theGrid[spots[2]]) {
 				if (villageData.users[ID].village.theGrid[spots[4]]) {
-					return {"id": spots[4], "cost": parentMove};
+					return {"id": spots[4], "dir": dir, "cost": parentMove};
 				}
 			}
 			if (!villageData.users[ID].village.theGrid[spots[0]]) {
 				if (villageData.users[ID].village.theGrid[spots[6]]) {
-					return {"id": spots[6], "cost": parentMove};
+					return {"id": spots[6], "dir": dir, "cost": parentMove};
 				}
 			}
 		} else if (dir === 7) {
 			if (!villageData.users[ID].village.theGrid[spots[4]]) {
 				if (villageData.users[ID].village.theGrid[spots[6]]) {
-					return {"id": spots[6], "cost": parentMove};
+					return {"id": spots[6], "dir": dir, "cost": parentMove};
 				}
 			}
 			if (!villageData.users[ID].village.theGrid[spots[2]]) {
 				if (villageData.users[ID].village.theGrid[spots[0]]) {
-					return {"id": spots[0], "cost": parentMove};
+					return {"id": spots[0], "dir": dir, "cost": parentMove};
 				}
 			}
 		}
 
 		if (dir === 1) {
 			if (jump(spots[2], target, 2, parentMove+move[2], ID) != null || jump(spots[0], target, 0, parentMove+move[0], ID) != null) {
-				return {"id": spots[dir], "cost": parentMove};
+				return {"id": spots[dir], "dir": dir, "cost": parentMove};
 			}
 		}
 		else if (dir === 3) {
 			if (jump(spots[2], target, 2, parentMove+move[2], ID) != null || jump(spots[4], target, 4, parentMove+move[4], ID) != null) {
-				return {"id": spots[dir], "cost": parentMove};
+				return {"id": spots[dir], "dir": dir, "cost": parentMove};
 			}
 		}
 		else if (dir === 5) {
 			if (jump(spots[6], target, 6, parentMove+move[6], ID) != null || jump(spots[4], target, 4, parentMove+move[4], ID) != null) {
-				return {"id": spots[dir], "cost": parentMove};
+				return {"id": spots[dir], "dir": dir, "cost": parentMove};
 			}
 		}
 		else if (dir === 7) {
 			if (jump(spots[6], target, 6, parentMove+move[6], ID) != null || jump(spots[0], target, 0, parentMove+move[0], ID) != null) {
-				return {"id": spots[dir], "cost": parentMove};
+				return {"id": spots[dir], "dir": dir, "cost": parentMove};
 			}
 		}
 	} else {
     	if (dir === 0) {//up
     		if (!villageData.users[ID].village.theGrid[spots[6]]) {
     			if (villageData.users[ID].village.theGrid[spots[7]]) {
-    				return {"id": spots[7], "cost": parentMove};
+    				return {"id": spots[7], "dir": dir, "cost": parentMove};
     			}
     		}
     		if (!villageData.users[ID].village.theGrid[spots[2]]) {
     			if (villageData.users[ID].village.theGrid[spots[1]]) {
-    				return {"id": spots[1], "cost": parentMove};
+    				return {"id": spots[1], "dir": dir, "cost": parentMove};
     			}
     		}
     	} else if (dir === 4) {//down
     		if (!villageData.users[ID].village.theGrid[spots[6]]) {
     			if (villageData.users[ID].village.theGrid[spots[5]]) {
-    				return {"id": spots[5], "cost": parentMove};
+    				return {"id": spots[5], "dir": dir, "cost": parentMove};
     			}
     		}
     		if (!villageData.users[ID].village.theGrid[spots[2]]) {
     			if (villageData.users[ID].village.theGrid[spots[3]]) {
-    				return {"id": spots[3], "cost": parentMove};
+    				return {"id": spots[3], "dir": dir, "cost": parentMove};
     			}
     		}
     	} else if (dir === 2) {//right
     		if (!villageData.users[ID].village.theGrid[spots[0]]) {
     			if (villageData.users[ID].village.theGrid[spots[1]]) {
-    				return {"id": spots[1], "cost": parentMove};
+    				return {"id": spots[1], "dir": dir, "cost": parentMove};
     			}
     		}
     		if (!villageData.users[ID].village.theGrid[spots[4]]) {
     			if (villageData.users[ID].village.theGrid[spots[3]]) {
-    				return {"id": spots[3], "cost": parentMove};
+    				return {"id": spots[3], "dir": dir, "cost": parentMove};
     			}
     		}
     	} else if (dir === 6) {//left
     		if (!villageData.users[ID].village.theGrid[spots[0]]) {
     			if (villageData.users[ID].village.theGrid[spots[7]]) {
-    				return {"id": spots[7], "cost": parentMove};
+    				return {"id": spots[7], "dir": dir, "cost": parentMove};
     			}
     		}
     		if (!villageData.users[ID].village.theGrid[spots[4]]) {
     			if (villageData.users[ID].village.theGrid[spots[5]]) {
-    				return {"id": spots[5], "cost": parentMove};
+    				return {"id": spots[5], "dir": dir, "cost": parentMove};
     			}
     		}
     	}
@@ -525,7 +534,7 @@ lookAround = function (start, parentMove, open, closed, ID) {
 				}, open.traverseDF);
 			}
 			else {
-				open.add(HValueArr[spots[i]], move[i]+parentMove, spots[i], 'false', start, open.traverseDF);
+				open.add(HValueArr[spots[i]], move[i]+parentMove, spots[i], i, 'false', start, open.traverseDF);
 			}
 		}
 	}
