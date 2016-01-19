@@ -31,7 +31,7 @@ app.post('/checkLogin', function(req, res){
 	var temp = JSON.parse(JSON.stringify(req.body));
 	var usr = temp.info[0];
 	var pss = temp.info[1];
-	console.log(JSON.stringify(temp));
+	//console.log(JSON.stringify(temp));
 
 	request.post('http://localhost:4000/checkLogin', {form:{usr:usr, pss:pss}}, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
@@ -59,7 +59,7 @@ app.get('/village', function(req, res){
 });
 
 app.get('/vilData/:id', function(req, res){
-	console.log(req.params.id);
+	//console.log(req.params.id);
 	setRoute('localhost', '/vilData/'+req.params.id, 'GET');
 	http.request(options, function(response) {
 		var temp = '';
