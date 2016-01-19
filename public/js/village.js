@@ -21,8 +21,13 @@ function draw() {
 		villageData = data;
 
 		background(145, 35, 33);
-	/*
-	if (count % 30 === 0) {
+
+		fill(0, 0);
+		strokeWeight(5);
+		rect(0, 0, width, height);
+		strokeWeight(1);
+	
+	/*if (count % 1 === 0) {
 		for (var i = 0; i < width; i+=20) {
 			for (var j = 0; j < height; j+=20){
 				if (villageData.theGrid[(j/20)*(width/20)+(i/20)]) fill(255);
@@ -30,11 +35,11 @@ function draw() {
 				rect(i, j, 20, 20);
 			}
 		}
-	}
-	*/
+	}*/
+	
 	for (var i = 0; i < villageData.creatures.people.length; i++) { //displaying people
 		var pX, pY, pathX, pathY;
-		fill(0, 50*i, 255);
+		/*fill(0, 50*i, 255);
 		for (var j = 0; j < villageData.creatures.people[i].pathArr.length; j++) {
 			pathX = (villageData.creatures.people[i].pathArr[j] % (width/20)) * 20;
 			pathY = (int)(villageData.creatures.people[i].pathArr[j] / (width/20)) * 20;
@@ -42,7 +47,7 @@ function draw() {
 				fill(200, 200, 10);
 			}
 			rect(pathX+10, pathY+10, 10, 10);
-		}
+		}*/
 		fill(255);
 		pX = (villageData.creatures.people[i].position % (width/20)) * 20;
 		pY = (int)(villageData.creatures.people[i].position / (width/20)) * 20;
