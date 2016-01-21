@@ -19,12 +19,15 @@ $(document).ready(function(){
 			contentType: "application/json",
 			complete: function(data) {
 				console.log(data.responseText);
-				if (data) {
-					console.log("did it");
+				if (data.responseText === "true") {
+					console.log("Logged In");
+					window.location.replace("/options");
+				}
+				else if (data.responseText === "false"){
+					alert("This is not a valid account!");
 				}
 			}
-		});
-		window.location.replace("/options");
+		});	
 	});
 
 	$(".makeAccount").click(function(){
@@ -46,14 +49,14 @@ $(document).ready(function(){
 		$("#checkFields").on('submit', function(e) {
 			e.preventDefault();
 			var accInfo = {
-				"details":[]
+				"info":[]
 			};
 			accInfo.info[0] = ($('#usernameAcc').val());
 			accInfo.info[1] = ($('#passwordAcc').val());
 			console.log(JSON.stringify(accInfo));
 			$.ajax({
 			url: '/makeLogin',
-			type: 'POST',
+			type: 'PUT',
 			data: JSON.stringify(accInfo),
 			contentType: "application/json",
 			complete: function(data) {

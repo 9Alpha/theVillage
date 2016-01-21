@@ -9,6 +9,10 @@ var mongoose = require('mongoose');
 app.use(bodyParser.json());  
 app.use(bodyParser.urlencoded({ extended: false }));
 
+function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 var fs = require("fs");
 //var content = fs.readFileSync("public/index.html", 'utf8');
 
@@ -59,6 +63,55 @@ app.post('/checkLogin', function(req, res){
 
 app.put('/makeLogin', function(req, res){
 	res.send("yee");
+	var temp = req.body;
+	var usr = temp.usr;
+	var pss = temp.pss;
+
+	var newAccount = new User(
+  {
+   userName: usr,
+   password: pss,
+   userID: randomInt(111111,999999),
+   village: {
+    name: "Village",
+    date_created: new Date(),
+    theGrid: [],
+    creatures: {
+        people: [],
+        animals: []
+    },
+    buildings: [],
+    terrain: {
+        weather: {
+            options: {
+                sun_chance: 0,
+                rain_chance: 0
+            },
+            current: {
+                type: 2
+            }
+        },
+        temperature: {
+            value: 0,
+            range: {
+                hi: 0,
+                lo: 0
+            }
+        },
+        terrain_types: {
+            wind: 0,
+            hills: 0
+        },
+        objects: {
+            rocks: [],
+            trees: []
+        }
+    }
+}
+});
+    newAccount.save(function (err) {
+
+    });
 });
 
 

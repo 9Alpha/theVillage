@@ -42,7 +42,17 @@ app.post('/checkLogin', function(req, res){
 });
 
 app.put('/makeLogin', function(req, res){
-	res.send("yee");
+	var temp = JSON.parse(JSON.stringify(req.body));
+	var usr = temp.info[0];
+	var pss = temp.info[1];
+	//console.log(JSON.stringify(temp));
+
+	request.put('http://localhost:4000/makeLogin', {form:{usr:usr, pss:pss}}, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+    		console.log(body); 
+    		res.send(body);
+		}
+	});
 });
 
 app.get('/options', function(req, res){
