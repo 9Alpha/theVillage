@@ -53,7 +53,7 @@ app.post('/checkLogin', function(req, res){
 			res.send(false);
 		}
 		else if (user !== null && user.password === pss) {
-			res.send(true);
+			res.send((user.userID).toString());
 		}
 		else {
 			res.send(false);
@@ -62,16 +62,16 @@ app.post('/checkLogin', function(req, res){
 });
 
 app.put('/makeLogin', function(req, res){
-	res.send("yee");
 	var temp = req.body;
 	var usr = temp.usr;
 	var pss = temp.pss;
+    var randX = randomInt(111111,999999);
 
 	var newAccount = new User(
   {
    userName: usr,
    password: pss,
-   userID: randomInt(111111,999999),
+   userID: randX,
    village: {
     name: "Village",
     date_created: new Date(),
@@ -112,6 +112,7 @@ app.put('/makeLogin', function(req, res){
     newAccount.save(function (err) {
 
     });
+    res.send(randX.toString());
 });
 
 

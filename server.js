@@ -55,8 +55,8 @@ app.put('/makeLogin', function(req, res){
 	});
 });
 
-app.get('/options', function(req, res){
-	res.render("optionsPage.ejs");
+app.get('/options/:id', function(req, res){
+	res.render("optionsPage.ejs", {userID: req.params.id});
 });
 
 app.put('/options', function(req, res){
@@ -64,8 +64,8 @@ app.put('/options', function(req, res){
 	res.render("optionsPage.ejs");
 });
 
-app.get('/village', function(req, res){
-	res.render("villagePage.ejs");
+app.get('/village/:id', function(req, res){
+	res.render("villagePage.ejs", {userID: req.params.id});
 });
 
 app.get('/vilInit', function(req, res){

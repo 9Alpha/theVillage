@@ -19,9 +19,9 @@ $(document).ready(function(){
 			contentType: "application/json",
 			complete: function(data) {
 				console.log(data.responseText);
-				if (data.responseText === "true") {
+				if (data.responseText !== "false") {
 					console.log("Logged In");
-					window.location.replace("/options");
+					window.location.replace("/village/" + data.responseText);
 				}
 				else if (data.responseText === "false"){
 					alert("This is not a valid account!");
@@ -48,6 +48,7 @@ $(document).ready(function(){
 
 		$("#checkFields").on('submit', function(e) {
 			e.preventDefault();
+			var newVar;
 			var accInfo = {
 				"info":[]
 			};
@@ -62,12 +63,14 @@ $(document).ready(function(){
 			complete: function(data) {
 				console.log(data.responseText);
 				if (data) {
+					newVar = data.responseText;
 					console.log("successful account");
 				}
 			}
 		});
 			$("#loginPage").empty();
-			window.location.replace("/options");
+			alert("Account successfully created! Redirecting to options page");
+			window.location.replace("/options/" + newVar);
 		});
 
 	});
