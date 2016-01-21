@@ -1,5 +1,5 @@
 var fs = require("fs");
-var villageData = JSON.parse(fs.readFileSync("./village.json"));
+var villageData;
 var falsed = [];
 var timeA = 0;
 var timeB = 0;
@@ -17,7 +17,7 @@ function randomInt(min, max) {
 
 function calcHValue(toSpot, ID) {
 	var temp = 0;
-	for (var i = 0; i < villageData.users[ID].village.theGrid.length; i++) {
+	for (var i = 0; i < villageData[ID].village.theGrid.length; i++) {
 		temp+=Math.abs(((toSpot%50)-(i%50)));
 		temp+=Math.abs(parseInt(toSpot/50)-parseInt(i/50));
 
@@ -155,51 +155,55 @@ AStarTree.prototype.remove = function(id, fromData, traversal) {
 
 
 module.exports = {
+	getData: function(data) {
+		villageData = data;
+		console.log("Data received");
+	},
 	sendData: function() {
 		return villageData;
 	},
 	sendUser: function (ID) {
 		count++;
-		return villageData.users[ID].village;
+		return villageData[ID].village;
 	},
 	update: function (ID) {
-		for (var i = 0; i < villageData.users[ID].village.creatures.people.length; i++) {
-			if (villageData.users[ID].village.creatures.people[i].makePath) {
-				var goingTo = pathPerson(villageData.users[ID].village.creatures.people[i].position, 0, false, i, ID);
+		for (var i = 0; i < villageData[ID].village.creatures.people.length; i++) {
+			if (villageData[ID].village.creatures.people[i].makePath) {
+				var goingTo = pathPerson(villageData[ID].village.creatures.people[i].position, 0, false, i, ID);
 			}
 
 			if (count%5 === 0) {
-				if (villageData.users[ID].village.creatures.people[i].pathSpot < villageData.users[ID].village.creatures.people[i].pathArr.length) {
-					villageData.users[ID].village.theGrid[villageData.users[ID].village.creatures.people[i].position] = true;
-					villageData.users[ID].village.creatures.people[i].position = villageData.users[ID].village.creatures.people[i].pathArr[villageData.users[ID].village.creatures.people[i].pathSpot];
-					villageData.users[ID].village.creatures.people[i].pathSpot++;
+				if (villageData[ID].village.creatures.people[i].pathSpot < villageData[ID].village.creatures.people[i].pathArr.length) {
+					villageData[ID].village.theGrid[villageData[ID].village.creatures.people[i].position] = true;
+					villageData[ID].village.creatures.people[i].position = villageData[ID].village.creatures.people[i].pathArr[villageData[ID].village.creatures.people[i].pathSpot];
+					villageData[ID].village.creatures.people[i].pathSpot++;
 				} else {
-					villageData.users[ID].village.creatures.people[i].makePath = true;
-					villageData.users[ID].village.creatures.people[i].pathSpot = 0;
+					villageData[ID].village.creatures.people[i].makePath = true;
+					villageData[ID].village.creatures.people[i].pathSpot = 0;
 				}
 			}
 		}//for peeps
 
-		for (var i = 0; i < villageData.users[ID].village.creatures.animals.length; i++) { 
-			if (villageData.users[ID].village.creatures.animals[i].makePath) {
-				var goingTo = pathAnimal(villageData.users[ID].village.creatures.animals[i].position, 0, false, i, ID);
+		for (var i = 0; i < villageData[ID].village.creatures.animals.length; i++) { 
+			if (villageData[ID].village.creatures.animals[i].makePath) {
+				var goingTo = pathAnimal(villageData[ID].village.creatures.animals[i].position, 0, false, i, ID);
 			}
 
 			if (count%7 === 0) {
-				if (villageData.users[ID].village.creatures.animals[i].pathSpot < villageData.users[ID].village.creatures.animals[i].pathArr.length) {
-					villageData.users[ID].village.theGrid[villageData.users[ID].village.creatures.animals[i].position] = true;
-					villageData.users[ID].village.creatures.animals[i].position = villageData.users[ID].village.creatures.animals[i].pathArr[villageData.users[ID].village.creatures.animals[i].pathSpot];
-					villageData.users[ID].village.creatures.animals[i].pathSpot++;
+				if (villageData[ID].village.creatures.animals[i].pathSpot < villageData[ID].village.creatures.animals[i].pathArr.length) {
+					villageData[ID].village.theGrid[villageData[ID].village.creatures.animals[i].position] = true;
+					villageData[ID].village.creatures.animals[i].position = villageData[ID].village.creatures.animals[i].pathArr[villageData[ID].village.creatures.animals[i].pathSpot];
+					villageData[ID].village.creatures.animals[i].pathSpot++;
 				} else {
-					villageData.users[ID].village.creatures.animals[i].makePath = true;
-					villageData.users[ID].village.creatures.animals[i].pathSpot = 0;
+					villageData[ID].village.creatures.animals[i].makePath = true;
+					villageData[ID].village.creatures.animals[i].pathSpot = 0;
 				}
 			}
 		}//for animals
 
-		for (var i = 0; i < villageData.users[ID].village.creatures.animals.length; i++) {
-			villageData.users[ID].village.creatures.animals[i].position.x+=randomInt(-1, 1);
-			villageData.users[ID].village.creatures.animals[i].position.y+=randomInt(-1, 1);
+		for (var i = 0; i < villageData[ID].village.creatures.animals.length; i++) {
+			villageData[ID].village.creatures.animals[i].position.x+=randomInt(-1, 1);
+			villageData[ID].village.creatures.animals[i].position.y+=randomInt(-1, 1);
 		}
 
 		var date1 = new Date();
@@ -219,7 +223,7 @@ module.exports = {
 	writeToFile: function (ID) {
 		for (var i = 0; i < 2500; i++) {
 			if (i % 50 === 0 || i % 50 === 49 || i < 50 || i > 2449) {
-				villageData.users[ID].village.theGrid[i] = false;
+				villageData[ID].village.theGrid[i] = false;
 			}
 		}
 		fs.writeFileSync('./village.json', JSON.stringify(villageData, null, 4));
@@ -251,7 +255,7 @@ pathPerson = function (from, to, goingPlaces, j, ID) {
 		var goodTarget = false;
 		while(goodTarget === false) {
 			to = randomInt(0, 2500);
-			if (villageData.users[ID].village.theGrid[to] && Math.abs(((from%50)-(to%50))) + Math.abs(parseInt(from/50)-parseInt(to/50)) <= 10) {
+			if (villageData[ID].village.theGrid[to] && Math.abs(((from%50)-(to%50))) + Math.abs(parseInt(from/50)-parseInt(to/50)) <= 10) {
 				goodTarget = true;
 			}
 		}
@@ -263,8 +267,8 @@ pathPerson = function (from, to, goingPlaces, j, ID) {
 	findSuccessors(from, to, openList, ID);
 
 	arrForParents = [];
-	villageData.users[ID].village.creatures.people[j].pathArr = traceParents(openList, to).reverse();
-	villageData.users[ID].village.creatures.people[j].makePath = false;
+	villageData[ID].village.creatures.people[j].pathArr = traceParents(openList, to).reverse();
+	villageData[ID].village.creatures.people[j].makePath = false;
 	return to;
 }
 
@@ -275,7 +279,7 @@ pathAnimal = function (from, to, goingPlaces, j, ID) {
 		var goodTarget = false;
 		while(goodTarget === false) {
 			to = randomInt(0, 2500);
-			if (villageData.users[ID].village.theGrid[to] && Math.abs(((from%50)-(to%50))) + Math.abs(parseInt(from/50)-parseInt(to/50)) <= 10) {
+			if (villageData[ID].village.theGrid[to] && Math.abs(((from%50)-(to%50))) + Math.abs(parseInt(from/50)-parseInt(to/50)) <= 10) {
 				goodTarget = true;
 			}
 		}
@@ -287,8 +291,8 @@ pathAnimal = function (from, to, goingPlaces, j, ID) {
 	findSuccessors(from, to, openList, ID);
 
 	arrForParents = [];
-	villageData.users[ID].village.creatures.animals[j].pathArr = traceParents(openList, to).reverse();
-	villageData.users[ID].village.creatures.animals[j].makePath = false;
+	villageData[ID].village.creatures.animals[j].pathArr = traceParents(openList, to).reverse();
+	villageData[ID].village.creatures.animals[j].makePath = false;
 	return to;
 }
 traceParents = function (list, start) {
@@ -381,7 +385,7 @@ lookAround = function (start, parentMove, open, ID) {
 	var parent;
 
 	for (var i = 0; i < 8; i++) {
-		if (villageData.users[ID].village.theGrid[spots[i]] === false) {
+		if (villageData[ID].village.theGrid[spots[i]] === false) {
 			cs[i] = false;
 		}
 		if (spots[i] < 0 || spots[i] >= 2500) {
@@ -427,16 +431,16 @@ lookAround = function (start, parentMove, open, ID) {
 }
 
 updateGrid = function (ID) {
-	for (var i = 0; i < villageData.users[ID].village.creatures.people.length; i++) {
-		villageData.users[ID].village.theGrid[villageData.users[ID].village.creatures.people[i].position] = false;
+	for (var i = 0; i < villageData[ID].village.creatures.people.length; i++) {
+		villageData[ID].village.theGrid[villageData[ID].village.creatures.people[i].position] = false;
 	}
-	for (var i = 0; i < villageData.users[ID].village.creatures.animals.length; i++) {
-		villageData.users[ID].village.theGrid[villageData.users[ID].village.creatures.animals[i].position] = false;
+	for (var i = 0; i < villageData[ID].village.creatures.animals.length; i++) {
+		villageData[ID].village.theGrid[villageData[ID].village.creatures.animals[i].position] = false;
 	}
-	for (var i = 0; i < villageData.users[ID].village.buildings.length; i++) {
-		for (var j = 0; j < villageData.users[ID].village.buildings[i].LnW[0]; j++) {
-			for (var k = 0; k < villageData.users[ID].village.buildings[i].LnW[1]; k++) {
-				villageData.users[ID].village.theGrid[villageData.users[ID].village.buildings[i].position+j+(50*k)] = false;
+	for (var i = 0; i < villageData[ID].village.buildings.length; i++) {
+		for (var j = 0; j < villageData[ID].village.buildings[i].LnW[0]; j++) {
+			for (var k = 0; k < villageData[ID].village.buildings[i].LnW[1]; k++) {
+				villageData[ID].village.theGrid[villageData[ID].village.buildings[i].position+j+(50*k)] = false;
 			}
 		}
 	}

@@ -4,6 +4,7 @@ var villageData;
 var Width;
 var count = 0;
 var Height;
+var serverHasData = false;
 
 
 function setup() {
@@ -16,17 +17,18 @@ function setup() {
 }
 
 function draw() {
-	$.getJSON('/vilData/0')
-	.done(function(data){
-		villageData = data;
+	if (serverHasData) {
+		$.getJSON('/vilData/0')
+		.done(function(data){
+			villageData = data;
 
-		background(145, 35, 33);
+			background(145, 35, 33);
 
-		fill(0, 0);
-		strokeWeight(5);
-		rect(0, 0, width, height);
-		strokeWeight(1);
-	
+			fill(0, 0);
+			strokeWeight(5);
+			rect(0, 0, width, height);
+			strokeWeight(1);
+
 	/*if (count % 1 === 0) {
 		for (var i = 0; i < width; i+=20) {
 			for (var j = 0; j < height; j+=20){
@@ -86,7 +88,7 @@ function draw() {
 		fill(100);
 		var rX, rY, rWid, rHit;
 		rX = (villageData.terrain.objects.rocks[i].position % (width/20)) * 20; 
-		rY = (int)(villageData.terrain.objects.rocks[i].position / width(20)) * 20;
+		rY = (int)(villageData.terrain.objects.rocks[i].position / (width/20)) * 20;
 		rWid = villageData.terrain.objects.rocks[i].LnW[0] * 20;
 		rHit = villageData.terrain.objects.rocks[i].LnW[1] * 20;
 		rect(rX, rY, rWid, rHit, 20); 
@@ -96,7 +98,7 @@ function draw() {
 	for (var i = 0; i < villageData.terrain.objects.trees.length; i++){ //displaying trees
 		var tX, tY, tWid, tHit;
 		tX = (villageData.terrain.objects.trees[i].position % (width/20)) * 20; 
-		tY = (int)(villageData.terrain.objects.trees[i].position / width(20)) * 20;
+		tY = (int)(villageData.terrain.objects.trees[i].position / (width/20)) * 20;
 		tWid = villageData.terrain.objects.trees[i].LnW[0] * 20;
 		tHit = villageData.terrain.objects.trees[i].LnW[1] * 20;
 		fill(210, 180, 140);
@@ -110,6 +112,7 @@ function draw() {
 
 count++;
 }
+}
 
 
 
@@ -117,10 +120,21 @@ window.onbeforeunload = function() {
 	return 'Hold up';
 }
 
+$(window).on('load', function() {
+	$.ajax ({
+		type: "GET",
+		url: "/vilInit",
+		complete: function () {
+			serverHasData = true;
+		}
+	});
+	console.log("loaded");
+});
+
 
 $(window).on('unload', function() {
 	$.ajax ({
-		type: "PUT",
+		type: "POST",
 		url: "/vilData/"+0,
 		complete: function () {
 			window.onbeforeunload = function() {

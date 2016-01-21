@@ -19,14 +19,22 @@ app.get('/', function(req, res){
 	res.send("This page does nothing");
 });
 
+app.get('/vilInit', function(req, res){
+	User.find().lean().exec( function (err, stuff){
+		verver.getData(stuff);
+		//console.log(stuff+"----------------------------");
+	});
+	res.send(true);
+});
+
 app.get('/vilData/:id', function(req, res){
 	verver.update(req.params.id);
 	res.send(verver.sendUser(req.params.id));
 });
 
-app.put('/vilData/:id', function(req, res){
+app.post('/vilData/:id', function(req, res){
 	console.log("did stuff");
-	verver.writeToFile(req.params.id);
+	rewrite(verver.sendData);
 	res.send("sent");
 });
 
@@ -57,14 +65,11 @@ app.put('/makeLogin', function(req, res){
 app.listen(process.env.PORT || 4000);
 
 
-
-
-
-
-
-
-
-
+rewrite = function (toSend) {
+	//User.remove(function (err, removed) {});
+	var temp = JSON.parse(toSend);
+	console.log(temp);
+}
 
 
 mongoose.connect('mongodb://John:Cats@ds047315.mongolab.com:47315/thevillage');

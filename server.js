@@ -58,32 +58,29 @@ app.get('/village', function(req, res){
 	res.render("villagePage.ejs");
 });
 
-app.get('/vilData/:id', function(req, res){
-	//console.log(req.params.id);
-	setRoute('localhost', '/vilData/'+req.params.id, 'GET');
-	http.request(options, function(response) {
-		var temp = '';
-		response.on('data', function(chunk) {
-			temp+=chunk;
-		});
-		response.on('end', function() {
-			res.send(temp);
-		});
-	}).end();
+app.get('/vilInit', function(req, res){
+	request('http://localhost:4000/vilInit', function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			res.send(body) 
+		}
+	});
 });
 
-app.put('/vilData/:id', function(req, res){
-	console.log("did stuff");
-	setRoute('localhost', '/vilData/'+req.params.id, 'PUT');
-	http.request(options, function(response) {
-		var temp = '';
-		response.on('data', function(chunk) {
-			temp+=chunk;
-		});
-		response.on('end', function() {
-			res.send("sent");
-		});
-	}).end();
+app.get('/vilData/:id', function(req, res){
+	request('http://localhost:4000/vilData/'+req.params.id, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			res.send(body) 
+		}
+	});
+});
+
+app.post('/vilData/:id', function(req, res){
+	request.post('http://localhost:4000/vilData/'+req.params.id, {form: "hi"}, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+    		console.log(body); 
+    		res.send(body);
+		}
+	});
 });
 
 
@@ -91,10 +88,5 @@ app.put('/vilData/:id', function(req, res){
 app.listen(process.env.PORT || 5000);
 
 
-setRoute = function(host, path, method) {
-	options.host = host;
-	options.path = path;
-	options.method = method;
-}
 
 
