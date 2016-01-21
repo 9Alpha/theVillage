@@ -13,9 +13,7 @@
 	<div id= "optionsPage"> <!-- id of page to dynamically load questions and answers into -->
 		<center>
 				<div id="StartPage">
-				<h1>Welcome to the Options Page!</h1>
-				Username:
-				<input type="text" id="refresh"> <!-- username input -->
+				<h1>Welcome to the Options Page! Please select a single option for each dropdown, in order from top to bottom</h1>
 				<br/>
 				<br/>
 
@@ -25,10 +23,10 @@
 					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Weather
 						<span class="caret"></span></button>
 						<ul class="dropdown-menu">
-							    <li><a href="#">Sunny</a></li>
-      							<li><a href="#">Cloudy</a></li>
-     						 	<li><a href="#">Rain</a></li>
-     						 	<li><a href="#">Snowy</a></li>
+							    <li><a class= "sunnyClick"  href= "#" alt=  "empty" > Sunny</a></li>
+      							<li><a class= "cloudyClick"  href= "#" alt=  "empty" >Cloudy</a></li>
+     						 	<li><a class= "rainClick"  href= "#" alt=  "empty">Rain</a></li>
+     						 	<li><a class= "snowyClick"  href= "#" alt=  "empty">Snowy</a></li>
 						</ul>
 					</div>
 
@@ -37,35 +35,72 @@
 					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Terrain
 						<span class="caret"></span></button>
 						<ul class="dropdown-menu">
-							 	<li><a href="#">Rocky</a></li>
-      							<li><a href="#">Sandy</a></li>
-     						 	<li><a href="#">Trees</a></li>
-     						 	<li><a href="#">Mountains</a></li>
+							 	<li><a class= "rockyClick"  href= "#" alt=  "empty" > Rocky</a></li>
+      							<li><a class= "sandyClick"  href= "#" alt=  "empty" > Sandy</a></li>
+     						 	<li><a class= "treesClick"  href= "#" alt=  "empty" > Trees</a></li>
+     						 	<li><a class= "mountainsClick"  href= "#" alt=  "empty" > Mountains</a></li>
 						</ul>
 					</div>
 
 				<div class="dropdown">
 				<br/>
-					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Animals
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Number of Wolves
 						<span class="caret"></span></button>
 						<ul class="dropdown-menu">
-							 	<li><a href="#">Wolf</a></li>
-     						 	<li><a href="#">Cat</a></li>
+							 	<li><a class= "onewolfClick"  href= "#" alt=  "empty" > One Wolf </a></li>
+     						 	<li><a class= "twowolvesClick"  href= "#" alt=  "empty" > Two Wolves </a></li>
+     						 	<li><a class= "threewolvesClick"  href= "#" alt=  "empty" > Three Wolves </a></li>
+     						 	<li><a class= "fourwolvesClick"  href= "#" alt=  "empty" > Four Wolves </a></li>
+     						 	<li><a class= "fivewolvesClick"  href= "#" alt=  "empty" > Five Wolves </a></li>
 						</ul>
 					</div>
 
 				<div class="dropdown">
 				<br/>
-					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Professions
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Number of Cats
 						<span class="caret"></span></button>
 						<ul class="dropdown-menu">
-							<li><a href="#">Workers</a></li>
-     						<li><a href="#">Children</a></li>
+								<li><a class= "onecatClick"  href= "#" alt=  "empty" > One Cat </a></li>
+								<li><a class= "twocatsClick"  href= "#" alt=  "empty" > Two Cats </a></li>
+								<li><a class= "threecatsClick"  href= "#" alt=  "empty" > Three Cats </a></li>
+								<li><a class= "fourcatsClick"  href= "#" alt=  "empty" > Four Cats </a></li>
+								<li><a class= "fivecatsClick"  href= "#" alt=  "empty" > Five Cats </a></li>
 						</ul>
-				</div>
+					</div>
+
+				<div class="dropdown">
+				<br/>
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Number of Children
+						<span class="caret"></span></button>
+						<ul class="dropdown-menu">
+								<li><a class= "onechildClick"  href= "#" alt=  "empty" > One Child </a></li>
+								<li><a class= "twochildrenClick"  href= "#" alt=  "empty" > Two Children </a></li>
+								<li><a class= "threechildrenClick"  href= "#" alt=  "empty" > Three Children </a></li>
+								<li><a class= "fourchildrenClick"  href= "#" alt=  "empty" > Four Children </a></li>
+								<li><a class= "fivechildrenClick"  href= "#" alt=  "empty" > Five Children </a></li>
+						</ul>
+					</div>
+
+				<div class="dropdown">
+				<br/>
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Number of Workers
+						<span class="caret"></span></button>
+						<ul class="dropdown-menu">
+								<li><a class= "oneworkerClick"  href= "#" alt=  "empty" > One Worker </a></li>
+								<li><a class= "twoworkersClick"  href= "#" alt=  "empty" > Two Workers </a></li>
+								<li><a class= "threeworkersClick"  href= "#" alt=  "empty" > Three Workers </a></li>
+								<li><a class= "fourworkersClick"  href= "#" alt=  "empty" > Four Workers </a></li>
+								<li><a class= "fiveworkersClick"  href= "#" alt=  "empty" > Five Workers </a></li>
+						</ul>
+					</div>
+					<br/>
+			<center>
+				<input class="btn btn-primary" type="submit" id="createVillage" value="Create Village!">
+			</center>
+
 	</div>
-
-
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="public/js/login.js"></script>
 </body>
 </html>
 
