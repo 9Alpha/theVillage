@@ -56,7 +56,7 @@ app.put('/makeLogin', function(req, res){
 });
 
 app.get('/options/:id', function(req, res){
-	res.render("optionsPage.ejs", {userID: req.params.id});
+	res.render("optionsPage.ejs", {ID: req.params.id});
 });
 
 app.put('/options', function(req, res){
@@ -65,7 +65,7 @@ app.put('/options', function(req, res){
 });
 
 app.get('/village/:id', function(req, res){
-	res.render("villagePage.ejs", {userID: req.params.id});
+	res.render("villagePage.ejs", {ID: req.params.id});
 });
 
 app.get('/vilInit', function(req, res){

@@ -159,6 +159,18 @@ module.exports = {
 		villageData = data;
 		console.log("Data received");
 	},
+	getUserArr: function() {
+		var temp = "{";
+		for (var i = 0; i < villageData.length; i++) {
+			temp+="\""+villageData[i].userID+"\": "+i;
+			if (i !== villageData.length-1) {
+				temp+=",";
+			}
+		}
+		temp+="}";
+		return temp;
+
+	},
 	sendData: function() {
 		return villageData;
 	},

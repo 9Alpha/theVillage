@@ -18,7 +18,8 @@ function setup() {
 
 function draw() {
 	if (serverHasData) {
-		$.getJSON('/vilData/0')
+		//console.log(userID);
+		$.getJSON('/vilData/'+userID)
 		.done(function(data){
 			villageData = data;
 
@@ -116,10 +117,6 @@ count++;
 
 
 
-window.onbeforeunload = function() {
-	return 'Hold up';
-}
-
 $(window).on('load', function() {
 	$.ajax ({
 		type: "GET",
@@ -137,9 +134,9 @@ $(window).on('unload', function() {
 		type: "POST",
 		url: "/vilData/"+0,
 		complete: function () {
-			window.onbeforeunload = function() {
-				return 'Hold up';
-			}
+			//window.onbeforeunload = function() {
+			//	return 'Hold up';
+			//}
 		}
 	});
 	console.log("unloaded");

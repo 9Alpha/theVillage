@@ -32,8 +32,11 @@ app.get('/vilInit', function(req, res){
 });
 
 app.get('/vilData/:id', function(req, res){
-	verver.update(req.params.id);
-	res.send(verver.sendUser(req.params.id));
+	var temp = JSON.parse(verver.getUserArr());
+	//console.log(temp);
+	//console.log(temp[req.params.id]+"----");
+	verver.update(temp[req.params.id]);
+	res.send(verver.sendUser(temp[req.params.id]));
 });
 
 app.post('/vilData/:id', function(req, res){
