@@ -456,7 +456,7 @@ $(".onechildClick").click(function(){
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -491,7 +491,7 @@ $(".twochildrenClick").click(function(){
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -501,14 +501,14 @@ $(".twochildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Mark"
-		}
+		},
 		{
 			"position": 21,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -544,7 +544,7 @@ $(".threechildrenClick").click(function(){
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -554,14 +554,14 @@ $(".threechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Mark"
-		}
+		},
 		{
 			"position": 21,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -571,14 +571,14 @@ $(".threechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Alexandra"
-		}
+		},
 		{
 			"position": 22,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -613,7 +613,7 @@ $(".fourchildrenClick").click(function(){
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -623,14 +623,14 @@ $(".fourchildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Mark"
-		}
+		},
 		{
 			"position": 21,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -640,14 +640,14 @@ $(".fourchildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Alexandra"
-		}
+		},
 		{
 			"position": 22,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -657,14 +657,14 @@ $(".fourchildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "David"
-		}
+		},
 		{
 			"position": 23,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -699,7 +699,7 @@ $(".fivechildrenClick").click(function(){
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -709,14 +709,14 @@ $(".fivechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Mark"
-		}
+		},
 		{
 			"position": 21,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -726,14 +726,14 @@ $(".fivechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Alexandra"
-		}
+		},
 		{
 			"position": 22,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -743,14 +743,14 @@ $(".fivechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "David"
-		}
+		},
 		{
 			"position": 23,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -760,14 +760,14 @@ $(".fivechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Alison"
-		}
+		},
 		{
 			"position": 24,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -802,7 +802,7 @@ $(".oneworkerClick").click(function(){
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -837,7 +837,7 @@ $(".twoworkersClick").click(function(){
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -847,14 +847,14 @@ $(".twoworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Timothy"
-		}
+		},
 		{
 			"position": 31,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -889,7 +889,7 @@ $(".threeworkersClick").click(function(){
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -899,14 +899,14 @@ $(".threeworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Timothy"
-		}
+		},
 		{
 			"position": 31,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -916,14 +916,14 @@ $(".threeworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Rebecca"
-		}
+		},
 		{
 			"position": 32,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -958,7 +958,7 @@ $(".fourworkersClick").click(function(){
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -968,14 +968,14 @@ $(".fourworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Timothy"
-		}
+		},
 		{
 			"position": 31,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -985,14 +985,14 @@ $(".fourworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Rebecca"
-		}
+		},
 		{
 			"position": 32,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -1002,14 +1002,14 @@ $(".fourworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Samuel"
-		}
+		},
 		{
 			"position": 33,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -1045,7 +1045,7 @@ $(".fiveworkersClick").click(function(){
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -1055,14 +1055,14 @@ $(".fiveworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Timothy"
-		}
+		},
 		{
 			"position": 31,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -1072,14 +1072,14 @@ $(".fiveworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Rebecca"
-		}
+		},
 		{
 			"position": 32,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -1089,14 +1089,14 @@ $(".fiveworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Samuel"
-		}
+		},
 		{
 			"position": 33,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
@@ -1106,14 +1106,14 @@ $(".fiveworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Samantha"
-		}
+		},
 		{
 			"position": 34,
 			"makePath": true,
 			"moveType": 0,
 			"pathArr": [
 			],
-			"dirArr" [],
+			"dirArr": [],
 			"pathSpot": 0,
 			"age": 0,
 			"activity": 0,
