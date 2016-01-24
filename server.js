@@ -26,6 +26,21 @@ app.get('/', function(req, res){
 	res.render("login.ejs");
 });
 
+app.post('/updateAccount/:id', function(req, res){
+	var temp = JSON.parse(JSON.stringify(req.body));
+	console.log(temp);
+	var type = temp.type;
+	var info = temp.info;
+	//console.log(JSON.stringify(temp));
+
+	request.post('http://localhost:4000/updateAccount/'+req.params.id, {form:{type:type, info:info}}, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+    		console.log(body); 
+    		res.send(body);
+		}
+	});
+});
+
 app.post('/checkLogin', function(req, res){
 
 	var temp = JSON.parse(JSON.stringify(req.body));
