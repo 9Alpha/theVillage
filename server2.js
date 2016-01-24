@@ -43,7 +43,7 @@ app.post('/vilData/:id', function(req, res){
 	var temp = JSON.parse(verver.getUserArr());
 	console.log("did stuff");
 	console.log(verver.sendData(temp[req.params.id]));
-	User.update({userID: req.params.id}, verver.sendData(temp[req.params.id]), function(err, num){res.send("Data updated: "+JSON.stringify(num))});
+	User.update({userID: req.params.id}, { $set: verver.sendData(temp[req.params.id])}, function(err, num){res.send("Data updated: "+JSON.stringify(num))});
 });
 
 
@@ -52,7 +52,7 @@ app.post('/updateAccount/:id', function(req, res){
 	console.log(temp.info);
 	var toChange = temp.type;
 	if (toChange === "people") 
-		User.update({userID: req.params.id}, { $set: {people: temp.info}}, function(err, num){res.send("Data updated: "+JSON.stringify(num))});
+		User.update({userID: req.params.id}, { $set: {people: temp.info}}, function(err, num){res.send("Data creation: "+JSON.stringify(num))});
 });
 
 

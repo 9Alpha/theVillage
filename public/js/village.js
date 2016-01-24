@@ -127,7 +127,7 @@ $(window).on('load', function() {
 $(window).on('unload', function() {
 	$.ajax ({
 		type: "POST",
-		url: "/vilData/"+0,
+		url: "/vilData/"+userID,
 		complete: function () {
 //window.onbeforeunload = function() {
 // return 'Hold up';
