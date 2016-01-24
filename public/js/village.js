@@ -15,10 +15,10 @@ function setup() {
 	Width = width;
 	Height = height;
 
-	tree = loadImage("public/pictures/Tree.png");
-	rock = loadImage("public/pictures/Rock.png");
-	house = loadImage("public/pictures/House.png");
-	town_hall = loadImage("public/pictures/Town_Hall.png");
+	tree = loadImage("../public/pictures/Tree.png");
+	rock = loadImage("../public/pictures/Rock.png");
+	house = loadImage("../public/pictures/House.png");
+	town_hall = loadImage("../public/pictures/Town_Hall.png");
 }
 
 function draw() {

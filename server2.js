@@ -63,6 +63,14 @@ app.post('/updateAccount/:id', function(req, res){
 					res.send("Data creation: "+JSON.stringify(bla));
 				});
 			});
+		} else if (toChange === "weather") {
+			User.findOne({userID: req.params.id}, function(err, usr){
+				usr.village.terain.weather.current.type = JSON.parse(temp.info);
+				usr.village.theGrid = verver.gridInit(req.params.id);
+				usr.save (function(err, bla){
+					res.send("Data creation: "+JSON.stringify(bla));
+				});
+			});
 		}
 	});
 });
