@@ -2594,6 +2594,7 @@
                                 620,
                                 621
                             ],
+                            "dirArr": [],
                             "pathSpot": 6,
                             "name": "Jack",
                             "age": 0,
@@ -2635,6 +2636,7 @@
                                 1205,
                                 1255
                             ],
+                            "dirArr": [],
                             "pathSpot": 6,
                             "name": "Max",
                             "age": 0,
