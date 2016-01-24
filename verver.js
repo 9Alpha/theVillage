@@ -172,6 +172,17 @@ module.exports = {
 		return temp;
 
 	},
+	gridInit: function(ID) {
+		var temp = [];
+		for (var i = 0; i < 2500; i++) {
+			if (i % 50 === 0 || i % 50 === 49 || i < 50 || i > 2449) {
+				temp.push(false);
+			} else {
+				temp.push(true);
+			}
+		}
+		return temp;
+	},
 	sendData: function() {
 		return villageData;
 	},

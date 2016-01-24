@@ -26,7 +26,6 @@ app.get('/', function(req, res){
 app.get('/vilInit', function(req, res){
 	User.find().lean().exec( function (err, stuff){
 		verver.getData(stuff);
-		//console.log(stuff+"----------------------------");
 	});
 	res.send(true);
 });
@@ -48,11 +47,21 @@ app.post('/vilData/:id', function(req, res){
 
 
 app.post('/updateAccount/:id', function(req, res){
-	var temp = JSON.parse(JSON.stringify(req.body));
-	console.log(temp.info);
-	var toChange = temp.type;
-	if (toChange === "people") 
-		User.update({userID: req.params.id}, { $set: {people: temp.info}}, function(err, num){res.send("Data creation: "+JSON.stringify(num))});
+	User.find().lean().exec( function (err, stuff){
+		verver.getData(stuff);
+		var temp = JSON.parse(JSON.stringify(req.body));
+		console.log(temp);
+		var toChange = temp.type;
+		if (toChange === "people") {
+			User.findOne({userID: req.params.id}, function(err, usr){
+				usr.village.creatures.people = JSON.parse(temp.info);
+				usr.village.theGrid = verver.gridInit(req.params.id);
+				usr.save (function(err, bla){
+					res.send("Data creation: "+JSON.stringify(bla));
+				});
+			});
+		}
+	});
 });
 
 
