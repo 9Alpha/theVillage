@@ -86,7 +86,7 @@ $(document).ready(function(){
 						}
 
 						$.ajax({
-							url: '/updateAccount/'+newVar,
+							url: '/updateAccount/'+ newVar,
 							type: 'POST',
 							data: JSON.stringify(temp),
 							contentType: "application/json",
@@ -104,6 +104,8 @@ $(document).ready(function(){
 
 });
 
+var peeps = [];
+
 $(".sunnyClick").click(function(){
 	var holder = "";
 	holder += "Sunny, ";
@@ -114,7 +116,7 @@ $(".sunnyClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -131,7 +133,7 @@ $(".cloudyClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -150,7 +152,7 @@ $(".rainClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -169,7 +171,7 @@ $(".snowyClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -188,7 +190,7 @@ $(".rockyClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -207,7 +209,7 @@ $(".sandyClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -226,7 +228,7 @@ $(".treesClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -245,102 +247,7 @@ $(".mountainsClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
-});
-
-$(".onewolfClick").click(function(){
-	var holder = "";
-	holder += "One Wolf, ";
-	$("#optionsPage").append(holder);
-
-	var temp = {
-		type: "wolf",
-		info: 0
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
-});
-
-$(".twowolvesClick").click(function(){
-	var holder = "";
-	holder += "Two Wolves, ";
-	$("#optionsPage").append(holder);
-
-	var temp = {
-		type: "wolf",
-		info: 1
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
-});
-
-$(".threewolvesClick").click(function(){
-	var holder = "";
-	holder += "Three Wolves, ";
-	$("#optionsPage").append(holder);
-
-	var temp = {
-		type: "wolf",
-		info: 2
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
-});
-
-$(".fourwolvesClick").click(function(){
-	var holder = "";
-	holder += "Four Wolves, ";
-	$("#optionsPage").append(holder);
-
-	var temp = {
-		type: "wolf",
-		info: 3
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
-});
-
-$(".fivewolvesClick").click(function(){
-	var holder = "";
-	holder += "Five Wolves, ";
-	$("#optionsPage").append(holder);
-
-	var temp = {
-		type: "wolf",
-		info: 4
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -359,7 +266,7 @@ $(".onecatClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -378,7 +285,7 @@ $(".twocatsClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -397,7 +304,7 @@ $(".threecatsClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -416,7 +323,7 @@ $(".fourcatsClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -435,7 +342,7 @@ $(".fivecatsClick").click(function(){
 	}
 
 	$.ajax({
-		url: '/updateAccount/'+newVar,
+		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
 		contentType: "application/json",
@@ -448,9 +355,8 @@ $(".onechildClick").click(function(){
 	holder += "One Child, ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "people",
-		info: [{
+
+		peeps.push({
 			"position": 20,
 			"makePath": true,
 			"moveType": 0,
@@ -466,15 +372,8 @@ $(".onechildClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Mark"
-		}]
-	}
+		});
 
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
 
 });
 
@@ -483,9 +382,7 @@ $(".twochildrenClick").click(function(){
 	holder += "Two Children, ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "people",
-		info: [{
+	peeps.push({
 			"position": 20,
 			"makePath": true,
 			"moveType": 0,
@@ -501,8 +398,8 @@ $(".twochildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Mark"
-		},
-		{
+		});
+	peeps.push({
 			"position": 21,
 			"makePath": true,
 			"moveType": 0,
@@ -518,16 +415,7 @@ $(".twochildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Alexandra"
-		}]
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
+		});
 });
 
 
@@ -536,9 +424,7 @@ $(".threechildrenClick").click(function(){
 	holder += "Three Children, ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "people",
-		info: [{
+	peeps.push({
 			"position": 20,
 			"makePath": true,
 			"moveType": 0,
@@ -554,8 +440,8 @@ $(".threechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Mark"
-		},
-		{
+		});
+	peeps.push({
 			"position": 21,
 			"makePath": true,
 			"moveType": 0,
@@ -571,8 +457,8 @@ $(".threechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Alexandra"
-		},
-		{
+		});
+	peeps.push({
 			"position": 22,
 			"makePath": true,
 			"moveType": 0,
@@ -588,15 +474,7 @@ $(".threechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "David"
-		}]
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
+		});
 });
 
 
@@ -605,9 +483,7 @@ $(".fourchildrenClick").click(function(){
 	holder += "Four Children, ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "people",
-		info: [{
+	peeps.push({
 			"position": 20,
 			"makePath": true,
 			"moveType": 0,
@@ -623,8 +499,8 @@ $(".fourchildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Mark"
-		},
-		{
+		});
+	peeps.push({
 			"position": 21,
 			"makePath": true,
 			"moveType": 0,
@@ -640,8 +516,8 @@ $(".fourchildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Alexandra"
-		},
-		{
+		});
+	peeps.push({
 			"position": 22,
 			"makePath": true,
 			"moveType": 0,
@@ -657,8 +533,8 @@ $(".fourchildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "David"
-		},
-		{
+		});
+	peeps.push({
 			"position": 23,
 			"makePath": true,
 			"moveType": 0,
@@ -674,16 +550,7 @@ $(".fourchildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Alison"
-		}]
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
+		});
 });
 
 $(".fivechildrenClick").click(function(){
@@ -691,9 +558,7 @@ $(".fivechildrenClick").click(function(){
 	holder += "Five Children, ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "people",
-		info: [{
+	peeps.push({
 			"position": 20,
 			"makePath": true,
 			"moveType": 0,
@@ -709,8 +574,8 @@ $(".fivechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Mark"
-		},
-		{
+		});
+	peeps.push({
 			"position": 21,
 			"makePath": true,
 			"moveType": 0,
@@ -726,8 +591,8 @@ $(".fivechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Alexandra"
-		},
-		{
+		});
+	peeps.push({
 			"position": 22,
 			"makePath": true,
 			"moveType": 0,
@@ -743,8 +608,8 @@ $(".fivechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "David"
-		},
-		{
+		});
+	peeps.push({
 			"position": 23,
 			"makePath": true,
 			"moveType": 0,
@@ -760,8 +625,8 @@ $(".fivechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Alison"
-		},
-		{
+		});
+	peeps.push({
 			"position": 24,
 			"makePath": true,
 			"moveType": 0,
@@ -777,16 +642,7 @@ $(".fivechildrenClick").click(function(){
 				"happiness": 1
 			},
 			"name": "James"
-		}]
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
+		});
 });
 
 $(".oneworkerClick").click(function(){
@@ -794,9 +650,7 @@ $(".oneworkerClick").click(function(){
 	holder += "One Worker ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "people",
-		info: [{
+	peeps.push({
 			"position": 30,
 			"makePath": true,
 			"moveType": 0,
@@ -812,16 +666,7 @@ $(".oneworkerClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Timothy"
-		}]
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
+		});
 });
 
 $(".twoworkersClick").click(function(){
@@ -829,9 +674,7 @@ $(".twoworkersClick").click(function(){
 	holder += "Two Workers ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "people",
-		info: [{
+	peeps.push({
 			"position": 30,
 			"makePath": true,
 			"moveType": 0,
@@ -847,8 +690,8 @@ $(".twoworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Timothy"
-		},
-		{
+		});
+	peeps.push({
 			"position": 31,
 			"makePath": true,
 			"moveType": 0,
@@ -864,15 +707,7 @@ $(".twoworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Rebecca"
-		}]
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
+		});
 
 });
 
@@ -881,9 +716,7 @@ $(".threeworkersClick").click(function(){
 	holder += "Three Workers ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "people",
-		info: [{
+	peeps.push({
 			"position": 30,
 			"makePath": true,
 			"moveType": 0,
@@ -899,8 +732,8 @@ $(".threeworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Timothy"
-		},
-		{
+		});
+	peeps.push({
 			"position": 31,
 			"makePath": true,
 			"moveType": 0,
@@ -916,8 +749,8 @@ $(".threeworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Rebecca"
-		},
-		{
+		});
+	peeps.push({
 			"position": 32,
 			"makePath": true,
 			"moveType": 0,
@@ -933,16 +766,8 @@ $(".threeworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Samuel"
-		}]
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
+		});
+	
 });
 
 $(".fourworkersClick").click(function(){
@@ -950,9 +775,7 @@ $(".fourworkersClick").click(function(){
 	holder += "Four Workers ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "people",
-		info: [{
+	peeps.push({
 			"position": 30,
 			"makePath": true,
 			"moveType": 0,
@@ -968,8 +791,8 @@ $(".fourworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Timothy"
-		},
-		{
+		});
+	peeps.push({
 			"position": 31,
 			"makePath": true,
 			"moveType": 0,
@@ -985,8 +808,8 @@ $(".fourworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Rebecca"
-		},
-		{
+		});
+	peeps.push({
 			"position": 32,
 			"makePath": true,
 			"moveType": 0,
@@ -1002,8 +825,8 @@ $(".fourworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Samuel"
-		},
-		{
+		});
+	peeps.push({
 			"position": 33,
 			"makePath": true,
 			"moveType": 0,
@@ -1019,15 +842,7 @@ $(".fourworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Samantha"
-		}]
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
+		});
 
 });
 
@@ -1037,9 +852,7 @@ $(".fiveworkersClick").click(function(){
 	holder += "Five Workers ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "people",
-		info: [{
+	peeps.push({
 			"position": 30,
 			"makePath": true,
 			"moveType": 0,
@@ -1055,8 +868,8 @@ $(".fiveworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Timothy"
-		},
-		{
+		});
+	peeps.push({
 			"position": 31,
 			"makePath": true,
 			"moveType": 0,
@@ -1072,8 +885,8 @@ $(".fiveworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Rebecca"
-		},
-		{
+		});
+	peeps.push({
 			"position": 32,
 			"makePath": true,
 			"moveType": 0,
@@ -1089,8 +902,8 @@ $(".fiveworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Samuel"
-		},
-		{
+		});
+	peeps.push({
 			"position": 33,
 			"makePath": true,
 			"moveType": 0,
@@ -1106,8 +919,8 @@ $(".fiveworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Samantha"
-		},
-		{
+		});
+	peeps.push({
 			"position": 34,
 			"makePath": true,
 			"moveType": 0,
@@ -1123,21 +936,23 @@ $(".fiveworkersClick").click(function(){
 				"happiness": 1
 			},
 			"name": "Justin"
-		}]
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+newVar,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
+		});
 });
 
 $(".createVillage").click(function(){
 	alert("Options sucessfully inputed! Redirecting to village page");
-	window.location.replace("/village/" + newVar);
+	var temp = {
+		type: "people",
+		info: peeps
+	}
+
+	$.ajax({
+		url: '/updateAccount/'+userID,
+		type: 'POST',
+		data: JSON.stringify(temp),
+		contentType: "application/json",
+	});
+	window.location.replace("/village/" + userID);
 });
 
 
