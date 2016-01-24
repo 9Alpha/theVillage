@@ -94,6 +94,7 @@ $(document).ready(function(){
 						console.log("successful account");
 
 						$("#loginPage").empty();
+						//change
 						alert("Account successfully created! Redirecting to options page");
 						window.location.replace("/options/" + newVar);
 					}
