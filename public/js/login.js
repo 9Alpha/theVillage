@@ -94,7 +94,6 @@ $(document).ready(function(){
 						console.log("successful account");
 
 						$("#loginPage").empty();
-						//change
 						alert("Account successfully created! Redirecting to options page");
 						window.location.replace("/options/" + newVar);
 					}
@@ -106,6 +105,7 @@ $(document).ready(function(){
 });
 
 var peeps = [];
+var animals = [];
 
 $(".sunnyClick").click(function(){
 	var holder = "";
@@ -261,18 +261,22 @@ $(".onecatClick").click(function(){
 	holder += "One Cat, ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "cat",
-		info: 0
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+userID,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
+	animals.push({
+		"position": 350,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Jack",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
 	});
-
 });
 
 $(".twocatsClick").click(function(){
@@ -280,16 +284,37 @@ $(".twocatsClick").click(function(){
 	holder += "Two Cats, ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "cat",
-		info: 1
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+userID,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
+	animals.push({
+		"position": 350,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Jack",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
+	});
+	animals.push({
+		"position": 351,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Jessica",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
 	});
 
 });
@@ -299,16 +324,53 @@ $(".threecatsClick").click(function(){
 	holder += "Three Cats, ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "cat",
-		info: 2
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+userID,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
+	animals.push({
+		"position": 350,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Jack",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
+	});
+	animals.push({
+		"position": 351,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Jessica",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
+	});
+	animals.push({
+		"position": 352,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Matthew",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
 	});
 
 });
@@ -318,16 +380,69 @@ $(".fourcatsClick").click(function(){
 	holder += "Four Cats, ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "cat",
-		info: 3
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+userID,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
+	animals.push({
+		"position": 350,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Jack",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
+	});
+	animals.push({
+		"position": 351,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Jessica",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
+	});
+	animals.push({
+		"position": 352,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Matthew",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
+	});
+	animals.push({
+		"position": 353,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Sara",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
 	});
 
 });
@@ -337,16 +452,86 @@ $(".fivecatsClick").click(function(){
 	holder += "Five Cats, ";
 	$("#optionsPage").append(holder);
 
-	var temp = {
-		type: "cat",
-		info: 4
-	}
+	animals.push({
+		"position": 350,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Jack",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
+	});
+	animals.push({
+		"position": 351,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Jessica",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
+	});
+	animals.push({
+		"position": 352,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Matthew",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
+	});
+	animals.push({
+		"position": 353,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Sara",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
+	});
 
-	$.ajax({
-		url: '/updateAccount/'+userID,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
+	animals.push({
+		"position": 354,
+		"direction": 270,
+		"makePath": false,
+		"moveType": 0,
+		"pathArr": [],
+		"dirArr": [],
+		"pathSpot": 6,
+		"name": "Derek",
+		"age": 0,
+		"type": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		}
 	});
 
 });
@@ -357,23 +542,23 @@ $(".onechildClick").click(function(){
 	$("#optionsPage").append(holder);
 
 
-		peeps.push({
-			"position": 20,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Mark"
-		});
+	peeps.push({
+		"position": 20,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Mark"
+	});
 
 
 });
@@ -384,39 +569,39 @@ $(".twochildrenClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	peeps.push({
-			"position": 20,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Mark"
-		});
+		"position": 20,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Mark"
+	});
 	peeps.push({
-			"position": 21,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Alexandra"
-		});
+		"position": 21,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Alexandra"
+	});
 });
 
 
@@ -426,56 +611,56 @@ $(".threechildrenClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	peeps.push({
-			"position": 20,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Mark"
-		});
+		"position": 20,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Mark"
+	});
 	peeps.push({
-			"position": 21,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Alexandra"
-		});
+		"position": 21,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Alexandra"
+	});
 	peeps.push({
-			"position": 22,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "David"
-		});
+		"position": 22,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "David"
+	});
 });
 
 
@@ -485,73 +670,73 @@ $(".fourchildrenClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	peeps.push({
-			"position": 20,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Mark"
-		});
+		"position": 20,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Mark"
+	});
 	peeps.push({
-			"position": 21,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Alexandra"
-		});
+		"position": 21,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Alexandra"
+	});
 	peeps.push({
-			"position": 22,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "David"
-		});
+		"position": 22,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "David"
+	});
 	peeps.push({
-			"position": 23,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Alison"
-		});
+		"position": 23,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Alison"
+	});
 });
 
 $(".fivechildrenClick").click(function(){
@@ -560,90 +745,90 @@ $(".fivechildrenClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	peeps.push({
-			"position": 20,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Mark"
-		});
+		"position": 20,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Mark"
+	});
 	peeps.push({
-			"position": 21,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Alexandra"
-		});
+		"position": 21,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Alexandra"
+	});
 	peeps.push({
-			"position": 22,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "David"
-		});
+		"position": 22,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "David"
+	});
 	peeps.push({
-			"position": 23,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Alison"
-		});
+		"position": 23,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Alison"
+	});
 	peeps.push({
-			"position": 24,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 0,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "James"
-		});
+		"position": 24,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 0,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "James"
+	});
 });
 
 $(".oneworkerClick").click(function(){
@@ -652,22 +837,22 @@ $(".oneworkerClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	peeps.push({
-			"position": 30,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Timothy"
-		});
+		"position": 30,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Timothy"
+	});
 });
 
 $(".twoworkersClick").click(function(){
@@ -676,39 +861,39 @@ $(".twoworkersClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	peeps.push({
-			"position": 30,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Timothy"
-		});
+		"position": 30,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Timothy"
+	});
 	peeps.push({
-			"position": 31,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Rebecca"
-		});
+		"position": 31,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Rebecca"
+	});
 
 });
 
@@ -718,56 +903,56 @@ $(".threeworkersClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	peeps.push({
-			"position": 30,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Timothy"
-		});
+		"position": 30,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Timothy"
+	});
 	peeps.push({
-			"position": 31,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Rebecca"
-		});
+		"position": 31,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Rebecca"
+	});
 	peeps.push({
-			"position": 32,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Samuel"
-		});
+		"position": 32,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Samuel"
+	});
 	
 });
 
@@ -777,73 +962,73 @@ $(".fourworkersClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	peeps.push({
-			"position": 30,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Timothy"
-		});
+		"position": 30,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Timothy"
+	});
 	peeps.push({
-			"position": 31,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Rebecca"
-		});
+		"position": 31,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Rebecca"
+	});
 	peeps.push({
-			"position": 32,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Samuel"
-		});
+		"position": 32,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Samuel"
+	});
 	peeps.push({
-			"position": 33,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Samantha"
-		});
+		"position": 33,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Samantha"
+	});
 
 });
 
@@ -854,95 +1039,95 @@ $(".fiveworkersClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	peeps.push({
-			"position": 30,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Timothy"
-		});
+		"position": 30,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Timothy"
+	});
 	peeps.push({
-			"position": 31,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Rebecca"
-		});
+		"position": 31,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Rebecca"
+	});
 	peeps.push({
-			"position": 32,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Samuel"
-		});
+		"position": 32,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Samuel"
+	});
 	peeps.push({
-			"position": 33,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Samantha"
-		});
+		"position": 33,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Samantha"
+	});
 	peeps.push({
-			"position": 34,
-			"makePath": true,
-			"moveType": 0,
-			"pathArr": [
-			],
-			"dirArr": [],
-			"pathSpot": 0,
-			"age": 0,
-			"activity": 0,
-			"job": 1,
-			"health": {
-				"hunger": 1,
-				"happiness": 1
-			},
-			"name": "Justin"
-		});
+		"position": 34,
+		"makePath": true,
+		"moveType": 0,
+		"pathArr": [
+		],
+		"dirArr": [],
+		"pathSpot": 0,
+		"age": 0,
+		"activity": 0,
+		"job": 1,
+		"health": {
+			"hunger": 1,
+			"happiness": 1
+		},
+		"name": "Justin"
+	});
 });
 
 $(".createVillage").click(function(){
 	alert("Options sucessfully inputed! Redirecting to village page");
-	var temp = {
+	var tempPeeps = {
 		type: "people",
 		info: peeps
 	}
@@ -950,7 +1135,19 @@ $(".createVillage").click(function(){
 	$.ajax({
 		url: '/updateAccount/'+userID,
 		type: 'POST',
-		data: JSON.stringify(temp),
+		data: JSON.stringify(tempPeeps),
+		contentType: "application/json",
+	});
+
+	var tempAnimals = {
+		type: "animals",
+		info: animals
+	}
+
+	$.ajax({
+		url: '/updateAccount/'+userID,
+		type: 'POST',
+		data: JSON.stringify(tempAnimals),
 		contentType: "application/json",
 	});
 	window.location.replace("/village/" + userID);
