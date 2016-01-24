@@ -53,7 +53,7 @@ app.post('/updateAccount/:id', function(req, res){
 	User.find().lean().exec( function (err, stuff){
 		verver.getData(stuff);
 		var temp = JSON.parse(JSON.stringify(req.body));
-		console.log(temp);
+		//console.log(temp);
 		var toChange = temp.type;
 		if (toChange === "people") {
 			User.findOne({userID: req.params.id}, function(err, usr){
@@ -65,7 +65,29 @@ app.post('/updateAccount/:id', function(req, res){
 			});
 		} else if (toChange === "weather") {
 			User.findOne({userID: req.params.id}, function(err, usr){
-				usr.village.terain.weather.current.type = JSON.parse(temp.info);
+				if (temp.info === 0) {
+					usr.village.terrain.weather.options.sun_chance = .75;
+					usr.village.terrain.weather.options.rain_chance = .25;
+				} else if (temp.info === 1) {
+					usr.village.terrain.weather.options.sun_chance = .25;
+					usr.village.terrain.weather.options.rain_chance = .75;
+				}
+				usr.village.theGrid = verver.gridInit(req.params.id);
+				usr.save (function(err, bla){
+					res.send("Data creation: "+JSON.stringify(bla));
+				});
+			});
+		} else if (toChange === "animals") {
+			User.findOne({userID: req.params.id}, function(err, usr){
+				usr.village.creatures.animals = JSON.parse(temp.info);
+				usr.village.theGrid = verver.gridInit(req.params.id);
+				usr.save (function(err, bla){
+					res.send("Data creation: "+JSON.stringify(bla));
+				});
+			});
+		} else if (toChange === "terrain") {
+			User.findOne({userID: req.params.id}, function(err, usr){
+				usr.village.terrain.terrain_types.type = JSON.parse(temp.info);
 				usr.village.theGrid = verver.gridInit(req.params.id);
 				usr.save (function(err, bla){
 					res.send("Data creation: "+JSON.stringify(bla));
@@ -133,7 +155,7 @@ app.put('/makeLogin', function(req, res){
 				},
 				terrain_types: {
 					wind: 0,
-					hills: 0
+					type: 0
 				},
 				objects: {
 					rocks: [],
@@ -204,7 +226,7 @@ var userGuide = new Schema({
 			},
 			terrain_types: {
 				wind: Number,
-				hills: Number
+				type: Number
 			},
 			objects: {
 				rocks: Array,
