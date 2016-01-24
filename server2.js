@@ -51,7 +51,7 @@ app.post('/updateAccount/:id', function(req, res){
 	console.log(temp.info);
 	var toChange = temp.type;
 	if (toChange === "people") 
-		User.update({userID: req.params.id}, { $set: {people: temp.info}}, function(err, num){res.send("Data updated: "+num)});
+		User.update({userID: req.params.id}, { $set: {people: temp.info}}, function(err, num){res.send("Data updated: "+JSON.stringify(num))});
 });
 
 

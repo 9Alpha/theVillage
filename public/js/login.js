@@ -92,12 +92,14 @@ $(document).ready(function(){
 							contentType: "application/json",
 						});
 						console.log("successful account");
+
+						$("#loginPage").empty();
+						//alert("Account successfully created! Redirecting to options page");
+						window.location.replace("/options/" + newVar);
 					}
 				}
 			});
-			$("#loginPage").empty();
-			alert("Account successfully created! Redirecting to options page");
-			window.location.replace("/options/" + newVar);
+			
 		});
 
 });
