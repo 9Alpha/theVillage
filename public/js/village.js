@@ -129,9 +129,7 @@ $(window).on('unload', function() {
 		type: "POST",
 		url: "/vilData/"+userID,
 		complete: function () {
-//window.onbeforeunload = function() {
-// return 'Hold up';
-//}
+console.log(userID);
 }
 });
 	console.log("unloaded");

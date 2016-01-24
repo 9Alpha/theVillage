@@ -35,7 +35,7 @@ app.post('/updateAccount/:id', function(req, res){
 
 	request.post('http://localhost:4000/updateAccount/'+req.params.id, {form:{type:type, info:JSON.stringify(info)}}, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-    		console.log(body); 
+    		//console.log(body); 
     		res.send(body);
 		}
 	});
@@ -102,7 +102,7 @@ app.get('/vilData/:id', function(req, res){
 app.post('/vilData/:id', function(req, res){
 	request.post('http://localhost:4000/vilData/'+req.params.id, {form: "hi"}, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-    		console.log(body); 
+    		//console.log(body); 
     		res.send(body);
 		}
 	});

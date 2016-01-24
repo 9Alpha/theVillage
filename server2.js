@@ -41,8 +41,11 @@ app.get('/vilData/:id', function(req, res){
 app.post('/vilData/:id', function(req, res){
 	var temp = JSON.parse(verver.getUserArr());
 	console.log("did stuff");
-	console.log(verver.sendData(temp[req.params.id]));
-	User.update({userID: req.params.id}, { $set: verver.sendData(temp[req.params.id])}, function(err, num){res.send("Data updated: "+JSON.stringify(num))});
+	//console.log(verver.sendData(temp[req.params.id]));
+	User.findOne({userID: req.params.id}, function(err, usr){
+		usr = verver.sendData(temp[req.params.id]);
+		res.send("Data updated: "+JSON.stringify(usr))
+	});
 });
 
 
