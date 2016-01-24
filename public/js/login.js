@@ -830,8 +830,41 @@ $(".twoworkersClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	var temp = {
-		type: "worker",
-		info: 1
+		type: "people",
+		info: [{
+			"position": 30,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Timothy"
+		}
+		{
+			"position": 31,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Rebecca"
+		}]
 	}
 
 	$.ajax({
@@ -849,8 +882,58 @@ $(".threeworkersClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	var temp = {
-		type: "worker",
-		info: 2
+		type: "people",
+		info: [{
+			"position": 30,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Timothy"
+		}
+		{
+			"position": 31,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Rebecca"
+		}
+		{
+			"position": 32,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Samuel"
+		}]
 	}
 
 	$.ajax({
@@ -868,8 +951,75 @@ $(".fourworkersClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	var temp = {
-		type: "worker",
-		info: 3
+		type: "people",
+		info: [{
+			"position": 30,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Timothy"
+		}
+		{
+			"position": 31,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Rebecca"
+		}
+		{
+			"position": 32,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Samuel"
+		}
+		{
+			"position": 33,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Samantha"
+		}]
 	}
 
 	$.ajax({
@@ -888,8 +1038,92 @@ $(".fiveworkersClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	var temp = {
-		type: "worker",
-		info: 4
+		type: "people",
+		info: [{
+			"position": 30,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Timothy"
+		}
+		{
+			"position": 31,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Rebecca"
+		}
+		{
+			"position": 32,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Samuel"
+		}
+		{
+			"position": 33,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Samantha"
+		}
+		{
+			"position": 34,
+			"makePath": true,
+			"moveType": 0,
+			"pathArr": [
+			],
+			"dirArr" [],
+			"pathSpot": 0,
+			"age": 0,
+			"activity": 0,
+			"job": 1,
+			"health": {
+				"hunger": 1,
+				"happiness": 1
+			},
+			"name": "Justin"
+		}]
 	}
 
 	$.ajax({
