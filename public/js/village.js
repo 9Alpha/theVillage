@@ -14,6 +14,11 @@ function setup() {
 
 	Width = width;
 	Height = height;
+
+	tree = loadImage("public/pictures/Tree.png");
+	rock = loadImage("public/pictures/Rock.png");
+	house = loadImage("public/pictures/House.png");
+	town_hall = loadImage("public/pictures/Town_Hall.png");
 }
 
 function draw() {
@@ -65,8 +70,7 @@ for (var i = 0; i < villageData.buildings.length; i++) { //displaying buildings
 	bY = (int)(villageData.buildings[i].position / (width/20)) * 20;
 	bWid = villageData.buildings[i].LnW[0] * 20;
 	bHit = villageData.buildings[i].LnW[1] * 20;
-	rect(bX, bY, bWid, bHit, 20);
-	stroke(0);
+	image(house, bX, bY, bWid, bHit);
 }
 
 for (var i = 0; i < villageData.terrain.objects.rocks.length; i++){ //displaying rocks
@@ -76,8 +80,7 @@ for (var i = 0; i < villageData.terrain.objects.rocks.length; i++){ //displaying
 	rY = (int)(villageData.terrain.objects.rocks[i].position / (width/20)) * 20;
 	rWid = villageData.terrain.objects.rocks[i].LnW[0] * 20;
 	rHit = villageData.terrain.objects.rocks[i].LnW[1] * 20;
-	rect(rX, rY, rWid, rHit, 20); 
-	stroke(0);
+	image(rock, rX, rY, rWid, rHit);
 }
 
 for (var i = 0; i < villageData.terrain.objects.trees.length; i++){ //displaying trees
@@ -86,11 +89,7 @@ for (var i = 0; i < villageData.terrain.objects.trees.length; i++){ //displaying
 	tY = (int)(villageData.terrain.objects.trees[i].position / (width/20)) * 20;
 	tWid = villageData.terrain.objects.trees[i].LnW[0] * 20;
 	tHit = villageData.terrain.objects.trees[i].LnW[1] * 20;
-	fill(210, 180, 140);
-	rect(tX-20, tY, tWid/2, tHit, 20); 
-	fill(34, 139, 34);
-	ellipse(tX, tY, tWid, tHit/2, 20);
-	stroke(0);
+	image(tree, tX, tY, tWid, tHit); 
 }
 
 for (var i = 0; i < villageData.terrain.objects.ponds.length; i++){ //displaying ponds
