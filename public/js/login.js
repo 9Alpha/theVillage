@@ -308,5 +308,16 @@ $(".fiveworkersClick").click(function(){
 
 });
 
+$(".fiveworkersClick").click(function(){
+	var holder = "";
+	holder += "Five Workers ";
+	$("#optionsPage").append(holder);
+
+});
+
+$(".createVillage").click(function(){
+	alert("Options sucessfully inputed! Redirecting to village page");
+});
+
 
 });
