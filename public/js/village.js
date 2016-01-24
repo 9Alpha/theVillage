@@ -23,7 +23,7 @@ $.getJSON('/vilData/'+userID)
 .done(function(data){
 	villageData = data;
 
-	background(145, 35, 33);
+	background(0, 200, 50);
 
 	fill(0, 0);
 	strokeWeight(5);
@@ -38,12 +38,9 @@ for (var i = 0; i < villageData.creatures.people.length; i++) { //displaying peo
 	pY = (int)(villageData.creatures.people[i].position / (width/20)) * 20;
 	ellipseMode(CENTER);
 	rectMode(CENTER);
-	if (villageData.creatures.people[i].direction == 0 || villageData.creatures.people[i].direction == 2){
-		rect(pX+10, pY+10, 40, 10);
-	}
-	else if (villageData.creatures.people[i].direction == 1 || villageData.creatures.people[i].direction == 3){
-		rect(pX+10, pY+10, 10, 40);
-	}
+	fill(0,100,255);
+	rect(pX+10, pY+10, 40, 10);
+	fill(222,184,135);
 	ellipse(pX+10, pY+10, 15, 15);
 }
 
@@ -90,7 +87,7 @@ for (var i = 0; i < villageData.terrain.objects.trees.length; i++){ //displaying
 	tWid = villageData.terrain.objects.trees[i].LnW[0] * 20;
 	tHit = villageData.terrain.objects.trees[i].LnW[1] * 20;
 	fill(210, 180, 140);
-	rect(tX, tY, tWid/2, tHit, 20); 
+	rect(tX-20, tY, tWid/2, tHit, 20); 
 	fill(34, 139, 34);
 	ellipse(tX, tY, tWid, tHit/2, 20);
 	stroke(0);
