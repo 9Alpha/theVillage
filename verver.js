@@ -8,6 +8,7 @@ var HValueArr = [];
 var activities = ['going', 'meandering', 'standing', 'eating']; 
 var lastNode = 0;
 var arrForParents = [];
+var dirArr = [];
 var count = 0;
 
 
@@ -174,6 +175,9 @@ module.exports = {
 	sendData: function() {
 		return villageData;
 	},
+	sendData: function(ID) {
+		return villageData[ID];
+	},
 	sendUser: function (ID) {
 		count++;
 		return villageData[ID].village;
@@ -279,7 +283,9 @@ pathPerson = function (from, to, goingPlaces, j, ID) {
 	findSuccessors(from, to, openList, ID);
 
 	arrForParents = [];
+	dirArr = [];
 	villageData[ID].village.creatures.people[j].pathArr = traceParents(openList, to).reverse();
+	villageData[ID].village.creatures.people[j].dirArr = traceDir(openList, to).reverse();
 	villageData[ID].village.creatures.people[j].makePath = false;
 	return to;
 }
@@ -312,20 +318,39 @@ traceParents = function (list, start) {
 	toLook = start;
 	arrForParents.push(start);
 	while (next) {
-//console.log("looking for parents");
-list.traverseDF(function(node){
-	if (node.data.id === toLook) {
-		if (node.parent !== null) {
-			arrForParents.push(node.parent.data.id);
-			toLook = node.parent.data.id;
-		} 
-		else {
-			next = false;
-		}
+		list.traverseDF(function(node){
+			if (node.data.id === toLook) {
+				if (node.parent !== null) {
+					arrForParents.push(node.parent.data.id);
+					toLook = node.parent.data.id;
+				} 
+				else {
+					next = false;
+				}
+			}
+		});
 	}
-});
+	return arrForParents;
 }
-return arrForParents;
+
+traceDir = function (list, start) {
+	next = true;
+	toLook = start;
+	dirArr.push(0);
+	while (next) {
+		list.traverseDF(function(node){
+			if (node.data.id === toLook) {
+				if (node.parent !== null) {
+					dirArr.push(node.parent.data.dir);
+					toLook = node.parent.data.id;
+				} 
+				else {
+					next = false;
+				}
+			}
+		});
+	}
+	return dirArr;
 }
 
 findSuccessors = function (start, target, open, ID) {

@@ -40,9 +40,10 @@ app.get('/vilData/:id', function(req, res){
 });
 
 app.post('/vilData/:id', function(req, res){
+	var temp = JSON.parse(verver.getUserArr());
 	console.log("did stuff");
-	rewrite(verver.sendData);
-	res.send("sent");
+	console.log(verver.sendData(temp[req.params.id]));
+	User.update({userID: req.params.id}, verver.sendData(temp[req.params.id]), function(err, num){res.send("Data updated: "+JSON.stringify(num))});
 });
 
 
@@ -116,7 +117,8 @@ app.put('/makeLogin', function(req, res){
 				},
 				objects: {
 					rocks: [],
-					trees: []
+					trees: [],
+					ponds: []
 				}
 			}
 		}
@@ -132,7 +134,7 @@ app.listen(process.env.PORT || 4000);
 
 
 rewrite = function (toSend) {
-	//User.remove(function (err, removed) {});
+	User.remove(function (err, removed) {});
 	var temp = JSON.parse(toSend);
 	console.log(temp);
 }
@@ -186,7 +188,8 @@ var userGuide = new Schema({
 			},
 			objects: {
 				rocks: Array,
-				trees: Array
+				trees: Array,
+				ponds: Array
 			}
 		}
 	}
