@@ -78,9 +78,9 @@ $(document).ready(function(){
 				}
 			});
 
-});
+		});
 
-});
+	});
 
 var peeps = [];
 var animals = [];
@@ -748,7 +748,7 @@ $(".oneworkerClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	buildings.push({
-		"position": 125;
+		"position": 125
 		"LnW": [
 		3,
 		6
@@ -784,7 +784,7 @@ $(".twoworkersClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	buildings.push({
-		"position": 125;
+		"position": 125
 		"LnW": [
 		3,
 		6
@@ -795,7 +795,7 @@ $(".twoworkersClick").click(function(){
 	});
 
 	buildings.push({
-		"position": 325;
+		"position": 325
 		"LnW": [
 		3,
 		6
@@ -850,7 +850,7 @@ $(".threeworkersClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	buildings.push({
-		"position": 125;
+		"position": 125
 		"LnW": [
 		3,
 		6
@@ -861,7 +861,7 @@ $(".threeworkersClick").click(function(){
 	});
 
 	buildings.push({
-		"position": 325;
+		"position": 325
 		"LnW": [
 		3,
 		6
@@ -872,7 +872,7 @@ $(".threeworkersClick").click(function(){
 	});
 
 	buildings.push({
-		"position": 525;
+		"position": 525
 		"LnW": [
 		3,
 		6
@@ -945,7 +945,7 @@ $(".fourworkersClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	buildings.push({
-		"position": 125;
+		"position": 125
 		"LnW": [
 		3,
 		6
@@ -956,7 +956,7 @@ $(".fourworkersClick").click(function(){
 	});
 
 	buildings.push({
-		"position": 325;
+		"position": 325
 		"LnW": [
 		3,
 		6
@@ -967,7 +967,7 @@ $(".fourworkersClick").click(function(){
 	});
 
 	buildings.push({
-		"position": 525;
+		"position": 525
 		"LnW": [
 		3,
 		6
@@ -978,7 +978,7 @@ $(".fourworkersClick").click(function(){
 	});
 
 	buildings.push({
-		"position": 725;
+		"position": 725
 		"LnW": [
 		3,
 		6
@@ -1070,7 +1070,7 @@ $(".fiveworkersClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	buildings.push({
-		"position": 125;
+		"position": 125
 		"LnW": [
 		3,
 		6
@@ -1081,7 +1081,7 @@ $(".fiveworkersClick").click(function(){
 	});
 
 	buildings.push({
-		"position": 325;
+		"position": 325
 		"LnW": [
 		3,
 		6
@@ -1092,7 +1092,7 @@ $(".fiveworkersClick").click(function(){
 	});
 
 	buildings.push({
-		"position": 525;
+		"position": 525
 		"LnW": [
 		3,
 		6
@@ -1103,7 +1103,7 @@ $(".fiveworkersClick").click(function(){
 	});
 
 	buildings.push({
-		"position": 725;
+		"position": 725
 		"LnW": [
 		3,
 		6
@@ -1114,7 +1114,7 @@ $(".fiveworkersClick").click(function(){
 	});
 
 	buildings.push({
-		"position": 925;
+		"position": 925
 		"LnW": [
 		3,
 		6
@@ -1298,6 +1298,20 @@ $(".createVillage").click(function(){
 			"type": 0,
 			"position": randomInt(50,2500)
 		});
+		
+
+		var tempRocks = {
+			type: "buildings",
+			info: rocks
+		}
+
+		$.ajax({
+			url: '/updateAccount/'+userID,
+			type: 'POST',
+			data: JSON.stringify(tempRocks),
+			contentType: "application/json",
+		});
+
 	}
 
 	else if (terrainType === 1){
@@ -1344,8 +1358,20 @@ $(".createVillage").click(function(){
 			"type": 1,
 			"position": randomInt(50, 2500)
 		});
-	}
+		
 
+		var tempTrees = {
+			type: "buildings",
+			info: trees
+		}
+
+		$.ajax({
+			url: '/updateAccount/'+userID,
+			type: 'POST',
+			data: JSON.stringify(tempTrees),
+			contentType: "application/json",
+		});
+	}
 
 	window.location.replace("/village/" + userID);
 });

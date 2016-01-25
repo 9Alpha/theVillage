@@ -195,8 +195,38 @@ module.exports = {
 	},
 	update: function (ID) {
 		for (var i = 0; i < villageData[ID].village.creatures.people.length; i++) {
+
+
+			if (villageData[ID].village.creatures.people[i].position === villageData[ID].village.creatures.people[i].home) {
+				villageData[ID].village.creatures.people[i].health.hunger = 1;
+			} else {
+				villageData[ID].village.creatures.people[i].health.hunger-=.0005;
+			}
+
+			if (villageData[ID].village.creatures.people[i].health.hunger <= .3) {
+				villageData[ID].village.creatures.people[i].activity = 2;
+			} else {
+				villageData[ID].village.creatures.people[i].activity = 1;
+			}
+
+
 			if (villageData[ID].village.creatures.people[i].makePath) {
-				var goingTo = pathPerson(villageData[ID].village.creatures.people[i].position, 0, false, i, ID);
+				if (villageData[ID].village.creatures.people[i].moveType === 0) {
+					var goingTo = pathPerson(villageData[ID].village.creatures.people[i].position, 0, false, i, ID);
+				}
+				else if (villageData[ID].village.creatures.people[i].moveType === 1) {
+					if (villageData[ID].village.creatures.people[i].activity === 2) {
+						var goingTo = pathPerson(villageData[ID].village.creatures.people[i].position, villageData[ID].village.creatures.people[i].home, true, i, ID);
+					} else if (villageData[ID].village.creatures.people[i].activity === 1) {
+						var goingTo = pathPerson(villageData[ID].village.creatures.people[i].position, false, true, i, ID);
+					}
+				}
+			}
+
+			if (villageData[ID].village.creatures.people[i].activity === 0) {
+				villageData[ID].village.creatures.people[i].moveType = 0;
+			} else if (villageData[ID].village.creatures.people[i].activity === 1 || villageData[ID].village.creatures.people[i].activity === 2) {
+				villageData[ID].village.creatures.people[i].moveType = 1;
 			}
 
 			if (count%5 === 0) {
@@ -228,10 +258,6 @@ module.exports = {
 			}
 		}//for animals
 
-		for (var i = 0; i < villageData[ID].village.creatures.animals.length; i++) {
-			villageData[ID].village.creatures.animals[i].position.x+=randomInt(-1, 1);
-			villageData[ID].village.creatures.animals[i].position.y+=randomInt(-1, 1);
-		}
 
 		var date1 = new Date();
 		timeA = date1.getMilliseconds();
