@@ -458,6 +458,7 @@ $(".onechildClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -484,6 +485,7 @@ $(".twochildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -501,6 +503,7 @@ $(".twochildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -526,6 +529,7 @@ $(".threechildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -543,6 +547,7 @@ $(".threechildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -560,6 +565,7 @@ $(".threechildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -585,6 +591,7 @@ $(".fourchildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -602,6 +609,7 @@ $(".fourchildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -619,6 +627,7 @@ $(".fourchildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -636,6 +645,7 @@ $(".fourchildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -660,6 +670,7 @@ $(".fivechildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -677,6 +688,7 @@ $(".fivechildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -694,6 +706,7 @@ $(".fivechildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -711,6 +724,7 @@ $(".fivechildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -728,6 +742,7 @@ $(".fivechildrenClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -764,6 +779,7 @@ $(".oneworkerClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -811,6 +827,7 @@ $(".twoworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -829,6 +846,7 @@ $(".twoworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -888,6 +906,7 @@ $(".threeworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -906,6 +925,7 @@ $(".threeworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -924,6 +944,7 @@ $(".threeworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -994,6 +1015,7 @@ $(".fourworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -1012,6 +1034,7 @@ $(".fourworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -1030,6 +1053,7 @@ $(".fourworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -1048,6 +1072,7 @@ $(".fourworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -1130,6 +1155,7 @@ $(".fiveworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -1148,6 +1174,7 @@ $(".fiveworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -1166,6 +1193,7 @@ $(".fiveworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -1184,6 +1212,7 @@ $(".fiveworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
@@ -1202,6 +1231,7 @@ $(".fiveworkersClick").click(function(){
 		"pathArr": [
 		],
 		"dirArr": [],
+		"selected": 0,
 		"pathSpot": 0,
 		"age": 0,
 		"activity": 0,
