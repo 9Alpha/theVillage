@@ -2,6 +2,10 @@
 $(document).ready(function(){
 	var mainHolder = "";
 	var newVar;
+
+	var names = ["MARY","PATRICIA","LINDA","BARBARA","ELIZABETH","JENNIFER","MARIA","SUSAN","MARGARET","DOROTHY","LISA","NANCY","KAREN","BETTY","HELEN","SANDRA","DONNA","CAROL","RUTH","SHARON","MICHELLE","LAURA","SARAH","KIMBERLY","DEBORAH","JESSICA","SHIRLEY","CYNTHIA","ANGELA","MELISSA","BRENDA","AMY","ANNA","REBECCA","VIRGINIA","KATHLEEN","PAMELA","MARTHA","DEBRA","AMANDA","STEPHANIE","CAROLYN","CHRISTINE","MARIE","JANET","CATHERINE","FRANCES","ANN","JOYCE","DIANE","ALICE","JULIE","HEATHER","TERESA","DORIS","GLORIA","EVELYN","JEAN","CHERYL","MILDRED","KATHERINE","JOAN","ASHLEY","JUDITH","ROSE","JANICE","KELLY","NICOLE","JUDY","CHRISTINA","KATHY","THERESA","BEVERLY","DENISE","TAMMY","IRENE","JANE","LORI","RACHEL","MARILYN","ANDREA","KATHRYN","LOUISE","SARA","ANNE","JACQUELINE","WANDA","BONNIE","JULIA","RUBY","LOIS","TINA","PHYLLIS","NORMA","PAULA","DIANA","ANNIE","LILLIAN","EMILY","ROBIN","PEGGY","CRYSTAL","GLADYS","RITA","DAWN","CONNIE","FLORENCE","TRACY","EDNA","TIFFANY","CARMEN","ROSA","CINDY","GRACE","WENDY","VICTORIA","EDITH","KIM","SHERRY","SYLVIA","JOSEPHINE","THELMA","SHANNON","SHEILA","ETHEL","ELLEN","ELAINE","MARJORIE","CARRIE","CHARLOTTE","MONICA","ESTHER","PAULINE","EMMA","JUANITA","ANITA","RHONDA","HAZEL","AMBER","EVA","DEBBIE","APRIL","LESLIE","CLARA","LUCILLE","JAMIE","JOANNE","ELEANOR","VALERIE","DANIELLE","MEGAN","ALICIA","SUZANNE","MICHELE","GAIL","BERTHA","DARLENE","VERONICA","JILL","ERIN","GERALDINE","LAUREN","CATHY","JOANN","LORRAINE","LYNN","SALLY","REGINA","ERICA","BEATRICE","DOLORES","BERNICE","AUDREY","YVONNE","ANNETTE","JUNE","SAMANTHA","MARION","DANA","STACY","ANA","RENEE","IDA","VIVIAN","ROBERTA","HOLLY","BRITTANY","MELANIE","LORETTA","YOLANDA","JEANETTE","LAURIE","KATIE","KRISTEN","VANESSA","ALMA","SUE","ELSIE","BETH","JEANNE","VICKI","CARLA","TARA","ROSEMARY","EILEEN","TERRI","GERTRUDE","LUCY","TONYA","ELLA","STACEY","WILMA","GINA","KRISTIN","JESSIE","NATALIE","AGNES","VERA","WILLIE","CHARLENE","BESSIE","DELORES","MELINDA","PEARL","ARLENE","MAUREEN","COLLEEN","ALLISON","TAMARA","JOY","GEORGIA","CONSTANCE","LILLIE","CLAUDIA","JACKIE","MARCIA","TANYA","NELLIE","MINNIE","MARLENE","HEIDI","GLENDA","LYDIA","VIOLA","COURTNEY","MARIAN","STELLA","CAROLINE","DORA","JO","VICKIE","MATTIE","TERRY","MAXINE","IRMA","MABEL","MARSHA","MYRTLE","LENA","CHRISTY","DEANNA","PATSY","HILDA","GWENDOLYN","JENNIE","NORA","MARGIE","NINA","CASSANDRA","LEAH","PENNY","KAY","PRISCILLA","NAOMI","CAROLE","BRANDY","OLGA","BILLIE","DIANNE","TRACEY","LEONA"];
+	var namLen = names.length;
+
 	mainHolder += "<h2> Selected Options:  </h2>";
 	$("#optionsPage").append(mainHolder);
 
@@ -179,7 +183,7 @@ $(".onecatClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Jack",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -203,7 +207,7 @@ $(".twocatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Jack",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -220,7 +224,7 @@ $(".twocatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Jessica",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -245,7 +249,7 @@ $(".threecatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Jack",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -262,7 +266,7 @@ $(".threecatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Jessica",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -279,7 +283,7 @@ $(".threecatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Matthew",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -304,7 +308,7 @@ $(".fourcatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Jack",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -321,7 +325,7 @@ $(".fourcatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Jessica",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -338,7 +342,7 @@ $(".fourcatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Matthew",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -355,7 +359,7 @@ $(".fourcatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Sara",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -380,7 +384,7 @@ $(".fivecatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Jack",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -397,7 +401,7 @@ $(".fivecatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Jessica",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -414,7 +418,7 @@ $(".fivecatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Matthew",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -431,7 +435,7 @@ $(".fivecatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Sara",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -449,7 +453,7 @@ $(".fivecatsClick").click(function(){
 		"dirArr": [],
 		"selected": 0,
 		"pathSpot": 6,
-		"name": "Derek",
+		"name": names[randomInt(0, namLen)],
 		"age": 0,
 		"type": 0,
 		"health": {
@@ -460,315 +464,6 @@ $(".fivecatsClick").click(function(){
 
 });
 
-$(".onechildClick").click(function(){
-	var holder = "";
-	holder += "One Child, ";
-	$("#optionsPage").append(holder);
-
-
-	peeps.push({
-		"position": 70,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "Mark"
-	});
-
-
-});
-
-$(".twochildrenClick").click(function(){
-	var holder = "";
-	holder += "Two Children, ";
-	$("#optionsPage").append(holder);
-
-	peeps.push({
-		"position": 70,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "Mark"
-	});
-	peeps.push({
-		"position": 71,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "Alexandra"
-	});
-});
-
-
-$(".threechildrenClick").click(function(){
-	var holder = "";
-	holder += "Three Children, ";
-	$("#optionsPage").append(holder);
-
-	peeps.push({
-		"position": 70,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "Mark"
-	});
-	peeps.push({
-		"position": 71,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "Alexandra"
-	});
-	peeps.push({
-		"position": 72,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "David"
-	});
-});
-
-
-$(".fourchildrenClick").click(function(){
-	var holder = "";
-	holder += "Four Children, ";
-	$("#optionsPage").append(holder);
-
-	peeps.push({
-		"position": 70,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "Mark"
-	});
-	peeps.push({
-		"position": 71,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "Alexandra"
-	});
-	peeps.push({
-		"position": 72,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "David"
-	});
-	peeps.push({
-		"position": 73,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "Alison"
-	});
-});
-
-$(".fivechildrenClick").click(function(){
-	var holder = "";
-	holder += "Five Children, ";
-	$("#optionsPage").append(holder);
-
-	peeps.push({
-		"position": 70,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "Mark"
-	});
-	peeps.push({
-		"position": 71,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "Alexandra"
-	});
-	peeps.push({
-		"position": 72,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "David"
-	});
-	peeps.push({
-		"position": 73,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "Alison"
-	});
-	peeps.push({
-		"position": 74,
-		"makePath": true,
-		"moveType": 0,
-		"pathArr": [
-		],
-		"dirArr": [],
-		"selected": 0,
-		"pathSpot": 0,
-		"age": 0,
-		"activity": 0,
-		"job": 0,
-		"health": {
-			"hunger": 1,
-			"happiness": 1
-		},
-		"name": "James"
-	});
-});
 
 $(".oneworkerClick").click(function(){
 	var holder = "";
@@ -803,7 +498,7 @@ $(".oneworkerClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Timothy"
+		"name": names[randomInt(0, namLen)]
 	});
 });
 
@@ -851,13 +546,13 @@ $(".twoworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Timothy"
+		"name": names[randomInt(0, namLen)]
 	});
 	peeps.push({
 		"position": 81,
 		"makePath": true,
 		"moveType": 0,
-		"home": 275,
+		"home": 290,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -870,7 +565,7 @@ $(".twoworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Rebecca"
+		"name": names[randomInt(0, namLen)]
 	});
 
 });
@@ -930,13 +625,13 @@ $(".threeworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Timothy"
+		"name": names[randomInt(0, namLen)]
 	});
 	peeps.push({
 		"position": 81,
 		"makePath": true,
 		"moveType": 0,
-		"home": 275,
+		"home": 290,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -949,13 +644,13 @@ $(".threeworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Rebecca"
+		"name": names[randomInt(0, namLen)]
 	});
 	peeps.push({
 		"position": 82,
 		"makePath": true,
 		"moveType": 0,
-		"home": 475,
+		"home": 460,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -968,7 +663,7 @@ $(".threeworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Samuel"
+		"name": names[randomInt(0, namLen)]
 	});
 	
 });
@@ -1039,13 +734,13 @@ $(".fourworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Timothy"
+		"name": names[randomInt(0, namLen)]
 	});
 	peeps.push({
 		"position": 81,
 		"makePath": true,
 		"moveType": 0,
-		"home": 275,
+		"home": 290,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -1058,13 +753,13 @@ $(".fourworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Rebecca"
+		"name": names[randomInt(0, namLen)]
 	});
 	peeps.push({
 		"position": 82,
 		"makePath": true,
 		"moveType": 0,
-		"home": 475,
+		"home": 460,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -1077,13 +772,13 @@ $(".fourworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Samuel"
+		"name": names[randomInt(0, namLen)]
 	});
 	peeps.push({
 		"position": 83,
 		"makePath": true,
 		"moveType": 0,
-		"home": 675,
+		"home": 1285,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -1096,7 +791,7 @@ $(".fourworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Samantha"
+		"name": names[randomInt(0, namLen)]
 	});
 
 });
@@ -1179,13 +874,13 @@ $(".fiveworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Timothy"
+		"name": names[randomInt(0, namLen)]
 	});
 	peeps.push({
 		"position": 81,
 		"makePath": true,
 		"moveType": 0,
-		"home": 275,
+		"home": 290,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -1198,13 +893,13 @@ $(".fiveworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Rebecca"
+		"name": names[randomInt(0, namLen)]
 	});
 	peeps.push({
 		"position": 82,
 		"makePath": true,
 		"moveType": 0,
-		"home": 475,
+		"home": 460,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -1217,13 +912,13 @@ $(".fiveworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Samuel"
+		"name": names[randomInt(0, namLen)]
 	});
 	peeps.push({
 		"position": 83,
 		"makePath": true,
 		"moveType": 0,
-		"home": 675,
+		"home": 1185,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -1236,13 +931,13 @@ $(".fiveworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Samantha"
+		"name": names[randomInt(0, namLen)]
 	});
 	peeps.push({
 		"position": 84,
 		"makePath": true,
 		"moveType": 0,
-		"home": 875,
+		"home": 2257,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -1255,7 +950,7 @@ $(".fiveworkersClick").click(function(){
 			"hunger": 1,
 			"happiness": 1
 		},
-		"name": "Justin"
+		"name": names[randomInt(0, namLen)]
 	});
 });
 
@@ -1428,7 +1123,6 @@ $(".createVillage").click(function(){
 
 
 
-//window.location.replace("/village/" + userID);
 
 });
 

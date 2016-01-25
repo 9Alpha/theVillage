@@ -5,6 +5,12 @@ var Width;
 var count = 0;
 var Height;
 var serverHasData = false;
+var rainArrX = [];
+var rainArrY = [];
+
+function randomInt(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 
 function setup() {
@@ -18,6 +24,11 @@ function setup() {
 	rock = loadImage("../public/pictures/Rock.png");
 	house = loadImage("../public/pictures/House.png");
 	town_hall = loadImage("../public/pictures/Town_Hall.png");
+
+	for (var i = 0; i < 500; i++) {
+		rainArrX.push(0);
+		rainArrY.push(0);
+	}
 }
 
 function draw() {
@@ -27,24 +38,49 @@ $.getJSON('/vilData/'+userID)
 .done(function(data){
 	villageData = data;
 
-	//background(0, 200, 50);
-
+	background(0, 200, 50);
+/*
 	if (count % 1 === 0) {
 		for (var i = 0; i < width; i+=20) {
 			for (var j = 0; j < height; j+=20){
 				if (villageData.theGrid[(j/20)*(width/20)+(i/20)]) fill(255);
 				else fill(0);
 				rect(i, j, 20, 20);
+				fill(0, 0, 255);
+				textSize(8);
+				text((j/20)*(width/20)+(i/20), i+10, j+10);
 			}
 		}
-	}
+	}*/
 
 	fill(0, 0);
 	strokeWeight(5);
 	rectMode(CORNER);
 	rect(0, 0, width, height);
 	rectMode(CENTER);
-	strokeWeight(1);
+	
+
+if (count % 1 === 0) {
+	if (villageData.terrain.weather.current.type <= 0) {
+		$('#weather_type').text("Rain");
+		stroke(100, 50, 255);
+		strokeWeight(2);
+		console.log("raining");
+		for (var i = 0; i < 500; i++) {
+			rainArrX[i] = randomInt(0, 1000);
+			rainArrY[i] = randomInt(0, 1000);
+			line(rainArrX[i], rainArrY[i], rainArrX[i]+5, rainArrY[i]+5);
+		}
+	} else {
+		$('#weather_type').text("Sun");
+	}
+}
+//console.log(villageData.terrain.weather.current.type);
+stroke(0);
+strokeWeight(1);
+
+	//console.log(villageData.terrain.weather.current.type);
+
 
 
 for (var i = 0; i < villageData.creatures.people.length; i++) { //displaying people
@@ -54,15 +90,19 @@ for (var i = 0; i < villageData.creatures.people.length; i++) { //displaying peo
 	pY = (int)(villageData.creatures.people[i].position / (width/20)) * 20;
 	ellipseMode(CENTER);
 	rectMode(CENTER);
+	push();
+	translate(pX+10, pY+10);
+	rotate(radians(villageData.creatures.people[i].direction*45+180));
 	fill(0,100,255);
-	rect(pX+10, pY+10, 40, 10);
+	rect(0, 0, 40, 10);
 	fill(222,184,135);
-	ellipse(pX+10, pY+10, 15, 15);
+	ellipse(0, 0, 15, 15);
+	pop();
 	if (mouseIsPressed === true && mouseX >= pX && mouseX <= pX+20 && mouseY >= pY && mouseY <= pY+20){
 		villageData.creatures.people[i].selected = 1; 
 		for (var j = 0; j < villageData.creatures.people.length; j++){
 			if (j !== i){
-				villageData.creatures.people[j].selected = 0; 
+				//villageData.creatures.people[j].selected = 0; 
 			}
 		}
 	}
@@ -72,6 +112,13 @@ for (var i = 0; i < villageData.creatures.people.length; i++) { //displaying peo
 		fill(0,0);
 		strokeWeight(3);
 		ellipse(pX+10, pY+10, 50, 50);
+		strokeWeight(1);
+		$('#targetTitle').text("Person");
+		$('#side_name').text(villageData.creatures.people[i].name);
+		$('#side_person_type').text("Worker");
+		$('#side_hunger').text(villageData.creatures.people[i].health.hunger);
+		$('#side_happiness').text(villageData.creatures.people[i].health.happiness);
+
 	}
 }
 
@@ -85,8 +132,13 @@ for (var i = 0; i < villageData.creatures.animals.length; i++) { //displaying an
 	rectMode(CENTER);
 	ellipseMode(CENTER);
 	rectMode(CENTER);
-	rect(aX+10, aY+10, 10, 30);
-	ellipse(aX+10, aY+10, 15, 15);
+	push();
+	translate(aX+10, aY+10);
+	rotate(radians(villageData.creatures.animals[i].direction*45+180));
+	rect(0, 0, 10, 20);
+	rect(0, -10, 5, 15);
+	ellipse(0, 10, 15, 15);
+	pop();
 
 	if (mouseIsPressed === true && mouseX >= aX && mouseX <= aX+20 && mouseY >= aY && mouseY <= aY+20){
 		villageData.creatures.animals[i].selected = 1; 
@@ -97,13 +149,19 @@ for (var i = 0; i < villageData.creatures.animals.length; i++) { //displaying an
 		}
 	}
 
-	console.log(villageData.creatures.animals[i].selected);
+	//console.log(villageData.creatures.animals[i].selected);
 
 	if (villageData.creatures.animals[i].selected === 1){
 		stroke(0);
 		fill(0,0);
 		strokeWeight(3);
 		ellipse(aX+10, aY+10, 50, 50);
+		strokeWeight(1);
+		$('#targetTitle').text("Cat");
+		$('#side_name').text(villageData.creatures.animals[i].name);
+		$('#side_person_type').text("Animal");
+		$('#side_hunger').text(villageData.creatures.animals[i].health.hunger);
+		$('#side_happiness').text(villageData.creatures.animals[i].health.happiness);
 	}
 }
 
@@ -150,11 +208,20 @@ for (var i = 0; i < villageData.terrain.objects.ponds.length; i++){ //displaying
 	stroke(0);
 }
 
+$('#peepCount').text("Humans: "+villageData.creatures.people.length);
+$('#catCount').text("Cats: "+villageData.creatures.animals.length);
+
 });
+
+
+
 
 count++;
 }
 }
+
+
+
 
 
 
@@ -175,7 +242,7 @@ $(window).on('unload', function() {
 		type: "POST",
 		url: "/vilData/"+userID,
 		complete: function () {
-console.log(userID);
+console.log("did stuff with ->"+userID);
 }
 });
 	console.log("unloaded");

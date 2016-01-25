@@ -43,8 +43,16 @@ app.post('/vilData/:id', function(req, res){
 	console.log("did stuff");
 	//console.log(verver.sendData(temp[req.params.id]));
 	User.findOne({userID: req.params.id}, function(err, usr){
-		usr = verver.sendData(temp[req.params.id]);
-		res.send("Data updated: "+JSON.stringify(usr))
+		if (err) {
+			console.log(err);
+		}
+		usr.village = verver.sendData(temp[req.params.id]).village;
+		usr.save(function(err, bla){
+			if (err) {
+				console.log(err);
+			}
+			res.send("Data saved: "+JSON.stringify(bla));
+		});
 	});
 });
 
@@ -65,12 +73,12 @@ app.post('/updateAccount/:id', function(req, res){
 			});
 		} else if (toChange === "weather") {
 			User.findOne({userID: req.params.id}, function(err, usr){
-				if (temp.info === 0) {
-					usr.village.terrain.weather.options.sun_chance = .75;
-					usr.village.terrain.weather.options.rain_chance = .25;
-				} else if (temp.info === 1) {
-					usr.village.terrain.weather.options.sun_chance = .25;
-					usr.village.terrain.weather.options.rain_chance = .75;
+				if (temp.info == 0) {
+					usr.village.terrain.weather.options.sun_chance = 51;
+					usr.village.terrain.weather.options.rain_chance = 49;
+				} else if (temp.info == 1) {
+					usr.village.terrain.weather.options.sun_chance = 49;
+					usr.village.terrain.weather.options.rain_chance = 51;
 				}
 				usr.village.theGrid = verver.gridInit(req.params.id);
 				usr.save (function(err, bla){
