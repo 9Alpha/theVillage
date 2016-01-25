@@ -47,6 +47,13 @@ for (var i = 0; i < villageData.creatures.people.length; i++) { //displaying peo
 	rect(pX+10, pY+10, 40, 10);
 	fill(222,184,135);
 	ellipse(pX+10, pY+10, 15, 15);
+	function mousePressed() {
+		if (mouseX >= pX-20 && mouseX <= pX+20 && mouseY >= pY-20 && mouseY <= pY+20){
+			stroke(0);
+			strokeWeight(3);
+			ellipse(pX+10, pY+10, 60, 60);
+		}
+	}
 }
 
 for (var i = 0; i < villageData.creatures.animals.length; i++) { //displaying animals
