@@ -53,7 +53,7 @@ app.post('/updateAccount/:id', function(req, res){
 	User.find().lean().exec( function (err, stuff){
 		verver.getData(stuff);
 		var temp = JSON.parse(JSON.stringify(req.body));
-		console.log(temp+"----------------");
+		console.log(temp.info+"----------------");
 		var toChange = temp.type;
 		if (toChange === "people") {
 			User.findOne({userID: req.params.id}, function(err, usr){

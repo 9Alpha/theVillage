@@ -118,7 +118,7 @@ $(".rainClick").click(function(){
 		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
-		contentType: "application/json",
+		contentType: "application/json"
 	});
 
 });
@@ -139,7 +139,7 @@ $(".rockyClick").click(function(){
 		url: '/updateAccount/'+userID,
 		type: 'POST',
 		data: JSON.stringify(temp),
-		contentType: "application/json",
+		contentType: "application/json"
 	});
 
 });
@@ -1226,152 +1226,165 @@ $(".createVillage").click(function(){
 		type: 'POST',
 		data: JSON.stringify(tempPeeps),
 		contentType: "application/json",
-	});
+		complete: function(data) {
+			var tempAnimals = {
+				type: "animals",
+				info: animals
+			}
 
-	var tempAnimals = {
-		type: "animals",
-		info: animals
-	}
+			$.ajax({
+				url: '/updateAccount/'+userID,
+				type: 'POST',
+				data: JSON.stringify(tempAnimals),
+				contentType: "application/json",
+				complete: function(data) {
+					var tempBuildings = {
+						type: "buildings",
+						info: buildings
+					}
 
-	$.ajax({
-		url: '/updateAccount/'+userID,
-		type: 'POST',
-		data: JSON.stringify(tempAnimals),
-		contentType: "application/json",
-	});
+					$.ajax({
+						url: '/updateAccount/'+userID,
+						type: 'POST',
+						data: JSON.stringify(tempBuildings),
+						contentType: "application/json",
+						complete: function(data) {
+							if (terrainType === 0){
+								rocks.push({
+									"name": "rock1",
+									"age": 0,
+									"LnW": [
+									2,
+									2
+									],
+									"type": 0,
+									"position": randomInt(50,2500)
+								});
 
-	var tempBuildings = {
-		type: "buildings",
-		info: buildings
-	}
+								rocks.push({
+									"name": "rock2",
+									"age": 0,
+									"LnW": [
+									2,
+									2
+									],
+									"type": 0,
+									"position": randomInt(50,2500)
+								});
 
-	$.ajax({
-		url: '/updateAccount/'+userID,
-		type: 'POST',
-		data: JSON.stringify(tempBuildings),
-		contentType: "application/json",
-	});
+								rocks.push({
+									"name": "rock3",
+									"age": 0,
+									"LnW": [
+									2,
+									2
+									],
+									"type": 0,
+									"position": randomInt(50,2500)
+								});
 
-	if (terrainType === 0){
-		rocks.push({
-			"name": "rock1",
-			"age": 0,
-			"LnW": [
-			2,
-			2
-			],
-			"type": 0,
-			"position": randomInt(50,2500)
-		});
-
-		rocks.push({
-			"name": "rock2",
-			"age": 0,
-			"LnW": [
-			2,
-			2
-			],
-			"type": 0,
-			"position": randomInt(50,2500)
-		});
-
-		rocks.push({
-			"name": "rock3",
-			"age": 0,
-			"LnW": [
-			2,
-			2
-			],
-			"type": 0,
-			"position": randomInt(50,2500)
-		});
-
-		rocks.push({
-			"name": "rock4",
-			"age": 0,
-			"LnW": [
-			2,
-			2
-			],
-			"type": 0,
-			"position": randomInt(50,2500)
-		});
+								rocks.push({
+									"name": "rock4",
+									"age": 0,
+									"LnW": [
+									2,
+									2
+									],
+									"type": 0,
+									"position": randomInt(50,2500)
+								});
 
 
-		var tempRocks = {
-			type: "buildings",
-			info: rocks
-		}
+								var tempRocks = {
+									type: "rocks",
+									info: rocks
+								}
 
-		$.ajax({
-			url: '/updateAccount/'+userID,
-			type: 'POST',
-			data: JSON.stringify(tempRocks),
-			contentType: "application/json",
-		});
+								$.ajax({
+									url: '/updateAccount/'+userID,
+									type: 'POST',
+									data: JSON.stringify(tempRocks),
+									contentType: "application/json",
+									complete: function(data) {
+										window.location.replace("/village/" + userID);
+									}
+								});
 
-	}
+							}
 
-	else if (terrainType === 1){
-		trees.push({
-			"name": "tree1",
-			"age": 0,
-			"LnW": [
-			4,
-			4
-			],
-			"type": 1,
-			"position": randomInt(50, 2500)
-		});
+							else {
+								trees.push({
+									"name": "tree1",
+									"age": 0,
+									"LnW": [
+									4,
+									4
+									],
+									"type": 1,
+									"position": randomInt(50, 2500)
+								});
 
-		trees.push({
-			"name": "tree2",
-			"age": 0,
-			"LnW": [
-			4,
-			4
-			],
-			"type": 1,
-			"position": randomInt(50, 2500)
-		});
+								trees.push({
+									"name": "tree2",
+									"age": 0,
+									"LnW": [
+									4,
+									4
+									],
+									"type": 1,
+									"position": randomInt(50, 2500)
+								});
 
-		trees.push({
-			"name": "tree3",
-			"age": 0,
-			"LnW": [
-			4,
-			4
-			],
-			"type": 1,
-			"position": randomInt(50, 2500)
-		});
+								trees.push({
+									"name": "tree3",
+									"age": 0,
+									"LnW": [
+									4,
+									4
+									],
+									"type": 1,
+									"position": randomInt(50, 2500)
+								});
 
-		trees.push({
-			"name": "tree4",
-			"age": 0,
-			"LnW": [
-			4,
-			4
-			],
-			"type": 1,
-			"position": randomInt(50, 2500)
-		});
+								trees.push({
+									"name": "tree4",
+									"age": 0,
+									"LnW": [
+									4,
+									4
+									],
+									"type": 1,
+									"position": randomInt(50, 2500)
+								});
 
 
-		var tempTrees = {
-			type: "buildings",
-			info: trees
-		}
+								var tempTrees = {
+									type: "trees",
+									info: trees
+								}
 
-		$.ajax({
-			url: '/updateAccount/'+userID,
-			type: 'POST',
-			data: JSON.stringify(tempTrees),
-			contentType: "application/json",
-		});
-	}
+								$.ajax({
+									url: '/updateAccount/'+userID,
+									type: 'POST',
+									data: JSON.stringify(tempTrees),
+									contentType: "application/json",
+									complete: function(data) {
+										window.location.replace("/village/" + userID);
+									}
+								});
+							}
+						}
+					});
+}
+});
+}
+});
 
-	window.location.replace("/village/" + userID);
+
+
+
+
+
 });
 
 
