@@ -243,10 +243,10 @@ module.exports = {
 
 		for (var i = 0; i < villageData[ID].village.creatures.animals.length; i++) { 
 			if (villageData[ID].village.creatures.animals[i].makePath) {
-				//var goingTo = pathAnimal(villageData[ID].village.creatures.animals[i].position, 0, false, i, ID);
+				var goingTo = pathAnimal(villageData[ID].village.creatures.animals[i].position, 0, false, i, ID);
 			}
 
-			if (count%7 === 0) {
+			if (count%15 === 0) {
 				if (villageData[ID].village.creatures.animals[i].pathSpot < villageData[ID].village.creatures.animals[i].pathArr.length) {
 					villageData[ID].village.theGrid[villageData[ID].village.creatures.animals[i].position] = true;
 					villageData[ID].village.creatures.animals[i].position = villageData[ID].village.creatures.animals[i].pathArr[villageData[ID].village.creatures.animals[i].pathSpot];
@@ -351,8 +351,8 @@ pathAnimal = function (from, to, goingPlaces, j, ID) {
 	return to;
 }
 traceParents = function (list, start) {
-	next = true;
-	toLook = start;
+	var next = true;
+	var toLook = start;
 	arrForParents.push(start);
 	while (next) {
 		list.traverseDF(function(node){
@@ -371,8 +371,8 @@ traceParents = function (list, start) {
 }
 
 traceDir = function (list, start) {
-	next = true;
-	toLook = start;
+	var next = true;
+	var toLook = start;
 	dirArr.push(0);
 	while (next) {
 		list.traverseDF(function(node){
