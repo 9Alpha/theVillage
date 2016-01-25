@@ -11,7 +11,6 @@ function setup() {
 	var myCanvas = createCanvas(1000, 1000);
 	myCanvas.parent('drawHere');
 
-
 	Width = width;
 	Height = height;
 
@@ -171,3 +170,7 @@ console.log(userID);
 });
 	console.log("unloaded");
 });
+
+
+
+
