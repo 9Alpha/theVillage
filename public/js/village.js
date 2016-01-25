@@ -32,7 +32,9 @@ $.getJSON('/vilData/'+userID)
 
 	fill(0, 0);
 	strokeWeight(5);
+	rectMode(CORNER);
 	rect(0, 0, width, height);
+	rectMode(CENTER);
 	strokeWeight(1);
 
 
@@ -58,6 +60,7 @@ for (var i = 0; i < villageData.creatures.people.length; i++) { //displaying peo
 
 for (var i = 0; i < villageData.creatures.animals.length; i++) { //displaying animals
 	fill(100);
+	strokeWeight(0);
 	var aX, aY;
 	aX = (villageData.creatures.animals[i].position % (width/20)) * 20;
 	aY = (int)(villageData.creatures.animals[i].position / (width/20)) * 20;
@@ -65,6 +68,16 @@ for (var i = 0; i < villageData.creatures.animals.length; i++) { //displaying an
 	rectMode(CENTER);
 	rect(aX+10, aY+10, 10, 30);
 	ellipse(aX+10, aY+10, 15, 15);
+	console.log("mouseX:" + mouseX); 
+	console.log("mouseY:" + mouseY);
+	console.log("aX:" + aX);
+	console.log("aY:" + aY); 
+	if (mouseIsPressed === true && mouseX >= aX && mouseX <= aX+20 && mouseY >= aY && mouseY <= aY+20){
+		stroke(0);
+		fill(0,0);
+		strokeWeight(3);
+		ellipse(aX+10, aY+10, 50, 50);
+	}
 }
 
 for (var i = 0; i < villageData.buildings.length; i++) { //displaying buildings
