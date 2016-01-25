@@ -93,6 +93,30 @@ app.post('/updateAccount/:id', function(req, res){
 					res.send("Data creation: "+JSON.stringify(bla));
 				});
 			});
+		} else if (toChange === "buildings") {
+			User.findOne({userID: req.params.id}, function(err, usr){
+				usr.village.buildings = JSON.parse(temp.info);
+				usr.village.theGrid = verver.gridInit(req.params.id);
+				usr.save (function(err, bla){
+					res.send("Data creation: "+JSON.stringify(bla));
+				});
+			});
+		} else if (toChange === "rocks") {
+			User.findOne({userID: req.params.id}, function(err, usr){
+				usr.village.terrain.objects.rocks = JSON.parse(temp.info);
+				usr.village.theGrid = verver.gridInit(req.params.id);
+				usr.save (function(err, bla){
+					res.send("Data creation: "+JSON.stringify(bla));
+				});
+			});
+		} else if (toChange === "trees") {
+			User.findOne({userID: req.params.id}, function(err, usr){
+				usr.village.terrain.objects.trees = JSON.parse(temp.info);
+				usr.village.theGrid = verver.gridInit(req.params.id);
+				usr.save (function(err, bla){
+					res.send("Data creation: "+JSON.stringify(bla));
+				});
+			});
 		}
 	});
 });

@@ -28,7 +28,17 @@ $.getJSON('/vilData/'+userID)
 .done(function(data){
 	villageData = data;
 
-	background(0, 200, 50);
+	//background(0, 200, 50);
+
+	if (count % 1 === 0) {
+		for (var i = 0; i < width; i+=20) {
+			for (var j = 0; j < height; j+=20){
+				if (villageData.theGrid[(j/20)*(width/20)+(i/20)]) fill(255);
+				else fill(0);
+				rect(i, j, 20, 20);
+			}
+		}
+	}
 
 	fill(0, 0);
 	strokeWeight(5);

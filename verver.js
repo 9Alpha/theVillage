@@ -194,6 +194,9 @@ module.exports = {
 		return villageData[ID].village;
 	},
 	update: function (ID) {
+		//console.log("ververStart");
+		updateGrid(ID);
+
 		for (var i = 0; i < villageData[ID].village.creatures.people.length; i++) {
 
 
@@ -212,13 +215,13 @@ module.exports = {
 
 			if (villageData[ID].village.creatures.people[i].makePath) {
 				if (villageData[ID].village.creatures.people[i].moveType === 0) {
-					var goingTo = pathPerson(villageData[ID].village.creatures.people[i].position, 0, false, i, ID);
+					pathPerson(villageData[ID].village.creatures.people[i].position, 0, false, i, ID);
 				}
 				else if (villageData[ID].village.creatures.people[i].moveType === 1) {
 					if (villageData[ID].village.creatures.people[i].activity === 2) {
-						var goingTo = pathPerson(villageData[ID].village.creatures.people[i].position, villageData[ID].village.creatures.people[i].home, true, i, ID);
+						//pathPerson(villageData[ID].village.creatures.people[i].position, villageData[ID].village.creatures.people[i].home, true, i, ID);
 					} else if (villageData[ID].village.creatures.people[i].activity === 1) {
-						var goingTo = pathPerson(villageData[ID].village.creatures.people[i].position, false, true, i, ID);
+						pathPerson(villageData[ID].village.creatures.people[i].position, false, true, i, ID);
 					}
 				}
 			}
@@ -243,7 +246,7 @@ module.exports = {
 
 		for (var i = 0; i < villageData[ID].village.creatures.animals.length; i++) { 
 			if (villageData[ID].village.creatures.animals[i].makePath) {
-				var goingTo = pathAnimal(villageData[ID].village.creatures.animals[i].position, 0, false, i, ID);
+				pathAnimal(villageData[ID].village.creatures.animals[i].position, 0, false, i, ID);
 			}
 
 			if (count%15 === 0) {
@@ -259,15 +262,6 @@ module.exports = {
 		}//for animals
 
 
-		var date1 = new Date();
-		timeA = date1.getMilliseconds();
-		updateGrid(ID);
-		var date2 = new Date();
-		timeB = date2.getMilliseconds();
-
-		timeDif = timeB - timeA;
-
-		timeDif = 0;
 
 
 
@@ -302,7 +296,7 @@ module.exports = {
 
 
 pathPerson = function (from, to, goingPlaces, j, ID) {
-
+	//console.log("pathPerson");
 	if (goingPlaces === false) {
 		to = 0;
 		var goodTarget = false;
@@ -328,7 +322,7 @@ pathPerson = function (from, to, goingPlaces, j, ID) {
 }
 
 pathAnimal = function (from, to, goingPlaces, j, ID) {
-
+	//console.log("pathAnimal");
 	if (goingPlaces === false) {
 		to = 0;
 		var goodTarget = false;
@@ -346,11 +340,14 @@ pathAnimal = function (from, to, goingPlaces, j, ID) {
 	findSuccessors(from, to, openList, ID);
 
 	arrForParents = [];
+	dirArr = [];
 	villageData[ID].village.creatures.animals[j].pathArr = traceParents(openList, to).reverse();
+	villageData[ID].village.creatures.animals[j].dirArr = traceDir(openList, to).reverse();
 	villageData[ID].village.creatures.animals[j].makePath = false;
 	return to;
 }
 traceParents = function (list, start) {
+	//console.log("traceParents");
 	var next = true;
 	var toLook = start;
 	arrForParents.push(start);
@@ -371,6 +368,7 @@ traceParents = function (list, start) {
 }
 
 traceDir = function (list, start) {
+	//console.log("traceDir");
 	var next = true;
 	var toLook = start;
 	dirArr.push(0);
@@ -391,6 +389,7 @@ traceDir = function (list, start) {
 }
 
 findSuccessors = function (start, target, open, ID) {
+	//console.log("findSuccessors");
 	var move = [10, 14, 10, 14, 10, 14, 10, 14];
 	var spots = [start-50, start-50+1, start+1, start+50+1, start+50, start+50-1, start-1, start-50-1];
 	var parentMove = 0;
@@ -404,11 +403,10 @@ findSuccessors = function (start, target, open, ID) {
 	open.contains(function(node) {
 		if (node.data.id === start) {
 			parentMove = node.data.G;
-		}
+		} 
 	}, open.traverseDF);
 
 	var cs = lookAround(start, parentMove, open, ID);
-
 
 	open.traverseDF(function(node) {
 		if (node.data.F < lowest && node.data.check === 'false') {
@@ -437,6 +435,7 @@ findSuccessors = function (start, target, open, ID) {
 }
 
 checkIfTrue = function(spot, list) {
+	//console("checkIfTrue");
 	var good = true;
 	list.traverseDF(function(node) {
 		if (node.data.id === spot) {
@@ -452,6 +451,7 @@ checkIfTrue = function(spot, list) {
 }
 
 lookAround = function (start, parentMove, open, ID) {
+	//console.log("lookAround");
 	var cs = [true, true, true, true, true, true, true, true];
 	var move = [10, 14, 10, 14, 10, 14, 10, 14];
 	var opens = [false, false, false, false, false, false, false, false];
@@ -505,6 +505,7 @@ lookAround = function (start, parentMove, open, ID) {
 }
 
 updateGrid = function (ID) {
+	//console.log("updateGrid");
 	for (var i = 0; i < villageData[ID].village.creatures.people.length; i++) {
 		villageData[ID].village.theGrid[villageData[ID].village.creatures.people[i].position] = false;
 	}
