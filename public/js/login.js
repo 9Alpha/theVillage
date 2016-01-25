@@ -82,7 +82,7 @@ $(document).ready(function(){
 
 var peeps = [];
 var animals = [];
-var terrainType;
+var terrainType = 0;
 var rocks = [];
 var trees = [];
 var buildings = [];

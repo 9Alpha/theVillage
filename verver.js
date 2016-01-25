@@ -243,7 +243,7 @@ module.exports = {
 
 		for (var i = 0; i < villageData[ID].village.creatures.animals.length; i++) { 
 			if (villageData[ID].village.creatures.animals[i].makePath) {
-				var goingTo = pathAnimal(villageData[ID].village.creatures.animals[i].position, 0, false, i, ID);
+				//var goingTo = pathAnimal(villageData[ID].village.creatures.animals[i].position, 0, false, i, ID);
 			}
 
 			if (count%7 === 0) {
