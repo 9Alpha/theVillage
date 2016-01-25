@@ -74,6 +74,8 @@ for (var i = 0; i < villageData.creatures.animals.length; i++) { //displaying an
 	aY = (int)(villageData.creatures.animals[i].position / (width/20)) * 20;
 	ellipseMode(CENTER);
 	rectMode(CENTER);
+	ellipseMode(CENTER);
+	rectMode(CENTER);
 	rect(aX+10, aY+10, 10, 30);
 	ellipse(aX+10, aY+10, 15, 15);
 
