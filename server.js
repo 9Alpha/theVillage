@@ -28,7 +28,7 @@ app.get('/', function(req, res){
 
 app.post('/updateAccount/:id', function(req, res){
 	var temp = JSON.parse(JSON.stringify(req.body));
-	console.log(temp.info);
+	console.log(temp);
 	var type = temp.type;
 	var info = temp.info;
 	//console.log(JSON.stringify(temp));

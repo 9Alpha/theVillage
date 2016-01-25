@@ -166,7 +166,7 @@ app.put('/makeLogin', function(req, res){
 		}
 	});
 	newAccount.save(function (err) {
-
+		console.log("user created");
 	});
 	res.send(randX.toString());
 });

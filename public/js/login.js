@@ -68,9 +68,7 @@ $(document).ready(function(){
 					console.log(data.responseText);
 					if (data) {
 						newVar = data.responseText;
-						
 						console.log("successful account");
-
 						$("#loginPage").empty();
 						alert("Account successfully created! Redirecting to options page");
 						window.location.replace("/options/" + newVar);
@@ -87,7 +85,7 @@ var animals = [];
 var terrainType;
 var rocks = [];
 var trees = [];
-var building = [];
+var buildings = [];
 
 $(".sunnyClick").click(function(){
 	var holder = "";
