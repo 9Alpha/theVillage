@@ -31,6 +31,10 @@ $(document).ready(function(){
 		});	
 	});
 
+	function randomInt(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
 	$(".makeAccount").click(function(){
 		var holder = "";
 		holder += "<form id = \"checkFields\">";
@@ -64,33 +68,7 @@ $(document).ready(function(){
 					console.log(data.responseText);
 					if (data) {
 						newVar = data.responseText;
-						var temp = {
-							type: "people",
-							info: [{
-								"position": 204,
-								"direction": 45,
-								"makePath": true,
-								"moveType": 0,
-								"pathArr": [
-								],
-								"pathSpot": 0,
-								"age": 0,
-								"activity": 0,
-								"job": 0,
-								"health": {
-									"hunger": 0.84,
-									"happiness": 0.94
-								},
-								"name": "Mark"
-							}]
-						}
-
-						$.ajax({
-							url: '/updateAccount/'+ newVar,
-							type: 'POST',
-							data: JSON.stringify(temp),
-							contentType: "application/json",
-						});
+						
 						console.log("successful account");
 
 						$("#loginPage").empty();
@@ -106,6 +84,10 @@ $(document).ready(function(){
 
 var peeps = [];
 var animals = [];
+var terrainType;
+var rocks = [];
+var trees = [];
+var building = [];
 
 $(".sunnyClick").click(function(){
 	var holder = "";
@@ -131,7 +113,7 @@ $(".rainClick").click(function(){
 
 	var temp = {
 		type: "weather",
-		info: 2
+		info: 1
 	}
 
 	$.ajax({
@@ -147,6 +129,8 @@ $(".rockyClick").click(function(){
 	var holder = "";
 	holder += "Rocky, ";
 	$("#optionsPage").append(holder);
+
+	terrainType = 0;
 
 	var temp = {
 		type: "terrain",
@@ -167,9 +151,11 @@ $(".treesClick").click(function(){
 	holder += "Trees, ";
 	$("#optionsPage").append(holder);
 
+	terrainType = 1;
+
 	var temp = {
 		type: "terrain",
-		info: 2
+		info: 1
 	}
 
 	$.ajax({
@@ -187,7 +173,7 @@ $(".onecatClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	animals.push({
-		"position": 350,
+		"position": 10,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -210,7 +196,7 @@ $(".twocatsClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	animals.push({
-		"position": 350,
+		"position": 10,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -226,7 +212,7 @@ $(".twocatsClick").click(function(){
 		}
 	});
 	animals.push({
-		"position": 351,
+		"position": 11,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -250,7 +236,7 @@ $(".threecatsClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	animals.push({
-		"position": 350,
+		"position": 10,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -266,7 +252,7 @@ $(".threecatsClick").click(function(){
 		}
 	});
 	animals.push({
-		"position": 351,
+		"position": 11,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -282,7 +268,7 @@ $(".threecatsClick").click(function(){
 		}
 	});
 	animals.push({
-		"position": 352,
+		"position": 12,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -306,7 +292,7 @@ $(".fourcatsClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	animals.push({
-		"position": 350,
+		"position": 10,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -322,7 +308,7 @@ $(".fourcatsClick").click(function(){
 		}
 	});
 	animals.push({
-		"position": 351,
+		"position": 11,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -338,7 +324,7 @@ $(".fourcatsClick").click(function(){
 		}
 	});
 	animals.push({
-		"position": 352,
+		"position": 12,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -354,7 +340,7 @@ $(".fourcatsClick").click(function(){
 		}
 	});
 	animals.push({
-		"position": 353,
+		"position": 13,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -378,7 +364,7 @@ $(".fivecatsClick").click(function(){
 	$("#optionsPage").append(holder);
 
 	animals.push({
-		"position": 350,
+		"position": 10,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -394,7 +380,7 @@ $(".fivecatsClick").click(function(){
 		}
 	});
 	animals.push({
-		"position": 351,
+		"position": 11,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -410,7 +396,7 @@ $(".fivecatsClick").click(function(){
 		}
 	});
 	animals.push({
-		"position": 352,
+		"position": 12,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -426,7 +412,7 @@ $(".fivecatsClick").click(function(){
 		}
 	});
 	animals.push({
-		"position": 353,
+		"position": 13,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -443,7 +429,7 @@ $(".fivecatsClick").click(function(){
 	});
 
 	animals.push({
-		"position": 354,
+		"position": 14,
 		"direction": 270,
 		"makePath": false,
 		"moveType": 0,
@@ -761,10 +747,22 @@ $(".oneworkerClick").click(function(){
 	holder += "One Worker ";
 	$("#optionsPage").append(holder);
 
+	buildings.push({
+		"position": 125;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
 	peeps.push({
 		"position": 30,
 		"makePath": true,
 		"moveType": 0,
+		"home": 75,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -785,10 +783,33 @@ $(".twoworkersClick").click(function(){
 	holder += "Two Workers ";
 	$("#optionsPage").append(holder);
 
+	buildings.push({
+		"position": 125;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
+	buildings.push({
+		"position": 325;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
 	peeps.push({
 		"position": 30,
 		"makePath": true,
 		"moveType": 0,
+		"home": 75,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -806,6 +827,7 @@ $(".twoworkersClick").click(function(){
 		"position": 31,
 		"makePath": true,
 		"moveType": 0,
+		"home": 275,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -827,10 +849,44 @@ $(".threeworkersClick").click(function(){
 	holder += "Three Workers ";
 	$("#optionsPage").append(holder);
 
+	buildings.push({
+		"position": 125;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
+	buildings.push({
+		"position": 325;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
+	buildings.push({
+		"position": 525;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
 	peeps.push({
 		"position": 30,
 		"makePath": true,
 		"moveType": 0,
+		"home": 75,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -848,6 +904,7 @@ $(".threeworkersClick").click(function(){
 		"position": 31,
 		"makePath": true,
 		"moveType": 0,
+		"home": 275,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -865,6 +922,7 @@ $(".threeworkersClick").click(function(){
 		"position": 32,
 		"makePath": true,
 		"moveType": 0,
+		"home": 475,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -886,10 +944,55 @@ $(".fourworkersClick").click(function(){
 	holder += "Four Workers ";
 	$("#optionsPage").append(holder);
 
+	buildings.push({
+		"position": 125;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
+	buildings.push({
+		"position": 325;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
+	buildings.push({
+		"position": 525;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
+	buildings.push({
+		"position": 725;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
 	peeps.push({
 		"position": 30,
 		"makePath": true,
 		"moveType": 0,
+		"home": 75,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -907,6 +1010,7 @@ $(".fourworkersClick").click(function(){
 		"position": 31,
 		"makePath": true,
 		"moveType": 0,
+		"home": 275,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -924,6 +1028,7 @@ $(".fourworkersClick").click(function(){
 		"position": 32,
 		"makePath": true,
 		"moveType": 0,
+		"home": 475,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -941,6 +1046,7 @@ $(".fourworkersClick").click(function(){
 		"position": 33,
 		"makePath": true,
 		"moveType": 0,
+		"home": 675,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -963,10 +1069,66 @@ $(".fiveworkersClick").click(function(){
 	holder += "Five Workers ";
 	$("#optionsPage").append(holder);
 
+	buildings.push({
+		"position": 125;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
+	buildings.push({
+		"position": 325;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
+	buildings.push({
+		"position": 525;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
+	buildings.push({
+		"position": 725;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
+	buildings.push({
+		"position": 925;
+		"LnW": [
+		3,
+		6
+		],
+		"name": "House",
+		"age": 0,
+		"type": 0
+	});
+
 	peeps.push({
 		"position": 30,
 		"makePath": true,
 		"moveType": 0,
+		"home": 75,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -984,6 +1146,7 @@ $(".fiveworkersClick").click(function(){
 		"position": 31,
 		"makePath": true,
 		"moveType": 0,
+		"home": 275,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -1001,6 +1164,7 @@ $(".fiveworkersClick").click(function(){
 		"position": 32,
 		"makePath": true,
 		"moveType": 0,
+		"home": 475,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -1018,6 +1182,7 @@ $(".fiveworkersClick").click(function(){
 		"position": 33,
 		"makePath": true,
 		"moveType": 0,
+		"home": 675,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -1035,6 +1200,7 @@ $(".fiveworkersClick").click(function(){
 		"position": 34,
 		"makePath": true,
 		"moveType": 0,
+		"home": 875,
 		"pathArr": [
 		],
 		"dirArr": [],
@@ -1075,6 +1241,112 @@ $(".createVillage").click(function(){
 		data: JSON.stringify(tempAnimals),
 		contentType: "application/json",
 	});
+
+	var tempBuildings = {
+		type: "buildings",
+		info: buildings
+	}
+
+	$.ajax({
+		url: '/updateAccount/'+userID,
+		type: 'POST',
+		data: JSON.stringify(tempBuildings),
+		contentType: "application/json",
+	});
+
+	if (terrainType === 0){
+		rocks.push({
+			"name": "rock1",
+			"age": 0,
+			"LnW": [
+			2,
+			2
+			],
+			"type": 0,
+			"position": randomInt(50,2500)
+		});
+
+		rocks.push({
+			"name": "rock2",
+			"age": 0,
+			"LnW": [
+			2,
+			2
+			],
+			"type": 0,
+			"position": randomInt(50,2500)
+		});
+
+		rocks.push({
+			"name": "rock3",
+			"age": 0,
+			"LnW": [
+			2,
+			2
+			],
+			"type": 0,
+			"position": randomInt(50,2500)
+		});
+
+		rocks.push({
+			"name": "rock4",
+			"age": 0,
+			"LnW": [
+			2,
+			2
+			],
+			"type": 0,
+			"position": randomInt(50,2500)
+		});
+	}
+
+	else if (terrainType === 1){
+		trees.push({
+			"name": "tree1",
+			"age": 0,
+			"LnW": [
+			4,
+			4
+			],
+			"type": 1,
+			"position": randomInt(50, 2500)
+		});
+
+		trees.push({
+			"name": "tree2",
+			"age": 0,
+			"LnW": [
+			4,
+			4
+			],
+			"type": 1,
+			"position": randomInt(50, 2500)
+		});
+
+		trees.push({
+			"name": "tree3",
+			"age": 0,
+			"LnW": [
+			4,
+			4
+			],
+			"type": 1,
+			"position": randomInt(50, 2500)
+		});
+
+		trees.push({
+			"name": "tree4",
+			"age": 0,
+			"LnW": [
+			4,
+			4
+			],
+			"type": 1,
+			"position": randomInt(50, 2500)
+		});
+	}
+
+
 	window.location.replace("/village/" + userID);
 });
 
