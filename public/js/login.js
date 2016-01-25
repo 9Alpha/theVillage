@@ -124,24 +124,6 @@ $(".sunnyClick").click(function(){
 	});
 });
 
-$(".cloudyClick").click(function(){
-	var holder = "";
-	holder += "Cloudy, ";
-	$("#optionsPage").append(holder);
-	var temp = {
-		type: "weather",
-		info: 1
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+userID,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
-});
-
 $(".rainClick").click(function(){
 	var holder = "";
 	holder += "Rain, ";
@@ -150,25 +132,6 @@ $(".rainClick").click(function(){
 	var temp = {
 		type: "weather",
 		info: 2
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+userID,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
-});
-
-$(".snowyClick").click(function(){
-	var holder = "";
-	holder += "Snowy, ";
-	$("#optionsPage").append(holder);
-
-	var temp = {
-		type: "weather",
-		info: 3
 	}
 
 	$.ajax({
@@ -199,25 +162,6 @@ $(".rockyClick").click(function(){
 
 });
 
-$(".sandyClick").click(function(){
-	var holder = "";
-	holder += "Sandy, ";
-	$("#optionsPage").append(holder);
-
-	var temp = {
-		type: "terrain",
-		info: 1
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+userID,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
-});
-
 $(".treesClick").click(function(){
 	var holder = "";
 	holder += "Trees, ";
@@ -226,25 +170,6 @@ $(".treesClick").click(function(){
 	var temp = {
 		type: "terrain",
 		info: 2
-	}
-
-	$.ajax({
-		url: '/updateAccount/'+userID,
-		type: 'POST',
-		data: JSON.stringify(temp),
-		contentType: "application/json",
-	});
-
-});
-
-$(".mountainsClick").click(function(){
-	var holder = "";
-	holder += "Mountains, ";
-	$("#optionsPage").append(holder);
-
-	var temp = {
-		type: "terrain",
-		info: 3
 	}
 
 	$.ajax({
