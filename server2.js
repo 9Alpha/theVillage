@@ -53,7 +53,7 @@ app.post('/updateAccount/:id', function(req, res){
 	User.find().lean().exec( function (err, stuff){
 		verver.getData(stuff);
 		var temp = JSON.parse(JSON.stringify(req.body));
-		//console.log(temp);
+		console.log(temp+"----------------");
 		var toChange = temp.type;
 		if (toChange === "people") {
 			User.findOne({userID: req.params.id}, function(err, usr){
@@ -166,9 +166,12 @@ app.put('/makeLogin', function(req, res){
 		}
 	});
 	newAccount.save(function (err) {
+		if (err) {
+			console.log(err);
+		}
 		console.log("user created");
+		res.send(randX.toString());
 	});
-	res.send(randX.toString());
 });
 
 
@@ -224,10 +227,7 @@ var userGuide = new Schema({
 					lo: Number
 				}
 			},
-			terrain_types: {
-				wind: Number,
-				type: Number
-			},
+			terrain_types: Object,
 			objects: {
 				rocks: Array,
 				trees: Array,
