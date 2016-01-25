@@ -1428,7 +1428,7 @@ $(".createVillage").click(function(){
 
 
 
-
+window.location.replace("/village/" + userID);
 
 });
 

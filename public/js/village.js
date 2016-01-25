@@ -49,12 +49,20 @@ for (var i = 0; i < villageData.creatures.people.length; i++) { //displaying peo
 	rect(pX+10, pY+10, 40, 10);
 	fill(222,184,135);
 	ellipse(pX+10, pY+10, 15, 15);
-	function mousePressed() {
-		if (mouseX >= pX-20 && mouseX <= pX+20 && mouseY >= pY-20 && mouseY <= pY+20){
-			stroke(0);
-			strokeWeight(3);
-			ellipse(pX+10, pY+10, 60, 60);
+	if (mouseIsPressed === true && mouseX >= pX && mouseX <= pX+20 && mouseY >= pY && mouseY <= pY+20){
+		villageData.creatures.people[i].selected = 1; 
+		for (var j = 0; j < villageData.creatures.people.length; j++){
+			if (j !== i){
+				villageData.creatures.people[j].selected = 0; 
+			}
 		}
+	}
+
+	if (villageData.creatures.people[i].selected === 1){
+		stroke(0);
+		fill(0,0);
+		strokeWeight(3);
+		ellipse(pX+10, pY+10, 50, 50);
 	}
 }
 
@@ -68,11 +76,19 @@ for (var i = 0; i < villageData.creatures.animals.length; i++) { //displaying an
 	rectMode(CENTER);
 	rect(aX+10, aY+10, 10, 30);
 	ellipse(aX+10, aY+10, 15, 15);
-	console.log("mouseX:" + mouseX); 
-	console.log("mouseY:" + mouseY);
-	console.log("aX:" + aX);
-	console.log("aY:" + aY); 
+
 	if (mouseIsPressed === true && mouseX >= aX && mouseX <= aX+20 && mouseY >= aY && mouseY <= aY+20){
+		villageData.creatures.animals[i].selected = 1; 
+		for (var j = 0; j < villageData.creatures.animals.length; j++){
+			if (j !== i){
+				//villageData.creatures.animals[j].selected = 0; 
+			}
+		}
+	}
+
+	console.log(villageData.creatures.animals[i].selected);
+
+	if (villageData.creatures.animals[i].selected === 1){
 		stroke(0);
 		fill(0,0);
 		strokeWeight(3);
